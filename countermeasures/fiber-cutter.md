@@ -39,8 +39,8 @@ redirect_from:
   <path d="M220 158 L180 158" stroke="#2f6b3a" stroke-width="2" marker-end="url(#fc-arrow-g)"/>
   <path d="M352 40 C 340 80, 300 120, 322 180 S 300 260, 300 300" fill="none" stroke="#d2451e" stroke-width="2"/>
   <g stroke="#d2451e" stroke-width="3"><line x1="344" y1="186" x2="356" y2="198"/><line x1="356" y1="186" x2="344" y2="198"/></g>
-  <text x="364" y="214" class="vz-t-accent" style="font-size:16px">cut at the next rod</text>
-  <text x="364" y="232" class="vz-t-small" style="font-size:14px">a fin carries it there</text>
+  <text x="470" y="216" class="vz-t-accent" text-anchor="end" style="font-size:16px">cut at the next rod</text>
+  <text x="470" y="234" class="vz-t-small" text-anchor="end" style="font-size:14px">a fin carries it there</text>
   <g transform="translate(300 304)" stroke="#151515" stroke-width="2.5">
     <line x1="-7" y1="-7" x2="7" y2="7"/><line x1="7" y1="-7" x2="-7" y2="7"/>
     <g fill="#fff" stroke-width="2"><circle cx="-7" cy="-7" r="3"/><circle cx="7" cy="-7" r="3"/><circle cx="-7" cy="7" r="3"/><circle cx="7" cy="7" r="3"/></g>
