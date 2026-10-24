@@ -65,6 +65,8 @@ pre { margin: 0; font: 12px/1.4 var(--mono); white-space: pre-wrap; word-break: 
 .note { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
 .banner { border-left: 4px solid var(--warn); background: var(--panel); padding: 8px 12px; margin-bottom: 10px; font-size: 14px; display: none; border-radius: 6px; }
 .banner.show { display: block; }
+details.more { margin-top: 10px; }
+details.more > summary { cursor: pointer; color: var(--accent); font-size: 14px; }
 details.panel > summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
 details.panel > summary::-webkit-details-marker { display: none; }
 details.panel > summary h2 { margin: 0; }
@@ -154,38 +156,30 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
   <div class="col">
     <details class="panel hide-embed" id="connectPanel" open>
       <summary><h2>Connect</h2></summary>
-      <div class="sources">
-        <div class="source">
-          <b>WiFi, from a phone</b>
-          <ol>
-            <li>Power the gateway. If it already knows this phone's hotspot, turn the hotspot on: the gateway shows up below in about 30 s. Tap it.</li>
-            <li>If not, give it this phone's hotspot. With the hotspot off, wait for a WiFi network called <i>tw-… setup</i> (up to a minute), join it in this phone's WiFi settings, and type this phone's hotspot name and password into the page that opens. If no page opens, go to <i>192.168.4.1</i>.</li>
-            <li>Turn this phone's hotspot on. On iPhone, switch on <i>Maximize Compatibility</i> and keep the Personal Hotspot screen open: the board only sees 2.4 GHz. The gateway shows up below in about 30 s: tap it.</li>
-          </ol>
-          <div id="gwFound" class="found-list" hidden></div>
-          <div class="fields" style="grid-template-columns:1fr 1fr;margin:8px 0">
-            <label>Or type the gateway ID <input id="fGwId" type="text" spellcheck="false" autocomplete="off"></label>
-            <label>Broker <input id="fBroker" type="text" spellcheck="false" autocomplete="off"></label>
-          </div>
-          <button class="primary" id="bWifi" style="width:100%">Connect over WiFi</button>
+      <ol class="steps">
+        <li>Power the gateway and turn this phone's hotspot on. On iPhone, switch on <i>Maximize Compatibility</i> and keep the hotspot screen open.</li>
+        <li>The gateway shows up below in about 30 s. Tap it.</li>
+        <li>First time with this phone? Turn the hotspot off, join the WiFi network <i>tw-… setup</i> in this phone's WiFi settings and type the hotspot's name and password into the page that opens (or go to <i>192.168.4.1</i>). Then do step 1.</li>
+      </ol>
+      <div id="gwFound" class="found-list" hidden></div>
+      <details class="more">
+        <summary>Other ways to connect</summary>
+        <div class="fields" style="grid-template-columns:1fr 1fr;margin:8px 0">
+          <label>Gateway ID <input id="fGwId" type="text" spellcheck="false" autocomplete="off"></label>
+          <label>Broker <input id="fBroker" type="text" spellcheck="false" autocomplete="off"></label>
         </div>
-        <div class="source">
-          <b>USB cable, from a laptop</b>
-          <ol>
-            <li>Chrome or Edge on a laptop. Phones can't read a USB board from a web page yet.</li>
-            <li>Plug the gateway in, tap <b>Connect USB</b>, pick its port. Tap again to add the detector, which adds its confidence score.</li>
-          </ol>
-          <div class="row" style="margin:8px 0">
-            <label style="flex:1">Baud <select id="fBaud"><option>115200</option><option>921600</option><option>460800</option></select></label>
-          </div>
-          <button class="primary" id="bConnect" style="width:100%">Connect USB</button>
+        <button class="primary" id="bWifi" style="width:100%">Connect over WiFi</button>
+        <p class="note">On a laptop with Chrome or Edge, plug a board in by USB instead (the detector, for setting the mic phone's meter at home).</p>
+        <div class="row" style="margin:8px 0">
+          <label style="flex:1">Baud <select id="fBaud"><option>115200</option><option>921600</option><option>460800</option></select></label>
         </div>
-      </div>
-      <div class="row" style="margin-top:10px">
-        <button id="bDemo">Try demo</button>
-        <label style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="fBeep"> Beep on alarm (off while recording)</label>
-      </div>
-      <p class="note">WiFi mode sends readings through a free public broker, so anyone who guessed the gateway ID could read them. Fine for a backyard test, not for anything sensitive. Keep this page open with the screen on: readings that arrive while the phone is locked are lost.</p>
+        <button class="primary" id="bConnect" style="width:100%">Connect USB</button>
+        <div class="row" style="margin-top:10px">
+          <button id="bDemo">Try demo</button>
+          <label style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="fBeep"> Beep on alarm</label>
+        </div>
+        <p class="note">Readings pass through a free public broker: fine for a test, not for anything sensitive. Keep this page open with the screen on.</p>
+      </details>
     </details>
     <section>
       <div class="alarm" id="alarmBox"><div class="v" id="vAlarm">quiet</div><div class="k" id="vAlarmSub">Batear alarm</div></div>
@@ -215,10 +209,12 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
       <details class="hide-embed" id="micJoinBox" style="margin-top:8px" open>
         <summary>Set up the mic phone</summary>
         <div class="micjoin" id="micJoin">
-          <p>The test uses two phones. <b>The mic phone</b> stays beside the mic: it measures and records the sound there and plays the speaker. <b>This phone</b> is the logger: its hotspot is on, and it goes wherever the gateway goes. On the mic phone, open this page, tap <b>Mic phone</b>, then tap <b>Logger <span class="gwName"></span></b>.</p>
+          <p>On the mic phone, open this page, tap <b>Mic phone</b>, then tap <b>Logger <span class="gwName"></span></b>.</p>
           <button class="shareLink">Send the link to the other phone</button>
         </div>
       </details>
+      <details class="more hide-embed">
+      <summary>More</summary>
       <div class="hide-embed" id="localMic" style="margin-top:8px">
         <button id="bLocalMic" style="width:100%">Only one phone: use this phone's mic</button>
         <p class="note">Then this phone has to stay at the mic and play the speaker, and the gateway has to stay within 30 ft of it, so you can't take the gateway away while the speaker plays.</p>
@@ -232,57 +228,15 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
         <button class="grow" id="bRec" disabled>Start recording at the mic</button>
         <button class="grow" id="lmSave" disabled hidden>Save recording</button>
       </div>
+      </details>
       <p class="note" id="micLine"></p>
-      <p class="note hide-embed"><a href="#guide" class="toguide">What do these numbers mean?</a></p>
     </section>
 
-    <section class="panel">
-      <h2>Run</h2>
-      <div class="fields hide-embed">
-        <label class="span3">Type
-          <select id="fType">
-            <option value="nodrone">No drone (background)</option>
-            <option value="radio">Radio walk</option>
-            <option value="speaker">Speaker, emulated distance</option>
-            <option value="bench">Bench check</option>
-            <option value="hover">Hover, 60 s (real drone)</option>
-            <option value="pass">Straight pass (real drone)</option>
-          </select>
-        </label>
-        <label>Distance, ft <input id="fDist" type="number" inputmode="decimal" min="0" step="10" value="80"></label>
-        <label>Drone height, ft <input id="fAlt" type="number" inputmode="decimal" min="0" step="10" value="100"></label>
-        <label>Mic height, in <input id="fMic" type="number" inputmode="decimal" min="0" step="1" value="20"></label>
-        <label>Wind, mph <input id="fWind" type="text" placeholder="5, gusts 10"></label>
-        <label class="span2">Drone or speaker <input id="fDrone" type="text" placeholder="Mini 4K, or speaker file"></label>
-        <label class="span3">Notes <input id="fNotes" type="text" placeholder="tree line, mower nearby"></label>
-      </div>
-      <div class="row hide-embed">
-        <button class="primary grow" id="bStart">Start run</button>
-        <button class="stop grow" id="bStop" disabled>Stop run</button>
-      </div>
-      <div class="row hide-embed" style="margin-top:8px">
-        <button class="grow" id="bSync" title="Press as you clap next to the recorders">Sync clap <kbd class="desk">S</kbd></button>
-        <button class="grow" id="bMark" title="Closest approach, or anything worth a timestamp">Mark <kbd class="desk">M</kbd></button>
-      </div>
-      <div class="runline" id="runLine">No run in progress.</div>
-      <p class="note hide-embed" id="cloudLine" style="margin:6px 0 0"></p>
-    </section>
-
-    <details class="panel hide-embed" id="watchBox">
-      <summary><h2>Let someone else watch</h2></summary>
-      <div class="micjoin">
-        <p>Anyone can follow the test from another phone or a computer, from anywhere: open this page there, tap <b>Just watching</b>, then tap <b>Logger <span class="gwName"></span></b>. It shows the alarm, the sound at the mic, the sequence and the range table as they happen. It only watches: start and stop everything on this phone.</p>
-        <button class="shareLink">Send the link</button>
-      </div>
-    </details>
-
-    <details class="panel hide-embed" id="speakerPanel">
-      <summary><h2>Speaker test</h2></summary>
+    <section class="panel hide-embed" id="speakerPanel">
+      <h2>Sound test</h2>
       <ol class="steps">
-        <li>Pair the Bluetooth speaker with the mic phone, and put the speaker on a chair 16 ft from the mic, facing it. The mic phone plays it: this phone only gives the orders, so it can be anywhere with a signal.</li>
-        <li>Pick a sound, tap <b>Play calibration</b>, and use the volume buttons on the mic phone or the speaker until <i>Sound at the mic</i> reads 60–65 dB(A). Then don't touch the volume again.</li>
-        <li>Tap <b>Measure at the mic</b>. The mic phone reads 10 s with the speaker off, then 10 s of calibration, and both readings fill in. Or type them from any sound meter.</li>
-        <li>Tap <b>Start sequence</b> and walk away with this phone and the gateway. You have 60 s before the first play. The mic phone then starts recording, plays each distance three times (each is logged here as a <i>Speaker</i> run), records the background as a <i>No drone</i> run and stops the recording, about 21 minutes in all. It carries on by itself if this phone loses signal.</li>
+        <li>Tap <b>Play calibration</b>. Turn the volume on the mic phone or the speaker until <i>Sound at the mic</i> reads 60–65 dB(A), then tap <b>Measure at the mic</b>. Don't touch the volume again.</li>
+        <li>Tap <b>Start sequence</b> and walk 65 ft or more away with this phone and the gateway. It runs by itself for about 21 minutes.</li>
       </ol>
       <div class="fields">
         <label class="span2">Sound
@@ -292,14 +246,21 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
             <option value="own">Your own recording…</option>
           </select>
         </label>
-        <label>Drone loudness, dB(A) <input id="spLwa" type="number" inputmode="decimal" step="1"></label>
         <label class="span3" id="spFileRow" hidden>Recording <input id="spFile" type="file" accept="audio/*"></label>
       </div>
       <div class="row">
         <button class="grow" id="spCal">Play calibration</button>
         <button class="grow" id="spMeasure">Measure at the mic</button>
       </div>
-      <div class="fields" style="margin-top:12px">
+      <div class="row" style="margin-top:8px">
+        <button class="primary grow" id="spStart">Start sequence</button>
+        <button class="stop grow" id="spStop" disabled>Stop</button>
+      </div>
+      <div class="runline" id="spStatus"></div>
+      <details class="more">
+      <summary>Settings</summary>
+      <div class="fields" style="margin-top:8px">
+        <label>Drone loudness, dB(A) <input id="spLwa" type="number" inputmode="decimal" step="1"></label>
         <label>Meter, playing <input id="spCalSpl" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
         <label>Meter, speaker off <input id="spBg" type="number" inputmode="decimal" step="0.5" placeholder="38"></label>
         <label>Step by
@@ -312,13 +273,55 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
         <label>Walk away, s <input id="spWait" type="number" inputmode="numeric" min="0" step="10" value="60"></label>
         <label class="span2">Then record background, min <input id="spBgMin" type="number" inputmode="numeric" min="0" step="1" value="4"></label>
       </div>
-      <div class="row">
-        <button class="primary grow" id="spStart">Start sequence</button>
-        <button class="stop grow" id="spStop" disabled>Stop</button>
-      </div>
-      <div class="runline" id="spStatus"></div>
       <p class="note" id="spSource"></p>
-      <p class="note"><a href="#guide" class="toguide">What do these numbers mean?</a></p>
+      </details>
+    </section>
+
+    <section class="panel">
+      <h2>Radio walk</h2>
+      <p class="note hide-embed" style="margin:0 0 8px">At each stop, enter how far you are from the detector, tap <b>Start run</b>, and stop it once a packet arrives.</p>
+      <div class="fields hide-embed" style="grid-template-columns:1fr">
+        <label>Distance from the detector, ft <input id="fDist" type="number" inputmode="decimal" min="0" step="10" value="330"></label>
+      </div>
+      <div class="row hide-embed">
+        <button class="primary grow" id="bStart">Start run</button>
+        <button class="stop grow" id="bStop" disabled>Stop run</button>
+      </div>
+      <details class="more hide-embed">
+      <summary>Run details</summary>
+      <div class="fields hide-embed" style="margin-top:8px">
+        <label class="span3">Type
+          <select id="fType">
+            <option value="nodrone">No drone (background)</option>
+            <option value="radio" selected>Radio walk</option>
+            <option value="speaker">Speaker, emulated distance</option>
+            <option value="bench">Bench check</option>
+            <option value="hover">Hover, 60 s (real drone)</option>
+            <option value="pass">Straight pass (real drone)</option>
+          </select>
+        </label>
+        <label>Drone height, ft <input id="fAlt" type="number" inputmode="decimal" min="0" step="10" value="100"></label>
+        <label>Mic height, in <input id="fMic" type="number" inputmode="decimal" min="0" step="1" value="20"></label>
+        <label>Wind, mph <input id="fWind" type="text" placeholder="5, gusts 10"></label>
+        <label class="span2">Drone or speaker <input id="fDrone" type="text" placeholder="Mini 4K, or speaker file"></label>
+        <label class="span3">Notes <input id="fNotes" type="text" placeholder="tree line, mower nearby"></label>
+      </div>
+      <div class="row hide-embed">
+        <button class="grow" id="bSync" title="Press as you clap next to the recorders">Sync clap <kbd class="desk">S</kbd></button>
+        <button class="grow" id="bMark" title="Closest approach, or anything worth a timestamp">Mark <kbd class="desk">M</kbd></button>
+      </div>
+      </details>
+      <div class="runline" id="runLine">No run in progress.</div>
+      <p class="note hide-embed" id="cloudLine" style="margin:6px 0 0"></p>
+    </section>
+
+
+    <details class="panel hide-embed" id="watchBox">
+      <summary><h2>Let someone else watch</h2></summary>
+      <div class="micjoin">
+        <p>Anyone can follow the test from another phone or a computer, from anywhere: open this page there, tap <b>Just watching</b>, then tap <b>Logger <span class="gwName"></span></b>. It shows the alarm, the sound at the mic, the sequence and the range table as they happen. It only watches: start and stop everything on this phone.</p>
+        <button class="shareLink">Send the link</button>
+      </div>
     </details>
   </div>
 
@@ -456,7 +459,7 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
   </dl>
   <h3>Try it at a desk, with no boards</h3>
   <ol class="steps">
-    <li>Open this logger on a computer with speakers. Open <i>Speaker test</i> above and pick a sound.</li>
+    <li>Open this logger on a computer with speakers. Find <i>Sound test</i> above and pick a sound.</li>
     <li>Open this page on a phone, tap <b>Mic phone</b>, then tap this logger, and allow the microphone.</li>
     <li>Tap <b>Play calibration</b> here. The phone plays it, from its own speaker or one paired to it, and <i>Loudness at mic</i> should jump within a couple of seconds.</li>
     <li>Tap <b>Measure at the mic</b>, then try <b>Start recording at the mic</b> and stop it. The detector numbers stay empty without a board.</li>
@@ -1329,6 +1332,7 @@ function spFinish() {
   if (current) stopRun();
   if (s.rec) micRec(false);
   sp.seq = null;
+  $("#fType").value = "radio"; $("#fDist").value = 330; $("#fDrone").value = ""; $("#fNotes").value = "";
   renderControls();
 }
 

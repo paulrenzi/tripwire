@@ -979,74 +979,7 @@ body.ou {
   }
 }
 
-// Saturday test: the kit, where it goes, and which step uses what
-.tw-kit {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 10px;
-  margin: 12px 0 18px;
-}
-
-.tw-item,
-.tw-end {
-  background: $ou-paper;
-  border: 1px solid $ou-rule;
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.ou .main-content .tw-item p,
-.ou .main-content .tw-end p {
-  margin: 6px 0 0;
-  font-size: 14px;
-}
-
-.tw-where {
-  color: $ou-muted;
-  font-size: 13px;
-}
-
-.tw-ends {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-  margin: 12px 0 18px;
-}
-
-.tw-end-h {
-  @include ou-label;
-  display: block;
-  margin-bottom: 6px;
-  color: $ou-muted;
-  font-size: 11px;
-}
-
-.tw-c {
-  display: inline-block;
-  margin: 2px 4px 2px 0;
-  padding: 1px 9px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.5;
-  white-space: nowrap;
-}
-
-.tw-lap { background: #e4e1f5; color: #3b3192; }
-.tw-det { background: #ece0f7; color: #6a2f9a; }
-.tw-gw { background: #d8ecf5; color: #145f80; }
-.tw-lp { background: #dcefdc; color: #2e6b2e; }
-.tw-mp { background: #fbe4d8; color: #9a3f17; }
-.tw-spk { background: #f3e6c4; color: #7a5600; }
-.tw-oth { background: $ou-row; color: $ou-body; }
-
-.tw-uses {
-  display: block;
-  margin: 2px 0 4px;
-}
-
+// Saturday test: what each step should show
 .tw-see {
   display: block;
   margin-top: 4px;

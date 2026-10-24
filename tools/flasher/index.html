@@ -72,12 +72,8 @@ footer { font-size: 13px; color: var(--muted); }
 
 <div class="panel">
   <h2>2. Gateway</h2>
-  <p class="hint">No hotspot needed here. In the park, whichever phone you pick as the logger phone gives the gateway its hotspot, from the logger. To skip that step, put in a phone's hotspot now.</p>
-  <label>Hotspot name (optional)<input id="ssid" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
-  <label>Hotspot password (optional)<input id="pass" type="password" autocomplete="off"></label>
-  <label>Gateway ID<input id="gwId" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
-  <p class="hint">Made up for you; change it only to match a logger you've already set up. The board only sees 2.4 GHz, so on an iPhone switch on <strong>Maximize Compatibility</strong>.</p>
-  <p id="gwWarn" class="warn show">Fill in the gateway ID first.</p>
+  <p class="hint">Same as the detector: antenna on, plug it in, tap <strong>Install gateway</strong>. Nothing to type. Any phone's hotspot can be given to it later, from the logger.</p>
+  <p id="gwWarn" class="warn">Fill in the gateway ID first.</p>
   <esp-web-install-button id="btnGw">
     <button slot="activate" id="gwBtn" disabled>Install gateway</button>
   </esp-web-install-button>
@@ -102,8 +98,9 @@ footer { font-size: 13px; color: var(--muted); }
   </details>
   <details>
     <summary>What gets written</summary>
-    <p>Both boards get the same random network key, made once in this browser, so flash both from the same computer. The gateway also gets the hotspot if you typed one, the public broker <code>mqtt://broker.hivemq.com:1883</code> and the gateway ID. Nothing you type leaves this page.</p>
+    <p>Both boards get the same random network key, made once in this browser, so flash both from the same computer. The gateway also gets the public broker <code>mqtt://broker.hivemq.com:1883</code> and a gateway ID made up for you. No hotspot is written: the gateway asks for one the first time it can't find a network it knows.</p>
     <p class="hint">Network key: <code id="keyShow"></code></p>
+    <label>Gateway ID, change only to match a logger you've already set up<input id="gwId" autocomplete="off" autocapitalize="off" spellcheck="false"></label>
   </details>
 </div>
 
@@ -176,7 +173,6 @@ async function prepDetector() {
 
 let gwTimer = null;
 function prepGateway() {
-  const ssid = $("#ssid").value.trim(), pass = $("#pass").value;
   const gwId = $("#gwId").value.trim();
   const ready = gwId !== "";
   $("#gwWarn").classList.toggle("show", !ready);
@@ -186,8 +182,6 @@ function prepGateway() {
   if (!ready) return;
   gwTimer = setTimeout(async () => {
     const cfg = { mqttUrl: BROKER, deviceId: gwId };
-    if (ssid) cfg.wifiSsid = ssid;
-    if (ssid && pass) cfg.wifiPass = pass;
     const nvs = generateGatewayNvsImage(devEui, hexToBytes(netKey), cfg);
     $("#btnGw").setAttribute("manifest", manifest("gw", "Tripwire gateway (XIAO)", patch(await firmware("gateway"), nvs)));
     $("#gwBtn").disabled = false;
@@ -195,7 +189,7 @@ function prepGateway() {
   }, 300);
 }
 
-for (const id of ["#ssid", "#pass", "#gwId"]) $(id).addEventListener("input", prepGateway);
+for (const id of ["#gwId"]) $(id).addEventListener("input", prepGateway);
 prepDetector().catch((e) => { $("#noSerial").textContent = "Couldn't load the firmware: " + e.message; $("#noSerial").classList.add("show"); });
 prepGateway();
 
