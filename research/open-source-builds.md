@@ -71,7 +71,7 @@ Three public projects already cover parts of what this site proposes. Two are wo
 
 **[volantitech.com](https://volantitech.com/)** · [github.com/agamrossen/VolAnti](https://github.com/agamrossen/VolAnti): an open-hardware acoustic detector designed and tested by Agam Rossen, an engineering student at the University of York. It is one person's project, not a company.
 
-**The unit:** a 3.6 in square, four-layer board with four digital microphones sampled at 16 kHz, in a printed case, with a beeper, light, vibration motor and an e-paper screen that keeps the alert showing with the power off. Units send 18-byte LoRa alerts to each other. The full unit is listed at **£50–80**, a breadboard version at **£35–45**. It looks for the evenly spaced harmonics of propellers, so it works on fibre-optic drones.
+**The unit:** a 3.6 in square, four-layer board with four digital microphones sampled at 16 kHz, in a printed case, with a beeper, light, vibration motor and an e-paper screen that keeps the alert showing with the power off. Units send 18-byte LoRa alerts to each other. The full unit is listed at **£50–80**, a breadboard version at **£35–45**. It looks for the evenly spaced harmonics of propellers, so it works on fiber-optic drones.
 
 **Why it matters to us: it publishes real range numbers.** One unit detected a hovering four-motor airframe at **340 ft** on a street with traffic, without alarming on the cars. Its expected range by wind:
 

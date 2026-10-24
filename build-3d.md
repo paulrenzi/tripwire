@@ -44,7 +44,7 @@ The [tripwire]({{ site.baseurl }}{% link index.md %}) depends on a drone carryin
 <details class="layer" markdown="block">
 <summary><span class="layer-title">The detail</span><span class="layer-sub">Parts, masses, the balance point, and why it should fall point first</span></summary>
 
-A 0.24 × 20 in fibreglass rod is the spike, the spine and the mast. Three printed parts sit on it. The **body**, near the tip, holds the 18650 cell in snap fingers and carries the hanger post the harness grips. The **pod**, on the top end, is a small tray and a screwed lid. It holds the XIAO ESP32S3 with the Wio-SX1262 radio board plugged on top, the microphone behind a side port, and the kit's two flat antennas: the LoRa one on a strip that runs past the pod, the WiFi one inside. Between them, the **tail**: four thin fins on two collars glued to the rod, to make the dart fall point first. Two wires run along the rod from the cell to pads under the XIAO.
+A 0.24 × 20 in fiberglass rod is the spike, the spine and the mast. Three printed parts sit on it. The **body**, near the tip, holds the 18650 cell in snap fingers and carries the hanger post the harness grips. The **pod**, on the top end, is a small tray and a screwed lid. It holds the XIAO ESP32S3 with the Wio-SX1262 radio board plugged on top, the microphone behind a side port, and the kit's two flat antennas: the LoRa one on a strip that runs past the pod, the WiFi one inside. Between them, the **tail**: four thin fins on two collars glued to the rod, to make the dart fall point first. Two wires run along the rod from the cell to pads under the XIAO.
 
 The pod has no screen and no status light. The listener reports by radio once a minute that it is alive. A small printed **cap** on the pod's end comes off to reach the USB-C port for flashing, and a pin through the same opening presses BOOT or RESET, so the lid stays shut.
 
@@ -129,7 +129,7 @@ The Holybro X500 V2 is the manufacturer's own STEP model, simplified for the web
 <details class="layer" markdown="block">
 <summary><span class="layer-title">The detail</span><span class="layer-sub">The stake adapter, cell holder and mass</span></summary>
 
-For placing a listener by hand, with no drone. The same pod, board and cell go on a 48 in fibreglass garden stake from a hardware store. A printed **stake adapter** holds the pod: two V-shaped saddles and zip ties grip any stake from 0.31 to 0.51 in across, so the stake's exact size doesn't matter. A 1.6 in offcut of the dart rod plugs the adapter into the pod's usual socket. A separate printed **cell holder**, tied lower on the stake, holds the 18650, wired to the board as in the dart.
+For placing a listener by hand, with no drone. The same pod, board and cell go on a 48 in fiberglass garden stake from a hardware store. A printed **stake adapter** holds the pod: two V-shaped saddles and zip ties grip any stake from 0.31 to 0.51 in across, so the stake's exact size doesn't matter. A 1.6 in offcut of the dart rod plugs the adapter into the pod's usual socket. A separate printed **cell holder**, tied lower on the stake, holds the 18650, wired to the board as in the dart.
 
 Push the stake in by hand, then slide the adapter until the microphone is 19.7 in above the ground; how deep the stake goes doesn't change that. Exploded, the pod pulls off its offcut.
 
@@ -169,7 +169,7 @@ Masses are the model's estimates. A dash means no separate figure: the servo and
 | Pod tray | printed | 0.67 | modelled | Holds the boards, the rod socket and the microphone cavity |
 | Pod lid, with the antenna strip | printed | 0.20 | modelled | Closes the pod, holds the boards down through foam pads, and carries the LoRa antenna |
 | USB cap | printed | 0.03 | modelled | Covers the end opening for USB-C and the BOOT and RESET buttons |
-| Fibreglass rod, 0.24 × 20 in | bought | 0.93 | modelled to spec | Spike, spine and mast |
+| Fiberglass rod, 0.24 × 20 in | bought | 0.93 | modelled to spec | Spike, spine and mast |
 | Samsung INR18650-25R cell | bought | 1.59 | datasheet | Power |
 | Seeed XIAO ESP32S3 | bought | 0.08 | Seeed STEP | Microcontroller, WiFi and battery charger |
 | Seeed Wio-SX1262 for XIAO | bought | 0.06 | Seeed STEP; plug-in spacing *measure* | LoRa radio |

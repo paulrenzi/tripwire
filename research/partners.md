@@ -31,7 +31,7 @@ Each section opens for the full reasoning, numbers and sources.
 The people who need a road alert are the ones walking or driving it, not someone at a checkpoint screen. This page asks what they already carry that our alerts could ride on, so they get one warning on a device they trust instead of a new box. It goes with [Guarding a road]({{ site.baseurl }}{% link models/route-guard.md %}) and [Central API and military integration]({{ site.baseurl }}{% link research/integration.md %}). Reviewed 2026-10-23.
 
 {: .important }
-> **Target Hrafit's Sova module first.** It already pushes FPV alerts to drivers' phones along their route, and it is built from radio intelligence, so it should share the fibre-optic blind spot we fill. Build a TAK output as the fallback that also reaches Delta. Keep our own receiver for units with neither. **First step: ask the Hrafit team whether they take outside sensor feeds.**
+> **Target Hrafit's Sova module first.** It already pushes FPV alerts to drivers' phones along their route, and it is built from radio intelligence, so it should share the fiber-optic blind spot we fill. Build a TAK output as the fallback that also reaches Delta. Keep our own receiver for units with neither. **First step: ask the Hrafit team whether they take outside sensor feeds.**
 
 </details>
 
@@ -54,7 +54,7 @@ The people who need a road alert are the ones walking or driving it, not someone
 - **What it does:** "pulls together data from nearly all available radio-technical intelligence and surveillance into a single picture". On the ground, it "comes down to one short push notification", to the observation point, sector command and commander at once ([Euromaidan Press, Sep 2026](https://euromaidanpress.com/2026/09/05/from-hq-to-the-zero-line-ukraines-hrafit-system-answers-one-important-question-on-an-ordinary-phone-in-a-trench-and-on-the-road/)).
 - **Who has it:** the army, National Guard, SBU and Border Guard. It runs on Android, iOS and the web, and needs a protected phone and satellite internet such as Starlink.
 - **Why it fits:** its alerts already follow a moving vehicle, which is the job the road guard needs done. It also solves "where am I": a road alert names a stretch between posts, and a phone shows that against the route, where a bare receiver can't.
-- **The gap we fill (inferred):** it lists FPVs, Mavic-type quadcopters, Molniya and Privet drones and glide bombs, and its sources are radio. The article doesn't mention fibre-optic FPVs. That it can't hear them is our inference from its sources, not a quote.
+- **The gap we fill (inferred):** it lists FPVs, Mavic-type quadcopters, Molniya and Privet drones and glide bombs, and its sources are radio. The article doesn't mention fiber-optic FPVs. That it can't hear them is our inference from its sources, not a quote.
 - **Unknown:** whether it accepts outside sensors, and in what format.
 
 </details>
@@ -86,7 +86,7 @@ The people who need a road alert are the ones walking or driving it, not someone
 <details class="layer" id="next-steps" markdown="block">
 <summary><span class="layer-title">Next steps</span><span class="layer-sub">Who to ask, in order</span></summary>
 
-1. **Ask the Hrafit team** whether Hrafit or Sova takes outside sensor feeds, in what format, and whether fibre-optic FPVs are a known gap for them.
+1. **Ask the Hrafit team** whether Hrafit or Sova takes outside sensor feeds, in what format, and whether fiber-optic FPVs are a known gap for them.
 2. **Build a CoT output** on the checkpoint gateway: each alert as a TAK event naming the hot stretch. It needs no partner.
 3. **Write a Meshtastic sender** only if a unit asks for it, and only as an option they switch on.
 4. **Ask BlueBird** whether the Chuyka app will take outside alerts.

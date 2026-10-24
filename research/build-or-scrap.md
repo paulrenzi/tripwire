@@ -94,15 +94,15 @@ Earlier comparisons gave competitors their claimed ranges. Here every row uses t
   - LoRa up to 6.2 mi;
   - IP55.
   
-  It's out of stock, names no maker, has no reviews and doesn't mention fibre-optic FPVs ([Flash Army](https://flasharmy.com.ua/dronealert-lora-merezha-akustychnyi-modul-vyiavlennia-droniv), news item Jun 2026). **It has our architecture.** Our listener is still 4–12x cheaper, but the architecture is no moat.
+  It's out of stock, names no maker, has no reviews and doesn't mention fiber-optic FPVs ([Flash Army](https://flasharmy.com.ua/dronealert-lora-merezha-akustychnyi-modul-vyiavlennia-droniv), news item Jun 2026). **It has our architecture.** Our listener is still 4–12x cheaper, but the architecture is no moat.
 - **Other new entrants, all claims only:**
-  - **SKANER 2.1** (Belarus): 330–980 ft against FPVs, fibre-optic included; 2.6 lb; 12 h ([Militarnyi, May 2026](https://militarnyi.com/uk/news/bilorus-predstavyla-akustychnyj-radar-skaner-2-1-dlya-vyyavlennya-fpv-droniv-na-optovolokni/)).
+  - **SKANER 2.1** (Belarus): 330–980 ft against FPVs, fiber-optic included; 2.6 lb; 12 h ([Militarnyi, May 2026](https://militarnyi.com/uk/news/bilorus-predstavyla-akustychnyj-radar-skaner-2-1-dlya-vyyavlennya-fpv-droniv-na-optovolokni/)).
   - **Arcani HARK** (UK): aimed at FPVs, with a Ukraine test planned for May 2026 and no result found ([Janes, Apr 2026](https://www.janes.com/osint-insights/defence-news/c4isr/arcani-plans-to-test-hark-acoustic-sensor-in-ukraine)).
   - **Neuron Soundware Sound Shield** (Czechia): under 1 W per sensor, at a reported €100–150 production cost, for borders ([dev.ua, Jun 2026](https://dev.ua/news/sound-shield-1781192277)).
   - **ZVOOK Tracking**: a bearing-capable array at about $2,670 ([Flash Army](https://flasharmy.com.ua/sensor-zvook-tracking)).
 - **Nobody sells forward lines.** Komodo's star is still the only acoustic sensor sold as drone-droppable, and it's priced and pitched as a capable Shahed sensor.
 - **No independent test of any acoustic FPV detector** was found: not NW0, RADD, Komodo, DroneAlert or SKANER. Poland's seven-system trial at Ustka (April 2026) published no results.
-- **At the front, the kit is shifting** ([inventory]({{ site.baseurl }}{% link research/frontline-kit.md %})). Jamming is failing ("Jamming no longer works", a brigade EW commander). An AI turret that tracks fibre-optic drones is in more than 10 units. Interceptors are the most-ordered category on Brave1 Market. None of it gives a minute's warning of fibre-optic FPVs.
+- **At the front, the kit is shifting** ([inventory]({{ site.baseurl }}{% link research/frontline-kit.md %})). Jamming is failing ("Jamming no longer works", a brigade EW commander). An AI turret that tracks fiber-optic drones is in more than 10 units. Interceptors are the most-ordered category on Brave1 Market. None of it gives a minute's warning of fiber-optic FPVs.
 - **Money is moving into acoustic, for the rear.** NATO's procurement agency (NSPA) named a Bionic System Solutions-led consortium as one of five counter-drone framework contractors (July 2026). Lithuania is piloting Sky Fortress, and a Czech fund has invested in Zvook (Oct 2026). None of this is for FPVs at a position.
 
 </details>
@@ -119,13 +119,13 @@ We found **no study, after-action report or soldier account comparing outcomes w
 - **Seconds of warning are used every day.** Cheap beepers give "seconds to take cover" ([Telegraph, Jul 2025](https://www.yahoo.com/news/inside-ukraine-drone-infested-grey-090000135.html)). Crews use radio detectors to decide when to switch on jammers or run to shelter ([Foreign Policy, Aug 2024](https://foreignpolicy.com/2024/08/05/ukraine-russia-war-drone-detectors-jamming-tsukorok/)).
 - **Demand for detectors is high**, but that is a signal of value, not a measurement of lives saved. The Tsukorok developer said demand far outran supply (same source). Ukraine's former defence minister said everyone should carry a Chuyka ([BlueBird, Aug 2026](https://www.blue-bird.tech/en/news-en/everyone-should-have-a-chuyka-from-schoolchildren-to-minibus-drivers-says-mykhailo-fedorov/)).
 - **Against:** the Tsukorok designer calls his detector a last warning device that loses value where drones are everywhere (Foreign Policy). Troops already cope by staying put for a month or more and moving at night ([RUSI, Feb 2025](https://static.rusi.org/tactical-developments-third-year-russo-ukrainian-war-february-2205.pdf)).
-- **Where the evidence points instead: routes.** About half of casualties are in the rear, during rotation and resupply (RUSI). Fibre-optic FPVs now hunt roads and wait beside them for hours ([Mezha, Nov 2025](https://oboronka.mezha.ua/en/droni-zhduni-yak-pracyuyut-novi-rosiyski-droni-306465/)).
+- **Where the evidence points instead: routes.** About half of casualties are in the rear, during rotation and resupply (RUSI). Fiber-optic FPVs now hunt roads and wait beside them for hours ([Mezha, Nov 2025](https://oboronka.mezha.ua/en/droni-zhduni-yak-pracyuyut-novi-rosiyski-droni-306465/)).
 
   A line across the approach would warn a convoy of drones flying in. It **would not** warn of one already waiting with its motors off, which is silent until it launches (inference). A guard along the road itself would: in the [route model]({{ site.baseurl }}{% link models/route-guard.md %}), posts beside the road hear every drone that lands within 300 ft of it, and a fence a mile out gives every drone flying in at least 60 s.
 
 **Weapons need seconds; a minute buys go/no-go calls on movement.** Russia's roadside drone "traffic lights" already serve that purpose ([the comparison]({{ site.baseurl }}{% link research/problem-check.md %}#a-minute-against-the-alternatives)). In lives, our central guess is about 1–4 of every 100 drone casualties averted, range 0.3–14 ([estimate]({{ site.baseurl }}{% link research/lives-model.md %})).
 
-**Not a reason to scrap:** fibre-optic FPVs get no warning today, so any warning, cheaper, fills a gap. T18 interviews, especially with drivers, medics and resupply crews, would narrow the estimate.
+**Not a reason to scrap:** fiber-optic FPVs get no warning today, so any warning, cheaper, fills a gap. T18 interviews, especially with drivers, medics and resupply crews, would narrow the estimate.
 
 ### 2. The radio link home gets jammed or found (T9, new T19)
 
@@ -138,8 +138,8 @@ Listeners that sit quiet are hard to find. **The receiver at the unit and any re
 **What a jamming model says** ([How it works]({{ site.baseurl }}{% link models/line-layout.md %}#jamming), estimates):
 
 - **Distance decides it.** A jammer spreads its power over hundreds of our channels, so near the ground a 20 W trench jammer blinds a dart only within about 390 ft. That is the main estimate. In the worst case, where the jammer's signal crosses open ground with none of the losses that limit our own hops, it reaches about 1.1 mi.
-- **Our own jammers are the first threat.** Receivers at the positions sit beside the unit's trench jammers and go deaf whenever those are on; so do receivers in trucks with vehicle jammers. The fix is a wire: forward roots on fibre at the position, posts on a cable with lamps on a road. Both keep a full minute in the model on the main estimate.
-- **Fibre for everything is not the answer.** An air-dropped row can't share one, and every cut silences everything beyond it. Wire or fibre fits the fixed links beside jammers; radio stays for the darts out in the fields.
+- **Our own jammers are the first threat.** Receivers at the positions sit beside the unit's trench jammers and go deaf whenever those are on; so do receivers in trucks with vehicle jammers. The fix is a wire: forward roots on fiber at the position, posts on a cable with lamps on a road. Both keep a full minute in the model on the main estimate.
+- **Fiber for everything is not the answer.** An air-dropped row can't share one, and every cut silences everything beyond it. Wire or fiber fits the fixed links beside jammers; radio stays for the darts out in the fields.
 
 **Scrap or rethink the back-haul if** T19 shows a near-ground link fails out to about a mile from a working jammer, the worst case. Then a radio net can't work near the front, and only wired links can. **It survives if** links fail only within a few hundred feet of a jammer: then jamming is a matter of where the darts and roots go.
 

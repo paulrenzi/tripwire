@@ -15,7 +15,7 @@ nav_tripwire: 6
 </figure>
 
 <div class="stats">
-  <div class="stat"><p class="stat-num">3 parts</p><p class="stat-label">a dart: fibreglass rod, printed body, head pod</p></div>
+  <div class="stat"><p class="stat-num">3 parts</p><p class="stat-label">a dart: fiberglass rod, printed body, head pod</p></div>
   <div class="stat"><p class="stat-num">≈ $50</p><p class="stat-label">parts for 4 darts and the harness, prices checked 2026-10-15</p></div>
   <div class="stat"><p class="stat-num">~1.7 mi</p><p class="stat-label">out with 4 darts on an X500 (est.)</p></div>
   <div class="stat"><p class="stat-num">0</p><p class="stat-label">printed or flown yet: version 0 designs</p></div>
@@ -53,7 +53,7 @@ Each section opens for the full reasoning, numbers and sources.
 
 Printable designs for the [tripwire]({{ site.baseurl }}{% link models/tripwire.md %}):
 
-- **v3, the current design:** each dart is a fibreglass rod, one printed body and a head pod: 3 parts. It hangs from v2's one-servo harness unchanged. A 4-dart kit has 15 parts against v2's 27, and the parts list is about $50 against $63.
+- **v3, the current design:** each dart is a fiberglass rod, one printed body and a head pod: 3 parts. It hangs from v2's one-servo harness unchanged. A 4-dart kit has 15 parts against v2's 27, and the parts list is about $50 against $63.
 - **v2:** the one-rod dart with a separate clip, a zip tie and foam. Its harness is still the current one.
 - **v1, superseded:** a folding-mast dart and a four-servo harness, kept below for its drop-test questions and as a fallback.
 - **A fully printed carrier quad (TL-1):** built round the X500's electronics.
@@ -96,7 +96,7 @@ Software: [Build: software]({{ site.baseurl }}{% link build-software.md %}).
 <details class="layer" id="1-v3-three-parts-per-dart" markdown="block">
 <summary><span class="layer-title">1. v3: three parts per dart</span><span class="layer-sub">Rod, body and pod; what changed from v2, and what to check</span></summary>
 
-<img src="{{ site.baseurl }}/assets/images/build/v3-harness.png" alt="Four v3 darts under the X500's rails on the v2 plate and rotor: each dart is a fibreglass rod with one long orange printed body, holding the cell near the tip and the hanger post at the balance point, and a blue head pod at the back; one dart is falling" width="760">
+<img src="{{ site.baseurl }}/assets/images/build/v3-harness.png" alt="Four v3 darts under the X500's rails on the v2 plate and rotor: each dart is a fiberglass rod with one long orange printed body, holding the cell near the tip and the hanger post at the balance point, and a blue head pod at the back; one dart is falling" width="760">
 
 <p style="display:flex;gap:1rem;align-items:flex-end;flex-wrap:wrap">
 <img src="{{ site.baseurl }}/assets/images/build/v3-body.png" alt="The v3 body as printed, lying on its flat underside: an open cell cradle at one end, a sleeve along the rod, and the hanger post with its round head at the other end" width="500">
@@ -142,7 +142,7 @@ Software: [Build: software]({{ site.baseurl }}{% link build-software.md %}).
 
 v3 keeps v2's plate, rotor and servo as they are; only the dart changed. v2's dart is the fallback if the snap cradle or the fixed hanger position fails.
 
-<img src="{{ site.baseurl }}/assets/images/build/v2-harness.png" alt="v2 harness under the X500's two rails: a round printed plate with a dark rotor on top, four darts lying flat beneath it, each a long fibreglass rod with an orange cell body near the tip, a blue clip near the middle and a blue head pod at the back; one dart is falling" width="760">
+<img src="{{ site.baseurl }}/assets/images/build/v2-harness.png" alt="v2 harness under the X500's two rails: a round printed plate with a dark rotor on top, four darts lying flat beneath it, each a long fiberglass rod with an orange cell body near the tip, a blue clip near the middle and a blue head pod at the back; one dart is falling" width="760">
 
 <p style="display:flex;gap:1rem;align-items:flex-end;flex-wrap:wrap">
 <img src="{{ site.baseurl }}/assets/images/build/v2-rotor.png" alt="Top of the plate: the dark rotor with four gaps in its rim; three clip heads rest on the rim, and the fourth slot is empty because its dart has dropped through the gap" width="440">
@@ -151,7 +151,7 @@ v3 keeps v2's plate, rotor and servo as they are; only the dart changed. v2's da
 
 *Top: four darts under the X500's rails, with the first one falling. Left: the rotor after the first step; that dart's slot is empty. Right: a dart in soil, about 20 in to the mic.*
 
-**The dart is one rod with three printed parts on it.** A single 0.24 × 20 in solid fibreglass rod is the spike, the spine and the mast.
+**The dart is one rod with three printed parts on it.** A single 0.24 × 20 in solid fiberglass rod is the spike, the spine and the mast.
 
 - **Body:** slides on from the tip and holds the 18650 low, next to the rod, 2.8 in back from the point. A zip tie through the back closes the cell bay. Soil stops at the body, so at most 2.8 in of rod goes in.
 - **Clip:** slides on and is glued where the dart balances, about 10 in from the tip (model). It is the hanger: a post with a round head.
@@ -170,7 +170,7 @@ v3 keeps v2's plate, rotor and servo as they are; only the dart changed. v2's da
 | | v1 | **v2** |
 |---|---|---|
 | Printed parts per dart | 4 (body, cap, hinge, pod) | **3 (body, clip, pod)** |
-| Other parts per dart | steel spike, 4 pole sections, shock cord, spring, bolt, nut, fur | **1 fibreglass rod, foam, zip tie** |
+| Other parts per dart | steel spike, 4 pole sections, shock cord, spring, bolt, nut, fur | **1 fiberglass rod, foam, zip tie** |
 | Joints that must move in flight, per dart | 5 (hinge + 4 pole joints) | **0** |
 | Harness | plate + 4 servos | **plate + rotor + 1 servo** |
 | Servo outputs on the Pixhawk | 4 | **1** |
@@ -217,7 +217,7 @@ v1 is kept because its drop-test questions still apply to v2, and as a fallback 
 | Spike | 0.24 in steel rod, 4.3 in, 2 in exposed, epoxied into the cone | A printed tip blunts in hard soil. The steel puts mass forward |
 | Body | Printed cone + 18650 bay, 1 in across | Thin for penetration; the cell is the heaviest part, so it goes low |
 | Cell | One 18650 (~1.6 oz, est.) | About 3,000 mAh in the space of a thumb. Its cost is set by battery life ([T12]({{ site.baseurl }}{% link research/open-questions.md %})) |
-| Mast | 0.16 × 6.3 in shock-corded fibreglass tent-pole sections, 0.33 in | Folds to the body's length and self-assembles when released. Spare sections are cheap |
+| Mast | 0.16 × 6.3 in shock-corded fiberglass tent-pole sections, 0.33 in | Folds to the body's length and self-assembles when released. Spare sections are cheap |
 | Hinge | Printed socket on an M3 bolt between two ears on the cap | Folds flat for carrying, upright when deployed. Spring force to be set by test |
 | Head pod | Printed, 1.3 × 3.6 in. Heltec V3 (1.98 × 1.00 × 0.40 in, [Heltec](https://wiki.heltec.org/docs/devices/open-source-hardware/esp32-series/lora-32/wifi-lora-32-v3/)) standing upright, mic at the top under fur, whip out the top | Mic and antenna both high; a custom board later shrinks the pod |
 
@@ -319,7 +319,7 @@ Every Amazon listing was opened in a browser on 2026-10-15 and showed Add to Car
 | Qty | Part | Buy | Alternative | Price |
 |---|---|---|---|---|
 | 1 | PETG 0.069 in, 2.2 lb (plate, rotor and 4 darts use about 8.8 oz, est.) | [SUNLU, Amazon](https://www.amazon.com/dp/B0DJS3PJVX) | [Overture, Amazon](https://www.amazon.com/dp/B0991YSBDG), $17.99 | $13.99 |
-| 1 | Solid fibreglass rod, 0.24 in × 20 in, 10-pack (one rod per dart) | [LLZZQQF, Amazon](https://www.amazon.com/dp/B0FNZQLH1P) | [0.24 × 17 in 10-pack, Amazon](https://www.amazon.com/dp/B0CGLMZSTG), $9.99; mic about 17 in | $11.00 |
+| 1 | Solid fiberglass rod, 0.24 in × 20 in, 10-pack (one rod per dart) | [LLZZQQF, Amazon](https://www.amazon.com/dp/B0FNZQLH1P) | [0.24 × 17 in 10-pack, Amazon](https://www.amazon.com/dp/B0CGLMZSTG), $9.99; mic about 17 in | $11.00 |
 | 1 | SG90 servo, 2-pack (one fitted, one spare) | [Amazon](https://www.amazon.com/dp/B0DFKPVRC2) | [Beffkkip 3-pack, Amazon](https://www.amazon.com/dp/B0G6R7ZZXH), $6.99 | $4.99 |
 | 4 | 18650 cells (not on Amazon) | [Samsung 25R, 2,500 mAh, 18650 Battery Store](https://www.18650batterystore.com/products/samsung-25r-18650) | [Samsung 35E, 3,500 mAh](https://www.18650batterystore.com/collections/18650-batteries), $5.99; [Molicel P28A](https://www.18650batterystore.com/products/molicel-p28a), $5.99 | $4.99 each |
 | | **Total** (CA glue assumed owned) | | | **≈ $50** |
@@ -333,11 +333,11 @@ Every Amazon listing was opened in a browser on 2026-10-15 and showed Add to Car
 <details class="layer" id="7-not-yet-designed" markdown="block">
 <summary><span class="layer-title">7. Not yet designed</span><span class="layer-sub">Tip dart, solar on the pod, post, base box, edge receiver, custom board</span></summary>
 
-- **Tip dart:** a dart body that also carries a spool of about 1.2 mi of FPV fibre and a small laser, about 10 oz (est.), from [the fibres and the base box]({{ site.baseurl }}{% link models/line-layout.md %}#the-fibres-and-the-base-box). The harness slot has to take its weight and let the fibre pay out freely from the first drop. It follows T21's bench version.
+- **Tip dart:** a dart body that also carries a spool of about 1.2 mi of FPV fiber and a small laser, about 10 oz (est.), from [the fibers and the base box]({{ site.baseurl }}{% link models/line-layout.md %}#the-fibers-and-the-base-box). The harness slot has to take its weight and let the fiber pay out freely from the first drop. It follows T21's bench version.
 - **Solar on the head pod:** a 2.4 × 2.4 in epoxy panel lying flat on top of the pod, matte so it doesn't glint to a drone overhead, and a charger chip with a thermistor that stops charging below 32°F ([why]({{ site.baseurl }}{% link costs.md %}#keeping-it-up)). About 0.4 oz at the tail moves the balance point back, against the point-first fall, so `v3.py` has to place the hanger post again with it fitted, and T10 drops darts with it.
 - **Post:** a stake mount for a dart's board, 4 cells, a 2 ft whip and a 1 W solar panel tilted toward the sun ([Guarding a road]({{ site.baseurl }}{% link models/route-guard.md %}#the-parts)).
-- **Base box:** a small box for a receive-only Heltec, two light detectors with fibre connectors and an RS-485 module, on the unit's power.
-- **Edge receiver mount,** only where fibre can't go: a pole-top box for a receive-only Heltec, an RS-485 module and a Yagi clamp, from the [edge receiver design]({{ site.baseurl }}{% link models/tripwire.md %}#getting-alerts-out-of-the-trees). It follows T17's bench version.
+- **Base box:** a small box for a receive-only Heltec, two light detectors with fiber connectors and an RS-485 module, on the unit's power.
+- **Edge receiver mount,** only where fiber can't go: a pole-top box for a receive-only Heltec, an RS-485 module and a Yagi clamp, from the [edge receiver design]({{ site.baseurl }}{% link models/tripwire.md %}#getting-alerts-out-of-the-trees). It follows T17's bench version.
 - **X500 leg extensions:** only for v1 darts; v2 darts ride high enough for stock legs.
 - **TL-1 with the v2 plate:** the hull still carries v1's release blocks and tall legs.
 - **A custom listener board:** it shrinks the head pod and fixes the sleep current (see [wake-on-sound]({{ site.baseurl }}{% link build-software.md %}#listener-firmware)).

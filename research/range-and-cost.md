@@ -15,7 +15,7 @@ nav_tripwire: 4
 <div class="vz-bars">
   <div class="vz-bar-row"><span class="vz-bar-label">Shahed / Geran, cruise missiles</span><span class="vz-bar-track"><span class="vz-bar vz-bar-them" style="width:19.4%"></span><span class="vz-bar vz-bar-them-light" style="width:80.6%"></span></span><span class="vz-bar-val">0.6–3.1 mi</span></div>
   <div class="vz-bar-row"><span class="vz-bar-label">Large multirotor, Mavic class</span><span class="vz-bar-track"><span class="vz-bar vz-bar-them" style="width:4.0%"></span><span class="vz-bar vz-bar-them-light" style="width:5.7%"></span></span><span class="vz-bar-val">660–1,600 ft</span></div>
-  <div class="vz-bar-row"><span class="vz-bar-label"><strong>Small or fibre-optic FPV</strong></span><span class="vz-bar-track"><span class="vz-bar vz-bar-us" style="width:2.0%"></span><span class="vz-bar vz-bar-us-light" style="width:4.0%"></span></span><span class="vz-bar-val">330–980 ft</span></div>
+  <div class="vz-bar-row"><span class="vz-bar-label"><strong>Small or fiber-optic FPV</strong></span><span class="vz-bar-track"><span class="vz-bar vz-bar-us" style="width:2.0%"></span><span class="vz-bar vz-bar-us-light" style="width:4.0%"></span></span><span class="vz-bar-val">330–980 ft</span></div>
   <div class="vz-bar-row"><span class="vz-bar-label">Measured: cheap array, DJI Phantom</span><span class="vz-bar-track"><span class="vz-bar vz-bar-them" style="width:1.0%"></span><span class="vz-bar vz-bar-them-light" style="width:0.2%"></span></span><span class="vz-bar-val">160–200 ft</span></div>
   <p class="vz-bar-note">Planning guesses, except the last row (Ghouli, Acta Acustica 2026). Wind, terrain and background noise can halve or double them. No FPV has been range-tested; T11 decides it. VolAnti measured 340 ft on a hovering quad.</p>
 </div>
@@ -54,7 +54,7 @@ A simple layout rule: on a triangular grid with spacing equal to the detection r
 | Cruise missile at low altitude | Jet/turbofan | 0.6–3.1 mi |
 | Large multirotor / Mavic-class | Electric motors, props | 660–1,600 ft |
 | Small FPV quad | Electric, small props, high-pitched | 330–980 ft |
-| Fibre-optic FPV | Same as FPV — no RF, so acoustic is one of few options | 330–980 ft |
+| Fiber-optic FPV | Same as FPV — no RF, so acoustic is one of few options | 330–980 ft |
 
 Squarehead's commercial array claims small-drone detection out to several hundred yards, consistent with the middle rows.
 

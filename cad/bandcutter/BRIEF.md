@@ -4,20 +4,20 @@ Work in `cad/bandcutter/` only. Do not edit anything else in the repo, and do no
 
 ## What this is
 
-A countermeasure against fibre-optic FPV drones. These drones pay out a glass fibre (0.25 mm coated,
-0.125 mm glass) from a spool they carry, so the fibre drops onto whatever lies under the drone's path.
-The band cutter is a hand-built line, about 32 in high, that carries any fibre lying across it into
+A countermeasure against fiber-optic FPV drones. These drones pay out a glass fiber (0.25 mm coated,
+0.125 mm glass) from a spool they carry, so the fiber drops onto whatever lies under the drone's path.
+The band cutter is a hand-built line, about 32 in high, that carries any fiber lying across it into
 fixed blades. **The whole line must cost under $1,000 a mile in parts**, so every part is the
 cheapest off-the-shelf part that works, or a small 3D print. The cost and speed model is
 `tools/bandmodel/band_model.py`: read its docstring, constants and output first (`py band_model.py`),
-then `countermeasures/fibre-cutter.md` and `countermeasures/index.md` for context.
+then `countermeasures/fiber-cutter.md` and `countermeasures/index.md` for context.
 
 ## The concept (fixed; solve problems inside it and write down what you changed and why)
 
 - **The band:** 80 lb nylon monofilament (about 0.04 in), a closed loop out and back, tension about
   10 lb. Each loop covers 660 ft of line: the top run about 32 in above the ground, the return run a
   few inches under it.
-- **Guide rods, one every 50 ft:** a 3/8 in × 48 in fibreglass electric-fence rod pushed about 12 in
+- **Guide rods, one every 50 ft:** a 3/8 in × 48 in fiberglass electric-fence rod pushed about 12 in
   into the soil (with a printed drive cap). On top, a **printed guide head** that slides onto the rod
   and locks to it: two eyes, one for each run, each open at the side so the line can be dropped in
   and held by a keeper. The eyes must be smooth (low friction for nylon) and pass the catchers.
@@ -26,12 +26,12 @@ then `countermeasures/fibre-cutter.md` and `countermeasures/index.md` for contex
   tools. A loop's top run moves one way, so every head on that loop faces the same way.
 - **The catchers:** a small printed TPU catcher every 3 ft, held on the line by a fishing crimp sleeve
   (or designed to crimp itself). It has three soft spurs leaning forward round the line, so it
-  catches a fibre whichever way the round line has rolled. A fibre lying across the line is caught
+  catches a fiber whichever way the round line has rolled. A fiber lying across the line is caught
   in the crotch between a spur and the line; pulling on it presses the spur toward the line, which
   traps it. The spurs fold back to pass through the guide eyes, the gap between the blades and round
-  the pulleys, then spring up again. At the head, the catcher pulls the fibre between the blades and
+  the pulleys, then spring up again. At the head, the catcher pulls the fiber between the blades and
   its two sides, hanging down over the line, are drawn onto the edges and cut. Design the catcher
-  shape and show in detail renders how it catches a fibre and how it passes the blades.
+  shape and show in detail renders how it catches a fiber and how it passes the blades.
 - **Drive posts, one every 1,320 ft:** a 5.5 ft studded steel T-post driven 2 ft, with a printed head
   locked on by a hose clamp. On it, one aftermarket **12 V car power-window motor** (worm gear, sealed;
   pick a common model and use its real dimensions and mounting) turning one shaft with an 8 in
@@ -43,7 +43,7 @@ then `countermeasures/fibre-cutter.md` and `countermeasures/index.md` for contex
   bearings for each loop that ends there (two, where two sections meet) and a simple take-up that
   sets the line tension. The two posts at the ends of the line are guyed to spiral earth anchors.
 
-Look up the real dimensions of every bought part (fibreglass rod, T-post profile and studs, hose
+Look up the real dimensions of every bought part (fiberglass rod, T-post profile and studs, hose
 clamp, monofilament, crimp sleeve, snap-off blade, 608 bearing, the window motor, 20 W panel, 7 Ah
 battery, junction box, SuperMini, Ra-01H) from datasheets, listings or published CAD, and cite each.
 Where something can't be found, mark it MEASURE and make it one parameter.
@@ -72,7 +72,7 @@ Where something can't be found, mark it MEASURE and make it one parameter.
      viewer reads it unchanged: per part, its node name, display name, printed or bought, mass,
      geometry source and one plain sentence on what it does. Unmeasured things stay flagged.
 5. **Renders** to `renders/`: each assembly, each exploded view, a catcher on the line catching a
-   fibre (draw the fibre), a catcher folding through the blades, and each printed part in its print
+   fiber (draw the fiber), a catcher folding through the blades, and each printed part in its print
    orientation. **Look at every render yourself** and fix anything crude, wrong or unclear.
 6. **`DESIGN.md`:** sources, every change to the concept and why, key dimensions and clearances,
    masses, a parts list with prices that confirms the under-$1,000-a-mile budget, open MEASURE

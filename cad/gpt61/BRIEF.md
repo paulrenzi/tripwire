@@ -12,7 +12,7 @@ Your job is to produce the model a competent mechanical designer would produce f
 
 Read `build-hardware.md` §1–2 for the full text and `models/tripwire.md` for context.
 
-- **The listener ("dart")** is one 6 mm × 500 mm solid fibreglass rod, which serves as the spike, the spine and the mast. On it are two printed parts:
+- **The listener ("dart")** is one 6 mm × 500 mm solid fiberglass rod, which serves as the spike, the spine and the mast. On it are two printed parts:
   - **A body near the tip.** Its nose sits 70 mm back from the sharpened rod tip, so at most 70 mm of rod goes into soil. It holds one 18650 Li-ion cell beside the rod, snapped into an open cradle. A sleeve runs back along the rod to a hanger post at the dart's balance point. The post's neck and round head hang the dart from the harness.
   - **A head pod on the rod's top end.** It holds a Heltec WiFi LoRa 32 V3 board upright, an INMP441 I²S mic breakout looking out of a side port under a rain hood, and the LoRa whip antenna out of the top. Cell power runs up the rod to the pod in two wires.
   - The dart stands in soil with the mic about 0.5 m up.

@@ -28,7 +28,7 @@ nav_order: 10
 
 | Layer | What it adds | Cheap version |
 |---|---|---|
-| **Acoustic mesh (M1)** | Wide coverage, works without line of sight, works against **fibre-optic FPVs and pre-programmed drones that emit no radio** | ESP32 + MEMS array |
+| **Acoustic mesh (M1)** | Wide coverage, works without line of sight, works against **fiber-optic FPVs and pre-programmed drones that emit no radio** | ESP32 + MEMS array |
 | **Passive RF** | Detects control/video links (2.4/5.8 GHz, 900 MHz, etc.); can give direction to the drone *and* the pilot | Software-defined radio (RTL-SDR/HackRF-class) + directional antennas |
 | **Camera (visible/thermal)** | Confirms the target and gives a precise bearing/elevation | PTZ camera slewed to the acoustic track |
 | **Radar data (only if a site already has it)** | Precise range and speed | Not part of our kit: radar emits and can be targeted. Fuse an existing feed; never add one |
@@ -37,7 +37,7 @@ The acoustic track **cues** the camera or RF sensor where to look; agreement bet
 
 ## Strengths
 
-- Each layer covers another's blind spot. Acoustic catches what RF misses (fibre-optic and autonomous drones); RF and cameras catch quiet electric drones that acoustic hears only at short range.
+- Each layer covers another's blind spot. Acoustic catches what RF misses (fiber-optic and autonomous drones); RF and cameras catch quiet electric drones that acoustic hears only at short range.
 - Sky Fortress already fuses acoustic data with radar feeds.
 - Every layer we add is passive: acoustic, receive-only RF and cameras emit nothing for an adversary to locate.
 

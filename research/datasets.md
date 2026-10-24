@@ -30,7 +30,7 @@ nav_order: 5
 > The original framing mentions an open-source drone sound library from **Ukraine and Norway**. We have **not** yet found it. Candidates to check: Squarehead (Norway) publications, Ukrainian volunteer projects (Zvook, Sky Fortress), NATO/DIANA challenges. **Add the link here once found.**
 
 - Public datasets are mostly small hobby/commercial quadcopters.
-- **Shahed/Geran, Lancet and fibre-optic FPV recordings** are what a military customer cares about, and they are scarce publicly. This is likely the true data bottleneck; partnering with a Ukrainian or Baltic program for recordings matters more than any model architecture.
+- **Shahed/Geran, Lancet and fiber-optic FPV recordings** are what a military customer cares about, and they are scarce publicly. This is likely the true data bottleneck; partnering with a Ukrainian or Baltic program for recordings matters more than any model architecture.
 - **Collecting our own:** the open-source [Batear]({{ site.baseurl }}{% link research/open-source-builds.md %}#batear) detector can save the audio around each alarm to an SD card, a cheap way to gather labelled field recordings.
 - **Negative data** (mopeds, chainsaws, generators, tractors, aircraft, wind, rain) from the actual deployment region is just as important, to keep false alarms down.
 

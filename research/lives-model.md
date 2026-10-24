@@ -27,7 +27,7 @@ nav_order: 0.3
   <div class="vz-funnel-row"><span class="vz-funnel-bar" style="width:7.2%"></span><span class="vz-funnel-num">7.2</span><span class="vz-funnel-txt"><strong>where troops act on it</strong> · not ignored as a false alarm <em>guess · T18</em></span></div>
   <div class="vz-funnel-row vz-funnel-us"><span class="vz-funnel-bar" style="width:3.6%"></span><span class="vz-funnel-num">3.6</span><span class="vz-funnel-txt"><strong>where acting avoids the hit</strong> <em>guess · T18</em></span></div>
 </div>
-<p class="vz-bar-note">Central guesses, each step a share of the one above. A unit that already has a radio detector gains only on fibre-optic FPVs: about 1–2. At a fixed position a minute adds little, since weapons need only seconds; the gain is for people about to move.</p>
+<p class="vz-bar-note">Central guesses, each step a share of the one above. A unit that already has a radio detector gains only on fiber-optic FPVs: about 1–2. At a fixed position a minute adds little, since weapons need only seconds; the gain is for people about to move.</p>
 
 ## The details
 
@@ -48,28 +48,28 @@ We estimate what a minute of warning from a forward listening line does for troo
 - **At a fixed position, a minute adds little over 10 seconds.** Shotguns, net-guns and turrets have the drone in range for only about 1–4 s, so seconds of warning are enough to have them ready ([A minute against the alternatives]({{ site.baseurl }}{% link research/problem-check.md %}#a-minute-against-the-alternatives)).
 - **A minute matters for people about to move:** rotation, resupply, evacuation, recovery. About half of casualties happen in the rear doing exactly this. Ten seconds is too late for them, but a minute lets them hold or change a movement.
 - **Our central guess:** the line averts **about 1–4 of every 100 drone casualties** in a unit that uses it. The plausible range is **0.3–14**.
-  - The low end is a unit that already has a radio detector, in a sector with few fibre-optic FPVs.
-  - The high end is a unit with no radio detector, in a sector where most FPVs are fibre-optic.
+  - The low end is a unit that already has a radio detector, in a sector with few fiber-optic FPVs.
+  - The high end is a unit with no radio detector, in a sector where most FPVs are fiber-optic.
 - **Guarding the supply road as well roughly doubles it, to about 5–8,** on the roads that are guarded. Posts by the road catch drones waiting in ambush, which the line can't ([below](#adding-a-guard-on-the-supply-road)).
 - **Partner systems:**
   - Jammers and interceptors make the line's minute more useful against radio-controlled drones.
-  - Against fibre-optic drones, nothing but avoidance works, and only the line gives a minute's warning of them.
+  - Against fiber-optic drones, nothing but avoidance works, and only the line gives a minute's warning of them.
 - **Three tests decide which end of the range is real:**
   - T18: do troops act on alerts?
-  - T9/T21: do the hops along the row hold, and does the light get home down the fibre?
+  - T9/T21: do the hops along the row hold, and does the light get home down the fiber?
   - T11: does a listener hear an FPV?
 
 </details>
 
 <details class="layer" id="scale" markdown="block">
-<summary><span class="layer-title">Scale</span><span class="layer-sub">Casualties, the drone share, the rear share, the fibre-optic share, and what they imply</span></summary>
+<summary><span class="layer-title">Scale</span><span class="layer-sub">Casualties, the drone share, the rear share, the fiber-optic share, and what they imply</span></summary>
 
 | Input | Value | Type |
 |---|---|---|
 | Ukrainian casualties, Feb 2022 – Dec 2025 | 500,000–600,000, of whom 100,000–140,000 killed ([CSIS, Jan 2026](https://www.csis.org/analysis/russias-grinding-war-ukraine)) | claimed (estimate) |
 | Share caused by drones | "80% was the most common answer, with a range of 75-95%", from 15+ battalion and brigade commanders ([Rob Lee, ChinaTalk, Oct 2025](https://www.chinatalk.media/p/ukraines-drone-war)) | claimed (interviews) |
 | Share taken in the rear | "approximately 50% of their casualties are taken in the rear from Russian FPVs, artillery and glide bombs", during rotation, resupply and recovery ([RUSI, Feb 2025](https://static.rusi.org/tactical-developments-third-year-russo-ukrainian-war-february-2205.pdf)) | claimed (brigade reports) |
-| Fibre-optic share of FPVs | 30–50% in some sectors, up to 90% in one Kharkiv sector ([sources]({{ site.baseurl }}{% link research/problem-check.md %}#the-threat-is-real-and-is-the-main-killer)); no front-wide figure | claimed, varies by sector |
+| Fiber-optic share of FPVs | 30–50% in some sectors, up to 90% in one Kharkiv sector ([sources]({{ site.baseurl }}{% link research/problem-check.md %}#the-threat-is-real-and-is-the-main-killer)); no front-wide figure | claimed, varies by sector |
 | Casualties per company or per km of front | Not found | none |
 
 **What this implies (our arithmetic):**
@@ -92,13 +92,13 @@ A minute of warning only saves someone who meets all five conditions:
 | Step | Central guess | Range | Type | What would measure it |
 |---|---|---|---|---|
 | Drone casualties among people moving in the rear (rotation, resupply, recovery, evacuation) | 50 of 100 | 35–60 | claimed (RUSI: about half, but that figure includes artillery and glide bombs) | unit casualty logs (T18) |
-| …from FPVs that fly in across the line, not ones already waiting in ambush or launched inside it | 50% | 30–70% | guess. Fibre-optic FPVs wait by roads for up to 12 h ([Trench Art](https://www.trenchart.us/p/russias-best-drones-lie-in-wait-beside)) and stay silent until launch | T18 |
+| …from FPVs that fly in across the line, not ones already waiting in ambush or launched inside it | 50% | 30–70% | guess. Fiber-optic FPVs wait by roads for up to 12 h ([Trench Art](https://www.trenchart.us/p/russias-best-drones-lie-in-wait-beside)) and stay silent until launch | T18 |
 | …that the line hears | 60% | 40–85% | guess. No FPV has been range-tested acoustically | T11 |
 | …where the alert gets through | 80% | 60–95% | guess. Jamming beside the receiver could cut this to near zero unless the last link is wired ([jamming]({{ site.baseurl }}{% link models/line-layout.md %}#jamming)) | T9, T17, T19 |
 | …where troops act on it rather than ignoring it (false-alarm fatigue) | 60% | 30–80% | guess | T18 |
 | …and acting avoids the hit (holding the run, stopping under trees, delaying the evacuation) | 50% | 30–70% | guess | T18 |
 | **Averted, unit with no radio detector** | **≈3.6** | **≈0.4–14** | | |
-| **Averted, unit that already has a radio detector** (the line adds only fibre-optic FPVs, 30–50% of them) | **≈1–2** | **≈0.1–7** (up to the full figure where fibre-optic is ~90%) | | |
+| **Averted, unit that already has a radio detector** (the line adds only fiber-optic FPVs, 30–50% of them) | **≈1–2** | **≈0.1–7** (up to the full figure where fiber-optic is ~90%) | | |
 
 The ranges multiply the low ends together and the high ends together, so the true value is very unlikely to sit at either extreme.
 
@@ -118,14 +118,14 @@ The ranges multiply the low ends together and the high ends together, so the tru
 | **AI turret** | Enough to slew and track | Same | ≈0 |
 | **Cover at the position** | Enough if the dugout is a few yards away | Smoke and dispersal also become possible | small |
 | **Holding a movement** (vehicle, resupply, walkers, evacuation) | Too late: they are already in the open | A go/no-go call before setting out. Russia's roadside drone "traffic lights" do this on roads ([Espreso, Dec 2024](https://global.espreso.tv/russia-ukraine-war-russia-installs-traffic-lights-to-counter-ukrainian-fpv-drones)) | **most of the chain above** |
-| **Cued jammer** (e.g. CERBAIR MEDUSA, [partners]({{ site.baseurl }}{% link research/competitors.md %}#partners-and-the-budget-we-compete-for)) | Switches on while the drone is already on its final approach | Switches on early and only when a drone is coming, so it transmits less. Also covers radio links its own detector misses | radio FPVs only, and fading: "Jamming no longer works", says a brigade EW commander; **none against fibre-optic** |
+| **Cued jammer** (e.g. CERBAIR MEDUSA, [partners]({{ site.baseurl }}{% link research/competitors.md %}#partners-and-the-budget-we-compete-for)) | Switches on while the drone is already on its final approach | Switches on early and only when a drone is coming, so it transmits less. Also covers radio links its own detector misses | radio FPVs only, and fading: "Jamming no longer works", says a brigade EW commander; **none against fiber-optic** |
 | **Interceptor drone** | Can't launch and climb in time | Plausibly the minimum lead time (our inference; no source gives launch-to-intercept times against FPVs) | unknown |
 | **Nets, tunnels, cable traps** | Need no warning | Need no warning | ≈0; they compete with the line for the same budget |
 
 **What this shows (inference):**
 - Against **radio-controlled FPVs**, a radio detector already gives a minute, and partner jammers already depend on it. The line adds little there beyond cueing jammers for drones the detector misses, and jamming itself is losing ground.
-- Against **fibre-optic FPVs**, jammers do nothing and weapons get only seconds whatever the warning. The line's minute is the only early warning available, and its value is entirely in **avoidance by people who are about to move**.
-- So the line's value grows with the fibre-optic share in a sector and with how much movement the unit has to make in the open.
+- Against **fiber-optic FPVs**, jammers do nothing and weapons get only seconds whatever the warning. The line's minute is the only early warning available, and its value is entirely in **avoidance by people who are about to move**.
+- So the line's value grows with the fiber-optic share in a sector and with how much movement the unit has to make in the open.
 
 </details>
 
@@ -144,7 +144,7 @@ The chain above writes off the half of rear casualties caused by drones already 
 - **Caught: 50%, a guess.** Every landing within 300 ft is heard in the model, but only 10–13% of landings 600–1,500 ft out, and drones parked before the guard went in or carried in on foot are missed.
 - **No hearing step:** the loudest post is a median ~340 ft from a landed drone. That is from the model, not a measurement (T20).
 - **Avoided: 70%, not 50%.** A drone known to sit near one post for hours is easier to avoid or clear than one arriving in a minute.
-- **A radio detector barely dents the new row.** Drones waiting by roads are mostly fibre-optic ([Trench Art](https://www.trenchart.us/p/russias-best-drones-lie-in-wait-beside)), and a landed drone isn't transmitting.
+- **A radio detector barely dents the new row.** Drones waiting by roads are mostly fiber-optic ([Trench Art](https://www.trenchart.us/p/russias-best-drones-lie-in-wait-beside)), and a landed drone isn't transmitting.
 - **It applies only to movement on guarded roads.** The last stretch on foot to a position isn't covered. If half a unit's movement casualties happen on its guarded roads, the gain is about half: roughly 4 more per 100, not 8.
 - **Without the cable and lamps,** a truck with its jammer on hears nothing on the move ([jamming]({{ site.baseurl }}{% link models/route-guard.md %}#jamming-and-a-wire-along-the-road)).
 

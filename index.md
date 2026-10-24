@@ -9,14 +9,14 @@ nav_order: 1
 
 # The drone-laid acoustic tripwire
 
-Don't try to make a microphone hear farther. Drop cheap ones about a mile forward, so a front-line unit gets about a minute of warning of an incoming FPV instead of about ten seconds, including fibre-optic FPVs that emit no radio.
+Don't try to make a microphone hear farther. Drop cheap ones about a mile forward, so a front-line unit gets about a minute of warning of an incoming FPV instead of about ten seconds, including fiber-optic FPVs that emit no radio.
 </div>
 
 <div class="stats">
   <div class="stat"><p class="stat-num">~1 min</p><p class="stat-label">warning from a row about 1 mi out, against ~10 s from a ring near the unit (est.)</p></div>
-  <div class="stat"><p class="stat-num">$38 / $128</p><p class="stat-label">a throwaway dart, and a tip dart with its fibre (small-batch est.)</p></div>
+  <div class="stat"><p class="stat-num">$38 / $128</p><p class="stat-label">a throwaway dart, and a tip dart with its fiber (small-batch est.)</p></div>
   <div class="stat"><p class="stat-num">160–200 ft</p><p class="stat-label">the only measured cheap-mic range; we plan on 330–980 ft, unproven</p></div>
-  <div class="stat"><p class="stat-num">4/5</p><p class="stat-label">feasibility: every part exists and fibre took out the long radio link; the chain is still untested</p></div>
+  <div class="stat"><p class="stat-num">4/5</p><p class="stat-label">feasibility: every part exists and fiber took out the long radio link; the chain is still untested</p></div>
 </div>
 
 {: .warning }
@@ -29,7 +29,7 @@ Don't try to make a microphone hear farther. Drop cheap ones about a mile forwar
 <figure class="vz-figure">
 <svg class="vz-hero vz-hero-wide" viewBox="0 0 720 430" role="img" aria-labelledby="vz-hero-t vz-hero-d">
   <title id="vz-hero-t">How the tripwire works</title>
-  <desc id="vz-hero-d">Seen from above. A row of listening darts lies across the enemy's approach about a mile out from the unit. A drone crossing the row is heard by the nearest dart; the alert hops along the row and comes home down two fibres to the unit, about a minute before the drone arrives. A ring of microphones at the unit would hear it only about ten seconds out.</desc>
+  <desc id="vz-hero-d">Seen from above. A row of listening darts lies across the enemy's approach about a mile out from the unit. A drone crossing the row is heard by the nearest dart; the alert hops along the row and comes home down two fibers to the unit, about a minute before the drone arrives. A ring of microphones at the unit would hear it only about ten seconds out.</desc>
   <rect x="0" y="0" width="720" height="62" fill="#f3e1d8"/>
   <text x="20" y="39" class="vz-t-tag">ENEMY SIDE</text>
   <g fill="#d2451e" fill-opacity=".07" stroke="#d2451e" stroke-opacity=".45" stroke-dasharray="4 4">
@@ -57,7 +57,7 @@ Don't try to make a microphone hear farther. Drop cheap ones about a mile forwar
   <path d="M293 246 L300 234 L307 246 M293 310 L300 322 L307 310" fill="none" stroke="#151515" stroke-width="2"/>
   <text x="288" y="266" class="vz-t-big" text-anchor="end">~1 mi</text>
   <text x="290" y="296" class="vz-t-accent" text-anchor="end" style="font-size:19px">≈ 1 min warning</text>
-  <text x="575" y="300" class="vz-t-green" text-anchor="end">fibre home</text>
+  <text x="575" y="300" class="vz-t-green" text-anchor="end">fiber home</text>
   <rect x="316" y="332" width="88" height="36" fill="#151515"/>
   <text x="360" y="357" class="vz-t-unit" text-anchor="middle">UNIT</text>
   <text x="360" y="424" class="vz-t-small" text-anchor="middle">a ring at the unit hears it only ~10 s out</text>
@@ -88,10 +88,10 @@ Don't try to make a microphone hear farther. Drop cheap ones about a mile forwar
   <text x="110" y="358" class="vz-t-accent" style="font-size:19px">warning</text>
   <rect x="138" y="408" width="84" height="34" fill="#151515"/>
   <text x="180" y="431" class="vz-t-unit" text-anchor="middle" style="font-size:16px">UNIT</text>
-  <text x="350" y="478" class="vz-t-green" text-anchor="end" style="font-size:16px">fibre home</text>
+  <text x="350" y="478" class="vz-t-green" text-anchor="end" style="font-size:16px">fiber home</text>
   <text x="180" y="518" class="vz-t-small" text-anchor="middle" style="font-size:16px">a ring at the unit: only ~10 s</text>
 </svg>
-<figcaption>Seen from above, not to scale. Each dashed circle is one dart's hearing. The alert hops dart to dart and comes home by fibre.</figcaption>
+<figcaption>Seen from above, not to scale. Each dashed circle is one dart's hearing. The alert hops dart to dart and comes home by fiber.</figcaption>
 </figure>
 
 <div class="vz-steps">
@@ -108,7 +108,7 @@ Don't try to make a microphone hear farther. Drop cheap ones about a mile forwar
   <div class="vz-step">
     <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="#d2451e"><circle cx="6" cy="30" r="4"/><circle cx="24" cy="30" r="4"/><circle cx="42" cy="30" r="4"/></g><g fill="none" stroke="#151515" stroke-width="3"><path d="M8 24 Q15 12 22 24"/><path d="M26 24 Q33 12 40 24"/></g><line x1="42" y1="34" x2="42" y2="46" stroke="#2f6b3a" stroke-width="3"/></svg>
     <p class="vz-step-num">3 · Report</p>
-    <p>A few-byte alert hops dart to dart, then home down a fibre the drone laid.</p>
+    <p>A few-byte alert hops dart to dart, then home down a fiber the drone laid.</p>
   </div>
   <div class="vz-step">
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 L44 42 H4 Z" fill="#d2451e"/><rect x="22" y="18" width="4" height="13" fill="#fff"/><rect x="22" y="34" width="4" height="4" fill="#fff"/></svg>
@@ -121,16 +121,16 @@ Don't try to make a microphone hear farther. Drop cheap ones about a mile forwar
 
 <div class="vz-cards">
   <div class="vz-card"><p class="vz-card-num">Posts</p><p>along the verge, about 5 a mile, hear drones that land to wait in ambush. Alone, about $940 a mile a year</p></div>
-  <div class="vz-card"><p class="vz-card-num">A fence</p><p>of darts a mile out, home on fibre, gives every drone flying in at least 60 s in the model</p></div>
+  <div class="vz-card"><p class="vz-card-num">A fence</p><p>of darts a mile out, home on fiber, gives every drone flying in at least 60 s in the model</p></div>
   <div class="vz-card"><p class="vz-card-num">With the troops</p><p>receivers in vehicles, lamps on posts, and partners' phone systems (<a href="{{ site.baseurl }}{% link models/route-guard.md %}">Guarding a road</a>)</p></div>
 </div>
 
 <details class="layer" markdown="block">
 <summary><span class="layer-title">The idea in full</span><span class="layer-sub">The four steps with their numbers and links, and the road guard</span></summary>
 
-1. **Lay a line.** A small drone with no pilot drops 4 throwaway listeners per flight in a row across the enemy's approach, about 1 mi out, and two FPV fibres from the row back to the unit ([How it works]({{ site.baseurl }}{% link models/line-layout.md %})): about 22 darts a lay.
+1. **Lay a line.** A small drone with no pilot drops 4 throwaway listeners per flight in a row across the enemy's approach, about 1 mi out, and two FPV fibers from the row back to the unit ([How it works]({{ site.baseurl }}{% link models/line-layout.md %})): about 22 darts a lay.
 2. **Listen quietly.** Each listener sleeps until it hears something drone-like, and transmits nothing while it waits.
-3. **Report back.** A few-byte alert hops listener to listener to one of two tip darts, which flash it home down the fibre to a base box behind the unit, and a wire takes it to each position. Nothing at the unit transmits or receives by radio, so the unit's own jammers can't deafen it ([jamming]({{ site.baseurl }}{% link models/line-layout.md %}#jamming)).
+3. **Report back.** A few-byte alert hops listener to listener to one of two tip darts, which flash it home down the fiber to a base box behind the unit, and a wire takes it to each position. Nothing at the unit transmits or receives by radio, so the unit's own jammers can't deafen it ([jamming]({{ site.baseurl }}{% link models/line-layout.md %}#jamming)).
 4. **Warn.** Warning time is distance ÷ drone speed. A row about 1 mi out gives about 45–60 seconds against an FPV at top speed, and 1.3–1.8 minutes at the 37–50 mph it usually flies with a warhead ([the drones]({{ site.baseurl }}{% link research/threat-profile.md %})); a ring of microphones 980 ft out gives 8–10 (both estimates).
 
 The idea is to buy warning with distance rather than with sensitivity. A better microphone gains tens of yards; laying the line forward gains miles.
@@ -138,7 +138,7 @@ The idea is to buy warning with distance rather than with sensitivity. A better 
 **The same darts can guard a supply road,** where about half of casualties happen ([Guarding a road]({{ site.baseurl }}{% link models/route-guard.md %})):
 
 - **Posts along the verge,** about 5 a mile, hear drones that land to wait in ambush, which nothing else on sale does. On their own they cost about $940 a mile a year.
-- **A fence of darts a mile out,** home on fibre like a position's line, gives every drone flying in at least 60 s in the model.
+- **A fence of darts a mile out,** home on fiber like a position's line, gives every drone flying in at least 60 s in the model.
 - **The alert travels with the troops:** receivers in their vehicles, lamps on the posts, and, if a partner takes it, the phone systems they already carry ([Partners]({{ site.baseurl }}{% link research/partners.md %})).
 
 </details>
@@ -149,22 +149,22 @@ The idea is to buy warning with distance rather than with sensitivity. A better 
 
 <div class="vz-cards">
   <div class="vz-card"><p class="vz-card-num">~80%</p><p>of casualties at the front come from drones, by analysts' estimates (<a href="https://www.tpr.org/news/2026-10-05/drones-buzz-overhead-troops-hunker-underground-in-ukraines-hellish-kill-zone">NPR</a>)</p></div>
-  <div class="vz-card"><p class="vz-card-num">No radio</p><p>from a fibre-optic FPV, so radio detectors miss it and jammers can't stop it. A microphone hears it</p></div>
+  <div class="vz-card"><p class="vz-card-num">No radio</p><p>from a fiber-optic FPV, so radio detectors miss it and jammers can't stop it. A microphone hears it</p></div>
   <div class="vz-card"><p class="vz-card-num">Nothing forward</p><p>Cheap acoustic sensors sit at the unit and give seconds (<a href="{{ site.baseurl }}{% link research/competitors.md %}">competitors</a>)</p></div>
 </div>
 
 <div class="stats">
   <div class="stat"><p class="stat-num">1–4</p><p class="stat-label">of every 100 drone casualties averted by a position's line, our central guess</p></div>
   <div class="stat"><p class="stat-num">5–8</p><p class="stat-label">with the supply road guarded too, on guarded roads</p></div>
-  <div class="stat"><p class="stat-num">30–50%+</p><p class="stat-label">of FPVs are fibre-optic in some sectors</p></div>
+  <div class="stat"><p class="stat-num">30–50%+</p><p class="stat-label">of FPVs are fiber-optic in some sectors</p></div>
   <div class="stat"><p class="stat-label" style="margin:0"><a href="{{ site.baseurl }}{% link research/problem-check.md %}" style="color:#fff">Is the problem worth solving? →</a></p></div>
 </div>
 
 <details class="layer" markdown="block">
-<summary><span class="layer-title">Why it matters, in full</span><span class="layer-sub">Casualties, fibre-optic FPVs, what Sky Fortress does and doesn't show, and the lives estimate</span></summary>
+<summary><span class="layer-title">Why it matters, in full</span><span class="layer-sub">Casualties, fiber-optic FPVs, what Sky Fortress does and doesn't show, and the lives estimate</span></summary>
 
 - **Drones cause about 80% of casualties** at the front, by analysts' estimates ([NPR, Oct 2026](https://www.tpr.org/news/2026-10-05/drones-buzz-overhead-troops-hunker-underground-in-ukraines-hellish-kill-zone)). Units cope by not moving, and every trip out is exposure.
-- **Fibre-optic FPVs emit no radio**, so the radio detectors units carry miss them and jamming does nothing. In some sectors they are 30–50% or more of FPVs. A microphone hears them ([what troops have]({{ site.baseurl }}{% link research/frontline-kit.md %})).
+- **Fiber-optic FPVs emit no radio**, so the radio detectors units carry miss them and jamming does nothing. In some sectors they are 30–50% or more of FPVs. A microphone hears them ([what troops have]({{ site.baseurl }}{% link research/frontline-kit.md %})).
 - **Acoustic detection works at scale, against a different target.** Ukraine's Sky Fortress hears Shaheds and cruise missiles over the rear with thousands of cheap pole-mounted sensors. Loud, low-pitched engines carry for miles; small electric FPVs don't. Against FPVs at the front, no acoustic system has an independent test yet.
 - **Our central guess is 1–4 of every 100 drone casualties averted** by a position's line, almost all among people about to move. **Guarding the supply road as well roughly doubles it, to about 5–8,** on the roads that are guarded, because the posts also catch drones waiting in ambush ([estimate]({{ site.baseurl }}{% link research/lives-model.md %}#adding-a-guard-on-the-supply-road)). Both are guesses, not measurements.
 
@@ -187,7 +187,7 @@ Full evidence: [Is the problem worth solving?]({{ site.baseurl }}{% link researc
 <span class="assess-num">03</span>
 <span class="assess-title">How it works</span>
 <span class="assess-q">How many darts give a unit a minute, and how do alerts get home?</span>
-<span class="assess-body">About 22 darts a lay, a row a mile out, and two FPV fibres to a base box behind the unit, wired to each position.</span>
+<span class="assess-body">About 22 darts a lay, a row a mile out, and two FPV fibers to a base box behind the unit, wired to each position.</span>
 </a>
 <a class="assess-card" href="{{ site.baseurl }}{% link models/route-guard.md %}">
 <span class="assess-num">04</span>
@@ -229,7 +229,7 @@ Full evidence: [Is the problem worth solving?]({{ site.baseurl }}{% link researc
 <span class="assess-num">+</span>
 <span class="assess-title">The full design</span>
 <span class="assess-q">How each piece works, what it costs, and what could kill it.</span>
-<span class="assess-body">Warning time, the listener, the delivery drone, getting alerts home by fibre, field limits and risks.</span>
+<span class="assess-body">Warning time, the listener, the delivery drone, getting alerts home by fiber, field limits and risks.</span>
 </a>
 </div>
 
@@ -240,7 +240,7 @@ Full evidence: [Is the problem worth solving?]({{ site.baseurl }}{% link researc
 <div class="vz-chain">
   <a class="vz-link" href="{{ site.baseurl }}{% link research/open-questions.md %}"><span class="vz-link-title">Hear an FPV</span><span class="vz-link-test">T11 · range of one mic</span><span class="vz-chip vz-chip-open">untested</span></a>
   <a class="vz-link" href="{{ site.baseurl }}{% link research/open-questions.md %}#t9-can-a-forward-line-report-back"><span class="vz-link-title">Hop along the row</span><span class="vz-link-test">T9 · T19 near jammers</span><span class="vz-chip vz-chip-open">untested</span></a>
-  <a class="vz-link" href="{{ site.baseurl }}{% link models/line-layout.md %}#the-fibres-and-the-base-box"><span class="vz-link-title">Light home by fibre</span><span class="vz-link-test">T21 · a full spool</span><span class="vz-chip vz-chip-open">untested</span></a>
+  <a class="vz-link" href="{{ site.baseurl }}{% link models/line-layout.md %}#the-fibers-and-the-base-box"><span class="vz-link-title">Light home by fiber</span><span class="vz-link-test">T21 · a full spool</span><span class="vz-chip vz-chip-open">untested</span></a>
   <a class="vz-link" href="{{ site.baseurl }}{% link build-hardware.md %}"><span class="vz-link-title">Laid by a drone</span><span class="vz-link-test">T10 · T13 · T14</span><span class="vz-chip vz-chip-open">untested</span></a>
 </div>
 
@@ -249,10 +249,10 @@ Full evidence: [Is the problem worth solving?]({{ site.baseurl }}{% link researc
 
 | Question | Why it decides the tripwire | Test | Status |
 |---|---|---|---|
-| **Do the hops along the row hold?** | Fibre carries alerts the last mile home, so radio is left only between darts along the row, about 980 ft a hop. A tree belt or a ridge between two darts can break a hop | [T9]({{ site.baseurl }}{% link research/open-questions.md %}#t9-can-a-forward-line-report-back), ~$80 | Open ground probably works on published figures; across tree belts, unproven |
-| **Does a tip dart get its light home?** | The fibre is the line's only way home. A small laser has to put enough light into 1.2 mi of FPV fibre on a dart's battery, and the fibre has to survive being laid | [T21]({{ site.baseurl }}{% link research/open-questions.md %}), < $300 (est.) | Not started. The fibre loses under 1 dB over 1.2 mi on paper; 1 in 20 assumed to break while laid |
+| **Do the hops along the row hold?** | Fiber carries alerts the last mile home, so radio is left only between darts along the row, about 980 ft a hop. A tree belt or a ridge between two darts can break a hop | [T9]({{ site.baseurl }}{% link research/open-questions.md %}#t9-can-a-forward-line-report-back), ~$80 | Open ground probably works on published figures; across tree belts, unproven |
+| **Does a tip dart get its light home?** | The fiber is the line's only way home. A small laser has to put enough light into 1.2 mi of FPV fiber on a dart's battery, and the fiber has to survive being laid | [T21]({{ site.baseurl }}{% link research/open-questions.md %}), < $300 (est.) | Not started. The fiber loses under 1 dB over 1.2 mi on paper; 1 in 20 assumed to break while laid |
 | **How far does a mic at 1.6–3.3 ft hear an FPV?** | Range sets listener spacing, so the cost of a line. Under about 130 ft the idea stops making sense | [T11]({{ site.baseurl }}{% link mvp.md %}#layer-2-hear-a-drone-from-near-the-ground-t11), ~$50 | Only measured cheap-mic range is 160–200 ft, on a consumer drone |
-| **Do the row's hops work near enemy jammers?** | With fibre home, the unit's own jammers can't deafen the line. What's left is enemy jammers near the row, a mile out. On our estimate a jammer blinds a dart only within a few hundred feet; in the worst case, about a mile | [T19]({{ site.baseurl }}{% link research/open-questions.md %}), ~$300, needs a licensed range or Ukraine | [Modelled]({{ site.baseurl }}{% link models/line-layout.md %}#jamming), not measured |
+| **Do the row's hops work near enemy jammers?** | With fiber home, the unit's own jammers can't deafen the line. What's left is enemy jammers near the row, a mile out. On our estimate a jammer blinds a dart only within a few hundred feet; in the worst case, about a mile | [T19]({{ site.baseurl }}{% link research/open-questions.md %}), ~$300, needs a licensed range or Ukraine | [Modelled]({{ site.baseurl }}{% link models/line-layout.md %}#jamming), not measured |
 | **Does a dropped dart land upright and working?** | Drone laying is what puts the row a mile out | A weighted dummy dropped from the drone | Modelled, not printed or dropped |
 
 </details>

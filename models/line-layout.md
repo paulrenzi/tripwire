@@ -6,7 +6,7 @@ nav_primary: 2.1
 # How it works
 {: .no_toc }
 
-<p class="vz-lede">A row of listening darts about a mile out. The dart that hears a drone radios its neighbours, the alert hops along the row to one of two <strong>tip darts</strong>, and each tip sends it home down a fibre the drone laid.</p>
+<p class="vz-lede">A row of listening darts about a mile out. The dart that hears a drone radios its neighbours, the alert hops along the row to one of two <strong>tip darts</strong>, and each tip sends it home down a fiber the drone laid.</p>
 
 <div class="stats">
   <div class="stat"><p class="stat-num">15</p><p class="stat-label">darts on open, flat ground; about 22 used in laying them</p></div>
@@ -67,7 +67,7 @@ nav_primary: 2.1
 </figure>
 <script src="{{ '/assets/js/line-layout.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 
-Three drones fly in at 60 mph: one straight at the middle position, exactly between two front darts (the worst case), one from 30° to the left, and one from 60° to the right. **Tap any dart to knock it out, or a fibre to cut it,** and see which darts can still get an alert home.
+Three drones fly in at 60 mph: one straight at the middle position, exactly between two front darts (the worst case), one from 30° to the left, and one from 60° to the right. **Tap any dart to knock it out, or a fiber to cut it,** and see which darts can still get an alert home.
 
 <div class="vz-steps vz-3">
   <div class="vz-step">
@@ -78,12 +78,12 @@ Three drones fly in at 60 mph: one straight at the middle position, exactly betw
   <div class="vz-step">
     <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="#d2451e"><circle cx="6" cy="30" r="4"/><circle cx="24" cy="30" r="4"/><circle cx="42" cy="30" r="4"/></g><g fill="none" stroke="#151515" stroke-width="3"><path d="M8 24 Q15 12 22 24"/><path d="M26 24 Q33 12 40 24"/></g><line x1="42" y1="34" x2="42" y2="46" stroke="#2f6b3a" stroke-width="3"/></svg>
     <p class="vz-step-num">2 · Pass it back</p>
-    <p>A few bytes hop dart to dart, 0.05–1 s a hop, to a tip dart, which flashes it home down its fibre.</p>
+    <p>A few bytes hop dart to dart, 0.05–1 s a hop, to a tip dart, which flashes it home down its fiber.</p>
   </div>
   <div class="vz-step">
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 L44 42 H4 Z" fill="#d2451e"/><rect x="22" y="18" width="4" height="13" fill="#fff"/><rect x="22" y="34" width="4" height="4" fill="#fff"/></svg>
     <p class="vz-step-num">3 · Warn</p>
-    <p>Both fibres end at a base box behind the unit, wired to a phone at each position. Nothing at the unit uses radio.</p>
+    <p>Both fibers end at a base box behind the unit, wired to a phone at each position. Nothing at the unit uses radio.</p>
   </div>
 </div>
 
@@ -91,8 +91,8 @@ Three drones fly in at 60 mph: one straight at the middle position, exactly betw
 <summary><span class="layer-title">The three steps in full</span><span class="layer-sub">Tip darts, hop times, the base box, and why it's a tripwire, not an array</span></summary>
 
 1. **Hear.** Every dart listens all the time, in every direction. It only answers one question: *is that a drone?*
-2. **Pass it back.** The dart that hears it radios a few bytes to its neighbours. Each dart relays an alert once, along the row, until it reaches a **tip dart**: the second or the second-last dart in the row. A tip carries a spool of FPV fibre whose other end is tied off at home, and it sends the alert down the fibre as flashes of a small laser. Each radio hop takes about 0.05–1 s depending on the radio's settings; the fibre adds nothing worth counting.
-3. **Warn.** Both fibres end at the **base box** at the launch point behind the unit ([below](#the-fibres-and-the-base-box)). It passes each alert down a wire to a phone or tablet at each position. Nothing at the unit uses radio, so the unit's own jammers can't deafen it ([Jamming](#jamming)). Warning is distance ÷ speed, from wherever the drone was first heard.
+2. **Pass it back.** The dart that hears it radios a few bytes to its neighbours. Each dart relays an alert once, along the row, until it reaches a **tip dart**: the second or the second-last dart in the row. A tip carries a spool of FPV fiber whose other end is tied off at home, and it sends the alert down the fiber as flashes of a small laser. Each radio hop takes about 0.05–1 s depending on the radio's settings; the fiber adds nothing worth counting.
+3. **Warn.** Both fibers end at the **base box** at the launch point behind the unit ([below](#the-fibers-and-the-base-box)). It passes each alert down a wire to a phone or tablet at each position. Nothing at the unit uses radio, so the unit's own jammers can't deafen it ([Jamming](#jamming)). Warning is distance ÷ speed, from wherever the drone was first heard.
 
 **It is a tripwire, not a microphone array.** An array combines its microphones to find a direction, which needs exact spacing and shared timing. Here each dart only says "I heard it", and the net carries that home.
 
@@ -107,13 +107,13 @@ Each section opens for the full reasoning, numbers and sources.
 <details class="layer" id="the-short-version-in-full" markdown="block">
 <summary><span class="layer-title">The planning numbers, as first written</span><span class="layer-sub">The page's original opening, with its sources</span></summary>
 
-How many darts it takes to give a unit a minute's warning of a drone, where they go, and how they get there. Listening darts sit in a row about a mile out. The one that hears a drone radios its neighbours, the row passes the alert along to one of two **tip darts**, and each tip sends it home down an FPV fibre the drone paid out as it laid the tip. The map is drawn to scale, and its animation runs ten times faster than real life.
+How many darts it takes to give a unit a minute's warning of a drone, where they go, and how they get there. Listening darts sit in a row about a mile out. The one that hears a drone radios its neighbours, the row passes the alert along to one of two **tip darts**, and each tip sends it home down an FPV fiber the drone paid out as it laid the tip. The map is drawn to scale, and its animation runs ten times faster than real life.
 
 The planning numbers, none measured yet:
 
 - **Hearing: 656 ft (200 m).** A drone 165 ft up is heard about 635 ft away along the ground. [T11]({{ site.baseurl }}{% link mvp.md %}#layer-2-hear-a-drone-from-near-the-ground-t11) measures it.
 - **Radio: 980 ft (300 m) per hop** near the ground. [T9]({{ site.baseurl }}{% link research/open-questions.md %}#t9-can-a-forward-line-report-back) measures it.
-- **Drones: 60 mph, up to 165 ft up.** That is above the 37–50 mph an FPV usually flies with a warhead and below its 75 mph loaded maximum. Fibre-optic FPVs fly at 65–165 ft ([the drones]({{ site.baseurl }}{% link research/threat-profile.md %})).
+- **Drones: 60 mph, up to 165 ft up.** That is above the 37–50 mph an FPV usually flies with a warhead and below its 75 mph loaded maximum. Fiber-optic FPVs fly at 65–165 ft ([the drones]({{ site.baseurl }}{% link research/threat-profile.md %})).
 - **Warning: at least a minute,** plus 5 s for recognition and relaying.
 
 </details>
@@ -125,7 +125,7 @@ At 60 mph (88 ft a second), 65 s means hearing the drone **5,720 ft out**.
 
 - **The worst case is a drone passing midway between two front darts.** With darts 980 ft apart, it is 490 ft from each as it crosses the row, and a dart hearing 635 ft along the ground first hears it about 400 ft before that.
 - **So the front row sits 5,316 ft (1.01 mi) out.** Every drone heading for the unit is heard at least 5,720 ft away.
-- **There are no relay darts.** The fibres carry alerts the last mile, so every dart is a listening dart in the front row.
+- **There are no relay darts.** The fibers carry alerts the last mile, so every dart is a listening dart in the front row.
 
 **The radio sets the spacing, not the ear.** A 656 ft ear alone would allow front darts 1,270 ft apart. But each front dart has to reach its neighbour by radio, so they sit about 960 ft apart. A better ear than this saves almost nothing. A longer radio hop is what would cut darts.
 
@@ -140,26 +140,26 @@ At 60 mph (88 ft a second), 65 s means hearing the drone **5,720 ft out**.
 
 **±60° costs 3 front darts over ±45°** (15 against 12 on open ground). It buys cover against flatter approaches, not margin against bad drops: compass error opens gaps at the joins between sorties in the middle of the row, which the extra width doesn't reach ([What the model found](#what-the-model-found)).
 
-**The net is wider than the unit.** 2.4 mi of front is roughly what 60 soldiers hold at about 24 per mile. Neighbouring units can share one continuous front row, at about 5.5 darts per mile of front, and each adds only its own two fibres.
+**The net is wider than the unit.** 2.4 mi of front is roughly what 60 soldiers hold at about 24 per mile. Neighbouring units can share one continuous front row, at about 5.5 darts per mile of front, and each adds only its own two fibers.
 
 </details>
 
-<details class="layer" id="two-fibres-for-redundancy" markdown="block">
-<summary><span class="layer-title">Two fibres, for redundancy</span><span class="layer-sub">Why two tip darts, what one loss costs, and the fibres and base box</span></summary>
+<details class="layer" id="two-fibers-for-redundancy" markdown="block">
+<summary><span class="layer-title">Two fibers, for redundancy</span><span class="layer-sub">Why two tip darts, what one loss costs, and the fibers and base box</span></summary>
 
-**The net always has two fibres,** one to the second dart at each end of the front row: **15 darts** on open, flat ground, 2 of them tip darts. The last plan carried alerts home on radio trunks and needed 22 (12 in the row, 10 relays) plus a root dart placed by hand. Laying takes more than the plan: on the [lay model](#laying-the-net)'s example sector it plans 16 darts and uses about 22, after bad landings, short hops and broken fibres. The radio trunks used about 35.
+**The net always has two fibers,** one to the second dart at each end of the front row: **15 darts** on open, flat ground, 2 of them tip darts. The last plan carried alerts home on radio trunks and needed 22 (12 in the row, 10 relays) plus a root dart placed by hand. Laying takes more than the plan: on the [lay model](#laying-the-net)'s example sector it plans 16 darts and uses about 22, after bad landings, short hops and broken fibers. The radio trunks used about 35.
 
-- **No single dart can silence it.** Knocking out any one dart cuts off at most 1 other. If a tip dart dies or its fibre is cut, alerts run the other way along the row to the other fibre, and the base box says so within 30 s.
-- **One fibre is not offered.** It would save one tip, about $70 of fibre and laser, but one cut would silence the whole net.
-- **The longest route home is 6 radio hops and a fibre,** against 11 hops on radio trunks. At 0.05–1 s a hop that adds at most about 6 s (airtime estimate).
+- **No single dart can silence it.** Knocking out any one dart cuts off at most 1 other. If a tip dart dies or its fiber is cut, alerts run the other way along the row to the other fiber, and the base box says so within 30 s.
+- **One fiber is not offered.** It would save one tip, about $70 of fiber and laser, but one cut would silence the whole net.
+- **The longest route home is 6 radio hops and a fiber,** against 11 hops on radio trunks. At 0.05–1 s a hop that adds at most about 6 s (airtime estimate).
 
-### The fibres and the base box
+### The fibers and the base box
 
-- **A tip dart** is a dart with a spool of about 1.2 mi of FPV fibre and a small laser, about 10 oz against a dart's 4.5 oz (est.). It still hears drones and its neighbours by radio. Light only goes one way, home, so nothing is ever sent out to the row.
-- **Laying it.** A tip is the first drop of its sortie. The fibre's home end comes with a connector fitted at the factory: before take-off the crew plugs it into the base box and ties it to a stake. The spool pays out as the drone flies, the way fibre-optic FPVs do.
-- **The heartbeat.** A tip checks in down its fibre every 10 s. Light inside a fibre can't be picked up, so this gives nothing away, unlike a radio check-in. If a fibre goes quiet for 30 s the display shows "fibre B dark: cut, or the tip is dead". The heartbeat also proves the connector before take-off and the fibre after the drop: it is how the drone's crew confirms a tip.
-- **The base box** is a dart's board with two light detectors, one per fibre, at the launch point. It decrypts each alert, drops the second copy when both tips pass on the same one, and writes the same line of text the radio receiver used to, naming the fibre it came by ([software]({{ site.baseurl }}{% link build-software.md %}#i3-serial-frame-from-the-base-box-to-the-display)). A wire carries it to a phone or tablet at each position. Nothing at the unit transmits or receives by radio.
-- **Untested:** whether a small, cheap laser can put enough light into FPV fibre, which carries light in a very thin core, without draining the dart. On paper the fibre itself loses under 1 dB over 1.2 mi. The tip's weight and the fibre-break rate (1 in 20 assumed) are also guesses. One bench test settles all three: a tip dart, a full spool and a base box ([T21]({{ site.baseurl }}{% link models/tripwire.md %}#what-has-to-be-proven)).
+- **A tip dart** is a dart with a spool of about 1.2 mi of FPV fiber and a small laser, about 10 oz against a dart's 4.5 oz (est.). It still hears drones and its neighbours by radio. Light only goes one way, home, so nothing is ever sent out to the row.
+- **Laying it.** A tip is the first drop of its sortie. The fiber's home end comes with a connector fitted at the factory: before take-off the crew plugs it into the base box and ties it to a stake. The spool pays out as the drone flies, the way fiber-optic FPVs do.
+- **The heartbeat.** A tip checks in down its fiber every 10 s. Light inside a fiber can't be picked up, so this gives nothing away, unlike a radio check-in. If a fiber goes quiet for 30 s the display shows "fiber B dark: cut, or the tip is dead". The heartbeat also proves the connector before take-off and the fiber after the drop: it is how the drone's crew confirms a tip.
+- **The base box** is a dart's board with two light detectors, one per fiber, at the launch point. It decrypts each alert, drops the second copy when both tips pass on the same one, and writes the same line of text the radio receiver used to, naming the fiber it came by ([software]({{ site.baseurl }}{% link build-software.md %}#i3-serial-frame-from-the-base-box-to-the-display)). A wire carries it to a phone or tablet at each position. Nothing at the unit transmits or receives by radio.
+- **Untested:** whether a small, cheap laser can put enough light into FPV fiber, which carries light in a very thin core, without draining the dart. On paper the fiber itself loses under 1 dB over 1.2 mi. The tip's weight and the fiber-break rate (1 in 20 assumed) are also guesses. One bench test settles all three: a tip dart, a full spool and a base box ([T21]({{ site.baseurl }}{% link models/tripwire.md %}#what-has-to-be-proven)).
 
 What the package costs is on [Projected costs]({{ site.baseurl }}{% link costs.md %}).
 
@@ -174,7 +174,7 @@ Nobody walks a mile forward to plant darts. A small drone does it, with no pilot
 <video controls muted playsinline loop preload="metadata" poster="{{ '/assets/video/lay-net-poster.png' | relative_url }}" style="width:100%;display:block;border:1px solid #ddd">
 <source src="{{ '/assets/video/lay-net.mp4' | relative_url }}" type="video/mp4">
 </video>
-<figcaption style="font-size:0.9em;margin-top:6px">One lay from the model, about 1 min 40 s. An example sector (invented, to scale): two windbreaks, a 50 ft ravine, ground rising 50 ft toward the front, an enemy salient and a 9 mph wind toward it. GPS is jammed. This lay is an unlucky one for the right-hand tip: the first lands silent and the second's fibre breaks, so the third is laid on the next sortie. Every position, battery reading, relay and heartbeat shown comes from the model's output.</figcaption>
+<figcaption style="font-size:0.9em;margin-top:6px">One lay from the model, about 1 min 40 s. An example sector (invented, to scale): two windbreaks, a 50 ft ravine, ground rising 50 ft toward the front, an enemy salient and a 9 mph wind toward it. GPS is jammed. This lay is an unlucky one for the right-hand tip: the first lands silent and the second's fiber breaks, so the third is laid on the next sortie. Every position, battery reading, relay and heartbeat shown comes from the model's output.</figcaption>
 </figure>
 
 ### How a lay works
@@ -194,15 +194,15 @@ Nobody walks a mile forward to plant darts. A small drone does it, with no pilot
 | "Landed" but no relay | Out of reach | Next dart 300 ft back toward the neighbour |
 | "Landed, tilted" | Lying flat or in a tree | Next dart on the same spot |
 | Nothing | A dud | Next dart on the same spot |
-| A tip: no heartbeat at the base box | Its fibre broke, or it landed badly | A new tip, with a new fibre, first on the next sortie. In the model the drone flies home with its other darts, since nothing is there to confirm them against |
+| A tip: no heartbeat at the base box | Its fiber broke, or it landed badly | A new tip, with a new fiber, first on the next sortie. In the model the drone flies home with its other darts, since nothing is there to confirm them against |
 
 If a sortie runs out of darts or battery partway through, the points it didn't finish go first on the next sortie.
 
 ### What the model found
 
-The example sector, 1,000 lays per row. **"Whole"** means every drone track within 60° of each position is heard at least 55 s out. That is 5 s short of the minute target, which leaves room for small drop errors. **"Survives a fibre cut"** is the share of whole lays that stay whole with either fibre cut.
+The example sector, 1,000 lays per row. **"Whole"** means every drone track within 60° of each position is heard at least 55 s out. That is 5 s short of the minute target, which leaves room for small drop errors. **"Survives a fiber cut"** is the share of whole lays that stay whole with either fiber cut.
 
-| Case | Whole | Survives any one dart loss | Survives a fibre cut | Darts used | Darts, 9 lays in 10 | Sorties | Hours |
+| Case | Whole | Survives any one dart loss | Survives a fiber cut | Darts used | Darts, 9 lays in 10 | Sorties | Hours |
 |---|---|---|---|---|---|---|---|
 | The last plan: radio trunks, ±45°, GPS jammed, confirm | 99% | 93% | – | 34.9 | 40 | 9.3 | 2.2 |
 | This plan (16 darts), GPS working, no confirm | 8% | 2% | 31% | 16 | 16 | 5.1 | 1.0 |
@@ -211,12 +211,12 @@ The example sector, 1,000 lays per row. **"Whole"** means every drone track with
 | … if 95% of darts land upright, not 85% | 100% | 93% | 99% | 19.8 | 23 | 6.3 | 1.2 |
 | … if the radio hop is 800 ft, not 980 | 99% | 91% | 97% | 26.7 | 31 | 8.0 | 1.7 |
 | … if the compass is off 4°, not 2° | 89% | 82% | 97% | 22.7 | 27 | 7.2 | 1.5 |
-| … if 1 fibre in 5 breaks while laid, not 1 in 20 | 98% | 87% | 93% | 23.3 | 28 | 7.8 | 1.7 |
+| … if 1 fiber in 5 breaks while laid, not 1 in 20 | 98% | 87% | 93% | 23.3 | 28 | 7.8 | 1.7 |
 | … in a 15 mph wind | 99% | 91% | 97% | 22.1 | 26 | 8.1 | 1.7 |
 | … at 14 °F, with packs not kept warm | 98% | 89% | 97% | 22.5 | 27 | 17.0 | 6.0 |
 
-- **A lay takes about 22 darts and 7 sorties, against 35 and 9 on radio trunks.** The 16 planned darts are the floor. Darts that land badly (15%, assumed), hops that fall short and broken fibres take about 6 more.
-- **The fibres are where the saving comes from; ±60° gives some of it back.** Fibre at ±45° would plan 13 darts and use about 18 in 6 sorties. ±60° adds 3 front darts, about 5 darts used and 1.5 sorties a lay ([comparison](https://github.com/paulrenzi/tripwire/blob/main/tools/laymodel/out/fibre-summary.md)).
+- **A lay takes about 22 darts and 7 sorties, against 35 and 9 on radio trunks.** The 16 planned darts are the floor. Darts that land badly (15%, assumed), hops that fall short and broken fibers take about 6 more.
+- **The fibers are where the saving comes from; ±60° gives some of it back.** Fiber at ±45° would plan 13 darts and use about 18 in 6 sorties. ±60° adds 3 front darts, about 5 darts used and 1.5 sorties a lay ([comparison](https://github.com/paulrenzi/tripwire/blob/main/tools/laymodel/out/fibre-summary.md)).
 - **The wider arc doesn't absorb bad drops.** With the compass 4° off, 89% of lays are whole judged at ±60°, and 94% judged at ±45°, against 92% for a net built for ±45°. Compass error opens gaps at the joins between sorties, mid-row, where the extra width doesn't reach.
 - **Without confirmation, the net is almost never whole.** 980 ft is the hop that works 9 times in 10. With 15 hops in the row, most lays have one that fails, and nothing on the ground says which.
 - **Losing one dart costs a little more than before:** 91% of lays survive any one loss, against 93% on radio trunks, because a tip dart now does a whole trunk's job.
@@ -235,8 +235,8 @@ The example sector, 1,000 lays per row. **"Whole"** means every drone track with
 | Without GPS, ArduPilot has no origin, and so no position to look up magnetic declination | Missions won't run, or headings are off by the local declination | The tool sets the origin and the declination at the launch point before each sortie ([ArduPilot](https://ardupilot.org/copter/docs/common-non-gps-navigation-landing-page.html)) | None |
 | Nothing checked that a link worked | 95% of lays broken somewhere | Drop, then confirm, on every dart | Receive-only radio, ~$20 |
 | Any relay counted as a confirmation | A dart out of reach of its planned neighbour could pass on a relay from the dart before it | Relays carry the relayer's ID; the closing dart needs both sides | 2 bytes a packet |
-| Radio trunks home | 12 relay darts, most of the failed hops, and a receiver beside the unit's own jammers | Two FPV fibres from the base box to tip darts in the front row; a wire from the base box to every position | About $70 a tip (est.), and the relays saved |
-| A fibre broken while laid looked like a working one | Alerts down that fibre would be lost without warning | A heartbeat down every fibre every 10 s; a tip with none is laid again | None |
+| Radio trunks home | 12 relay darts, most of the failed hops, and a receiver beside the unit's own jammers | Two FPV fibers from the base box to tip darts in the front row; a wire from the base box to every position | About $70 a tip (est.), and the relays saved |
+| A fiber broken while laid looked like a working one | Alerts down that fiber would be lost without warning | A heartbeat down every fiber every 10 s; a tip with none is laid again | None |
 | A bad landing was invisible | A flat or snagged dart checks in normally but hears and radios much worse | An accelerometer in every dart | ~$1–2 a dart |
 | The harness drops in a fixed order | A spare is just the next dart, so any dart has to stand in anywhere | Every dart gets a microphone and a tilt sensor. Points a sortie runs out for move to the next one | ~$3 a dart |
 | End darts sat 635 ft inside the edge lines | Every drone track along an edge line only grazed a dart, and a rotation of 3° left one edge unheard | Ends 300 ft past the edge lines | One dart |
@@ -245,8 +245,8 @@ The example sector, 1,000 lays per row. **"Whole"** means every drone track with
 | Cold packs | Up to 25% less capacity (assumed) | An insulated bag | ~$20 |
 
 **Still open, not modelled:**
-- The drone's return shows the enemy where it launched from. Launch 300–500 ft from the positions, and vary the spot. Tip sorties have to leave from the base box, where the fibres end; other sorties can launch elsewhere.
-- The fibres lead from the front row toward the base box, so a fibre found is a trail. FPV fibre already lies across the front in quantity ([Business Insider](https://www.yahoo.com/news/articles/unjammable-drones-leaving-wires-everywhere-114504509.html)), which may hide ours.
+- The drone's return shows the enemy where it launched from. Launch 300–500 ft from the positions, and vary the spot. Tip sorties have to leave from the base box, where the fibers end; other sorties can launch elsewhere.
+- The fibers lead from the front row toward the base box, so a fiber found is a trail. FPV fiber already lies across the front in quantity ([Business Insider](https://www.yahoo.com/news/articles/unjammable-drones-leaving-wires-everywhere-114504509.html)), which may hide ours.
 - In the model, a sortie whose tip fails flies home with its other darts. Flying on would save a sortie, if the crew can tell the drone by telemetry.
 - A sortie can't be recalled.
 - Handing the net over to a relieving unit isn't designed.
@@ -260,7 +260,7 @@ The model turns on six numbers. Each test should report a spread, not one figure
 - **T13:** power against airspeed with 4 darts, and the battery each sortie uses.
 - **T14:** compass error with GPS jammed, split into the error shared by a whole day and the change from one sortie to the next (2° and 0.7° assumed). At 4°, 11% of lays leave a gap. Also the lidar's real range over dark plough and snow: the 35 ft cruise assumes the full 39 ft.
 - **T12:** pack capacity at 14 °F, warm and cold.
-- **T21:** the tip dart: light delivered down a full spool, the battery the laser and heartbeat use, the tip's weight, and how often fibre breaks while laid (1 in 20 assumed).
+- **T21:** the tip dart: light delivered down a full spool, the battery the laser and heartbeat use, the tip's weight, and how often fiber breaks while laid (1 in 20 assumed).
 
 ### What the drone knows
 
@@ -303,7 +303,7 @@ How close a drop lands is test T13. The tripwire page's working figure, that dro
 - **Land upright, point first, in soil.** The tip goes in about 2.8 in, holding the microphone about 20 in up. Whether the fins turn a dart nose-down in time is the first drop test ([dart model]({{ site.baseurl }}{% link build-3d.md %}#why-it-should-fall-point-first)).
 - **Nothing solid between neighbours.** A ridge, a building or a thick tree belt between two darts can break a hop. Plan hops along open ground and shorten them under trees, which also shortens hearing.
 - **Every dart keeps its radio listening.** It has to be awake to catch its neighbours' alerts and pass them on. That costs about 105 mAh a day (est.). A 2.4 in solar panel lying flat on top of the pod, so it works whichever way the dart faces, collects about that much in November and more from March to October, but only about half of it in December. So cells still run flat in midwinter, and the net is re-laid 2–4 times a year instead of 13 (est.). A charger chip stops charging below 32°F, when charging would damage the cell. How long a cell lasts in the cold, and how much the panel collects through a winter, are unknown until the battery test (T12). Tip darts also flash a laser every 10 s for the heartbeat, about 25 µA averaged, a negligible drain (est.).
-- **A base box and a wire.** Both fibres end at the base box, placed by hand at the launch point and run on the unit's power. A wire carries alerts from it to a phone or tablet at each position. If the box dies, the unit hears nothing, so it is the first thing the crew checks, and a spare is cheap.
+- **A base box and a wire.** Both fibers end at the base box, placed by hand at the launch point and run on the unit's power. A wire carries alerts from it to a phone or tablet at each position. If the box dies, the unit hears nothing, so it is the first thing the crew checks, and a spare is cheap.
 - **Keep the unit's own drones out of the alarm.** Ukrainian FPVs sound like Russian ones. The proposed answer is to alarm only on drones heading inbound, outside the unit's own flight times (test T15).
 - **Re-lay before the cells run out,** in practice in midwinter, and replace darts lost to shelling. The darts' battery reports forecast when.
 
@@ -322,22 +322,22 @@ How close a drop lands is test T13. The tripwire page's working figure, that dro
 </figure>
 <script src="{{ '/assets/js/repair.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 
-Same map, with time compressed. A shell cuts a fibre, the base box misses the tip's heartbeat, and one sortie lays a new tip and fibre; then a re-lay sortie flown on a compass 3° off is caught by drop, then confirm.
+Same map, with time compressed. A shell cuts a fiber, the base box misses the tip's heartbeat, and one sortie lays a new tip and fiber; then a re-lay sortie flown on a compass 3° off is caught by drop, then confirm.
 
 | Failure | What the unit loses | Fix | Our cost |
 |---|---|---|---|
 | **A front dart** | A blind gap about 660 ft wide: its neighbours end up 1,926 ft apart and each hears 635 ft | One sortie drops a dart on its point | ~$27–31 |
-| **A tip dart, or its fibre** | No coverage, but the net is down to one fibre. The base box shows it within 30 s | One sortie from the base box lays a new tip and fibre, first | ~$90–100 (est.) |
-| **Two darts** | Both tips, or both fibres, silence the net. Any other two cut off the darts between them | Repair after the first loss | Per dart |
+| **A tip dart, or its fiber** | No coverage, but the net is down to one fiber. The base box shows it within 30 s | One sortie from the base box lays a new tip and fiber, first | ~$90–100 (est.) |
+| **Two darts** | Both tips, or both fibers, silence the net. Any other two cut off the darts between them | Repair after the first loss | Per dart |
 | **The base box** | Everything, until swapped | By hand, at the launch point | ~$60 (est.) |
 | **Cells run down** | Darts drop out one by one | A re-lay: about 22 darts, 7 sorties | ~$1,020, with drone wear |
 | **The drone** | Any repair or re-lay | A new quad | ~$850–920 |
 | **The unit's own jammer on** | Nothing on the main estimate: no link at the unit uses radio. In the worst case it reaches the front row too ([Jamming](#jamming)) | Nothing more to add; T19 decides | none |
 | **An enemy jammer near the front row** | Darts within a few hundred feet of it can't relay; a LoRa hunter would open a gap | Pull the row back from it; a second band, 433 MHz (untested) | none |
 
-**The repair model.** The base box lists the darts that have gone quiet and any fibre that's dark, the crew taps "re-drop", and the planning tool writes one mission for up to 4 darts. The flight to the farthest point is about 1.2 mi and about 10 minutes. A dark fibre, a dead tip or a dead front dart goes on the next sortie; anything else waits for the next re-lay. Battery wear is about $0.30 a sortie. **The drone is the hidden cost:** a 2% chance of losing it adds about $20 to every sortie, as much as the dart it carries. So repairs are batched, and a spare drone is worth quoting.
+**The repair model.** The base box lists the darts that have gone quiet and any fiber that's dark, the crew taps "re-drop", and the planning tool writes one mission for up to 4 darts. The flight to the farthest point is about 1.2 mi and about 10 minutes. A dark fiber, a dead tip or a dead front dart goes on the next sortie; anything else waits for the next re-lay. Battery wear is about $0.30 a sortie. **The drone is the hidden cost:** a 2% chance of losing it adds about $20 to every sortie, as much as the dart it carries. So repairs are batched, and a spare drone is worth quoting.
 
-**Roll call: how the unit knows a dart is dead** (a design change). As planned, check-ins aren't relayed ([software plan]({{ site.baseurl }}{% link build-software.md %})), so a dead dart goes unnoticed. Proposed: once a day every dart sends one check-in and every other dart relays it once. That is about 225 short bursts across the net, a second or two of airtime per dart. A dart missing from the roll call is named from the plan within a day. The fibres need no roll call: their heartbeat shows them every 10 s.
+**Roll call: how the unit knows a dart is dead** (a design change). As planned, check-ins aren't relayed ([software plan]({{ site.baseurl }}{% link build-software.md %})), so a dead dart goes unnoticed. Proposed: once a day every dart sends one check-in and every other dart relays it once. That is about 225 short bursts across the net, a second or two of airtime per dart. A dart missing from the roll call is named from the plan within a day. The fibers need no roll call: their heartbeat shows them every 10 s.
 
 ### Drop, then confirm
 
@@ -390,10 +390,10 @@ The worst case assumes the jammer's signal crosses open ground with none of the 
 | **Our own trench jammers, at the positions** | **Net whole, 60 s** | Only the two tips report |
 | The last plan's radio trunks, with our own jammers on | Receiver deaf: net silent | Net silent |
 
-- **The fibres answer our own jammers.** The last plan put a radio receiver at P2, beside the unit's trench jammers, so whenever those were on, the net was deaf. Now the alerts come home by fibre and go to the positions by wire, so nothing at the unit has to receive by radio. FPV fibre costs about $32–56 a mile today ([DroneXL, May 2026](https://dronexl.co/2026/05/11/ukraine-fiber-optic-spool-price-ai-data-center-demand/)), about $40–70 for a tip's 1.2 mi. In the worst case our jammers reach the front row itself, about a mile out, and only the tips' own ears still count.
+- **The fibers answer our own jammers.** The last plan put a radio receiver at P2, beside the unit's trench jammers, so whenever those were on, the net was deaf. Now the alerts come home by fiber and go to the positions by wire, so nothing at the unit has to receive by radio. FPV fiber costs about $32–56 a mile today ([DroneXL, May 2026](https://dronexl.co/2026/05/11/ukraine-fiber-optic-spool-price-ai-data-center-demand/)), about $40–70 for a tip's 1.2 mi. In the worst case our jammers reach the front row itself, about a mile out, and only the tips' own ears still count.
 - **Enemy jammers matter only near their edge,** on the main estimate. A LoRa hunter would open gaps in the front row. Pulling the row back from a known jammer costs warning; a second band at 433 MHz, which most mobile jammers don't list ([Armada](https://www.armadainternational.com/2026/02/the-curran-papers-no-5-jamming-uninhabited-aerial-vehicle-video-signals-electronic-warfare/)), costs a second radio. Both need T19.
 - **Jammers aren't always on.** Crews switch them on when a detector warns ([problem check]({{ site.baseurl }}{% link research/problem-check.md %})). The net's alert comes a minute before the drone, so it may get home before the jammers go on. Not modelled.
-- **Why not fibre everywhere?** Fibre can't be jammed and gives off nothing to find. But an air-dropped row can't share one: every dart would need its own run, and a single cut would silence everything beyond it. Fibre fits the long links home: the two tips here, and a tip every 2 mi in a road's fence ([Guarding a road]({{ site.baseurl }}{% link models/route-guard.md %}#how-many-darts)).
+- **Why not fiber everywhere?** Fiber can't be jammed and gives off nothing to find. But an air-dropped row can't share one: every dart would need its own run, and a single cut would silence everything beyond it. Fiber fits the long links home: the two tips here, and a tip every 2 mi in a road's fence ([Guarding a road]({{ site.baseurl }}{% link models/route-guard.md %}#how-many-darts)).
 - **Which case is real decides the project.** If the main estimate holds, jamming is a placement problem: keep radios a few hundred feet from jammers. If the worst case holds, a radio net cannot work near the front at all. T19 now has to measure at range from a jammer, not only beside one.
 
 </details>
@@ -401,7 +401,7 @@ The worst case assumes the jammer's signal crosses open ground with none of the 
 <details class="layer" id="what-the-net-misses" markdown="block">
 <summary><span class="layer-title">What the net misses</span><span class="layer-sub">Parked ambush drones, launches inside the net, very high or flat approaches</span></summary>
 
-- **Fibre-optic FPVs already parked in ambush.** They sit silent by a road and lift off seconds before they strike. A guard on the road itself is the answer: posts that hear them land ([Guarding a road]({{ site.baseurl }}{% link models/route-guard.md %})).
+- **Fiber-optic FPVs already parked in ambush.** They sit silent by a road and lift off seconds before they strike. A guard on the road itself is the answer: posts that hear them land ([Guarding a road]({{ site.baseurl }}{% link models/route-guard.md %})).
 - **Drones launched from inside the net,** drones flying higher than a dart can hear, and drones coming in flatter than 60°.
 - **Direction.** A dart hearing a drone can't tell if it is the unit's own, unless the unit's drones fly at set times.
 

@@ -63,16 +63,16 @@ Software is the comparatively easy part. The hard parts are **range** (how far a
 </div>
 <p class="vz-grid-xlab">Feasible today →</p>
 </div>
-<p class="vz-bar-note">Each model's two scores, 1 to 5. Tap one to open its page. Top right is where to be: the tripwire has the highest payoff, and is a 4 on feasibility now that fibre has taken out its long radio link; its field tests still have to run. M1 (cheap mic-array nodes), M4 (raising them up) and M10 (adding radio and camera cues) are the solid middle.</p>
+<p class="vz-bar-note">Each model's two scores, 1 to 5. Tap one to open its page. Top right is where to be: the tripwire has the highest payoff, and is a 4 on feasibility now that fiber has taken out its long radio link; its field tests still have to run. M1 (cheap mic-array nodes), M4 (raising them up) and M10 (adding radio and camera cues) are the solid middle.</p>
 
 <details class="layer" markdown="block">
 <summary><span class="layer-title">The scores as a table</span><span class="layer-sub">Each model's feasibility, payoff, unit cost and status, and how the scores are set</span></summary>
 
-Each model gets two scores. **Feasible** runs from 1 (not feasible now) to 5 (proven, build today). **Payoff** runs from 1 to 5 for how much it would matter to units in the field, against small drones including fibre-optic FPVs, if it works. Models rated below 3 (perch-and-listen drones, flying microphone swarms, and fibre-optic distributed acoustic sensing) have been dropped. See [how ratings work](#how-ratings-work).
+Each model gets two scores. **Feasible** runs from 1 (not feasible now) to 5 (proven, build today). **Payoff** runs from 1 to 5 for how much it would matter to units in the field, against small drones including fiber-optic FPVs, if it works. Models rated below 3 (perch-and-listen drones, flying microphone swarms, and fiber-optic distributed acoustic sensing) have been dropped. See [how ratings work](#how-ratings-work).
 
 | # | Model | Feasible | Payoff | Unit cost | Status |
 |---|---|:-:|:-:|---|---|
-| UC | [Drone-laid tripwire (use case: M3 nodes laid by M7)]({{ site.baseurl }}{% link models/tripwire.md %}) | <span class="score score-hi">4</span> | <span class="score score-hi">5</span> | ~$2.1–3.5k package + ~$1.6–6.3k/yr re-lays | Highest payoff; fibre replaced the radio link home |
+| UC | [Drone-laid tripwire (use case: M3 nodes laid by M7)]({{ site.baseurl }}{% link models/tripwire.md %}) | <span class="score score-hi">4</span> | <span class="score score-hi">5</span> | ~$2.1–3.5k package + ~$1.6–6.3k/yr re-lays | Highest payoff; fiber replaced the radio link home |
 | M1 | [Fixed ground mic-array mesh]({{ site.baseurl }}{% link models/m01-ground-array-mesh.md %}) | <span class="score score-hi">4</span> | <span class="score score-hi">4</span> | $60–120 | Recommended core |
 | M2 | [Phone-based sensor network]({{ site.baseurl }}{% link models/m02-phone-network.md %}) | <span class="score score-hi">5</span> | <span class="score score-mid">3</span> | $100–500 | Proven at scale (Ukraine) |
 | M3 | [Single-mic nodes + time-difference]({{ site.baseurl }}{% link models/m03-single-mic-tdoa.md %}) | <span class="score score-mid">3</span> | <span class="score score-mid">3</span> | $30–50 | Cheapest, harder to make work |
@@ -102,7 +102,7 @@ Counter-drone sensing has split into a few camps. Each one is good at something,
 
 **What falls short, and why.** The blind spots are exactly where drones are moving.
 
-- **Radio detectors** hear radio, not drones. Fibre-optic FPVs and pre-programmed drones are invisible to them, and they rarely give a position to put on a map.
+- **Radio detectors** hear radio, not drones. Fiber-optic FPVs and pre-programmed drones are invisible to them, and they rarely give a position to put on a map.
 - **Radar** is accurate, but it transmits all the time, so it can be found and targeted. It also needs line of sight and costs $40k–160k a unit.
 - **Cameras**, even WISP, can't see a low drone behind trees, buildings or a ridge.
 - **Premium acoustic arrays** work, but they are single expensive sensors sold through prime contractors. Even they top out at a few hundred yards, so better hardware alone doesn't buy more range.
@@ -112,17 +112,17 @@ Counter-drone sensing has split into a few camps. Each one is good at something,
 
 - **Drones cause about 80% of casualties**, by analysts' estimates ([NPR, Oct 2026](https://www.tpr.org/news/2026-10-05/drones-buzz-overhead-troops-hunker-underground-in-ukraines-hellish-kill-zone)).
 - **Troops survive mainly by not moving:** underground, under nets, hiding when they hear a drone, taking hours to cover half a mile and going months without rotation (same source). That is coping, not protection.
-- **The fastest-growing threat beats the detectors units carry.** Fibre-optic FPVs send no radio, so radio detectors miss them ([Kyiv Independent](https://kyivindependent.com/as-russias-fiber-optic-drones-flood-the-battlefield-ukraine-is-racing-to-catch-up/)); they are 30–50% or more of FPVs in some sectors.
+- **The fastest-growing threat beats the detectors units carry.** Fiber-optic FPVs send no radio, so radio detectors miss them ([Kyiv Independent](https://kyivindependent.com/as-russias-fiber-optic-drones-flood-the-battlefield-ukraine-is-racing-to-catch-up/)); they are 30–50% or more of FPVs in some sectors.
 - **The expensive answer isn't there.** We found no reporting of Anduril's WISP at Ukraine's front ([its published use](https://dronexl.co/2026/08/06/anduril-wisp-washington-national-guard-drones-birds/) is US domestic security), and cameras can't see through tree lines anyway.
 - **Ukrainian builders are moving the same way.** Zvook announced an acoustic FPV sensor for front-line positions in January 2026 ([Militarnyi](https://militarnyi.com/en/news/ukraine-develops-acoustic-detector-for-fpv-drones/)). It's now on sale at about $834–950 per sensor, but there's no independent test or reported deployment. A US startup, RADD, is building a soldier-worn version, and Denmark's Komodo already sells a sensor that drones can drop.
 
-- **What troops have doesn't cover it.** Against fibre-optic FPVs the baseline is ears, eyes and a firearm. Jamming is failing ("Jamming no longer works", says a brigade EW commander), nets leak, and an AI turret is in only a handful of units ([what troops have]({{ site.baseurl }}{% link research/frontline-kit.md %})).
+- **What troops have doesn't cover it.** Against fiber-optic FPVs the baseline is ears, eyes and a firearm. Jamming is failing ("Jamming no longer works", says a brigade EW commander), nets leak, and an AI turret is in only a handful of units ([what troops have]({{ site.baseurl }}{% link research/frontline-kit.md %})).
 
-**What a minute is worth.** Weapons need only seconds, so at a fixed position a minute adds little. Its value is a go/no-go call for people about to move. Against fibre-optic FPVs, which nothing else detects, our central guess is that a forward line averts about **1–4 of every 100 drone casualties** (range 0.3–14) ([estimate]({{ site.baseurl }}{% link research/lives-model.md %})). Front-line interviews (T18) would narrow that; the next real test is radio under trees (T9).
+**What a minute is worth.** Weapons need only seconds, so at a fixed position a minute adds little. Its value is a go/no-go call for people about to move. Against fiber-optic FPVs, which nothing else detects, our central guess is that a forward line averts about **1–4 of every 100 drone casualties** (range 0.3–14) ([estimate]({{ site.baseurl }}{% link research/lives-model.md %})). Front-line interviews (T18) would narrow that; the next real test is radio under trees (T9).
 
 **The build path.** The [MVP path]({{ site.baseurl }}{% link mvp.md %}) takes the tripwire from an $80 radio test to a six-listener line in five gated layers, about $600–750 in all, with parts you can order today.
 
-**What failed outright.** Microphones on flying drones don't work: the listener's own rotors sit inches from the mic, and published measurements put the target 10–30 times quieter than the drone's own noise. Perching drones (land, stop the motors, listen) fix that, but landing reliably and keeping them powered is still research. Fibre-optic acoustic sensing turns a cable into a long line of microphones, but buried fibre hears airborne sound poorly and has only detected vehicles close to the cable. All three rated below 3 and are no longer on this site.
+**What failed outright.** Microphones on flying drones don't work: the listener's own rotors sit inches from the mic, and published measurements put the target 10–30 times quieter than the drone's own noise. Perching drones (land, stop the motors, listen) fix that, but landing reliably and keeping them powered is still research. Fiber-optic acoustic sensing turns a cable into a long line of microphones, but buried fiber hears airborne sound poorly and has only detected vehicles close to the cable. All three rated below 3 and are no longer on this site.
 
 </details>
 
@@ -148,7 +148,7 @@ Many of the counter-drone SBIR topics we are targeting ask for **passive** detec
 So every model on this site has to work without an active emitter:
 
 - **Listening is silent.** Nodes detect, classify and take a bearing on the device and emit nothing while they do it.
-- **Reports are short and rare.** A node sends a few-byte detection report only when it hears something, at low power, never a continuous signal. Where that is still too much, a node can be wired, use fibre, or store reports and burst them later.
+- **Reports are short and rare.** A node sends a few-byte detection report only when it hears something, at low power, never a continuous signal. Where that is still too much, a node can be wired, use fiber, or store reports and burst them later.
 - **No radar in our kit.** We add no emitter of our own. If a site already runs a radar, its track can be fused in, but nothing we field depends on it.
 - **Other sensors must be passive too.** Passive RF (receive only) and cameras (visible or thermal) qualify; anything that illuminates the target does not.
 
@@ -157,13 +157,13 @@ So every model on this site has to work without an active emitter:
 <details class="layer" id="the-layer-the-others-miss" markdown="block">
 <summary><span class="layer-title">The layer the others miss.</span><span class="layer-sub">Positioning: the second box beside the radio detector, honest about range, feeding Lattice</span></summary>
 
-For front-line positions: *an acoustic alarm that hears the FPVs radio detectors can't, especially fibre-optic ones: the second box next to the radio detector.*
+For front-line positions: *an acoustic alarm that hears the FPVs radio detectors can't, especially fiber-optic ones: the second box next to the radio detector.*
 
-**Who we compete with.** We don't compete with Sky Fortress, Anduril or radar: they serve the rear or aren't at the front. At a position, the bar is a **soldier's own ears**, and nobody has measured how early a sentry hears a fibre-optic FPV. The partner is the **radio detector** the unit already carries. The direct competitors are **Zvook's NW0**, on sale at about $834–950 per sensor but needing 15–18 W of power, and **RADD's GLADIUS**, a soldier-worn US sensor. Both are claims only. **Per sensor we are roughly 3–50x cheaper than NW0**: $17–50 per tripwire listener and about $125–300 per hand-placed node, with no power supply. Cost per position depends on real range, which nobody has measured for either. At the position, AI turrets now reaching units carry their own sensors, so forward warning is where we stand alone. A Ukrainian LoRa acoustic module (DroneAlert) is listed at about $211, so only our throwaway listener is clearly cheaper than the market. We also offer **weeks on a battery and lines laid forward**, which neither NW0 nor RADD does, and only distance gives a minute of warning ([build or scrap?]({{ site.baseurl }}{% link research/build-or-scrap.md %})). [The priority list]({{ site.baseurl }}{% link research/competitors.md %}#the-priority-list).
+**Who we compete with.** We don't compete with Sky Fortress, Anduril or radar: they serve the rear or aren't at the front. At a position, the bar is a **soldier's own ears**, and nobody has measured how early a sentry hears a fiber-optic FPV. The partner is the **radio detector** the unit already carries. The direct competitors are **Zvook's NW0**, on sale at about $834–950 per sensor but needing 15–18 W of power, and **RADD's GLADIUS**, a soldier-worn US sensor. Both are claims only. **Per sensor we are roughly 3–50x cheaper than NW0**: $17–50 per tripwire listener and about $125–300 per hand-placed node, with no power supply. Cost per position depends on real range, which nobody has measured for either. At the position, AI turrets now reaching units carry their own sensors, so forward warning is where we stand alone. A Ukrainian LoRa acoustic module (DroneAlert) is listed at about $211, so only our throwaway listener is clearly cheaper than the market. We also offer **weeks on a battery and lines laid forward**, which neither NW0 nor RADD does, and only distance gives a minute of warning ([build or scrap?]({{ site.baseurl }}{% link research/build-or-scrap.md %})). [The priority list]({{ site.baseurl }}{% link research/competitors.md %}#the-priority-list).
 
 **Be honest about range.** The only measured range for cheap microphones is about 160–200 ft against a consumer drone. In a quiet field, people heard the same class of drone faintly at 490 ft. No study has flown an FPV at distance ([what's measured]({{ site.baseurl }}{% link research/competitors.md %}#what-is-actually-measured)).
 
-Being passive sets us apart from radar, not from everyone: cameras such as Anduril's WISP are passive too. What sets us apart is **hearing what they can't see**: a small drone flying low behind trees, buildings or a ridge, including fibre-optic FPVs that give off no radio signal for a detector to catch.
+Being passive sets us apart from radar, not from everyone: cameras such as Anduril's WISP are passive too. What sets us apart is **hearing what they can't see**: a small drone flying low behind trees, buildings or a ridge, including fiber-optic FPVs that give off no radio signal for a detector to catch.
 Against small quadcopters even premium arrays reach only a few hundred yards, so this is an **early-warning perimeter that cues cameras and other sensors**, At a position that gives seconds of warning; laid 1.2–2.5 mi forward, about a minute. It is not wide-area coverage.
 
 The first integration target is **Anduril Lattice**, which the US Army has picked as its counter-drone backbone. A cheap passive sensor that feeds Lattice makes the expensive systems better instead of competing with them. See [Lattice integration]({{ site.baseurl }}{% link research/integration.md %}#anduril-lattice).
@@ -184,7 +184,7 @@ The first integration target is **Anduril Lattice**, which the US Army has picke
 | **Persistence** | Can it run unattended for weeks or months? |
 | **Deployability** | Can non-specialists put it out and keep it running at scale? |
 
-**Payoff** is scored separately, 1–5: how much the model would matter for protecting units in the field against small drones, including fibre-optic FPVs, if it works. A model can be easy and unimportant (phones in a rear area) or hard and decisive (the drone-laid tripwire). Read the two together.
+**Payoff** is scored separately, 1–5: how much the model would matter for protecting units in the field against small drones, including fiber-optic FPVs, if it works. A model can be easy and unimportant (phones in a rear area) or hard and decisive (the drone-laid tripwire). Read the two together.
 
 The single most important number is **cost per square mile covered = node cost × node density**. Node density is driven by detection range, which differs hugely by target. See [Range and cost-per-square-mile model]({{ site.baseurl }}{% link research/range-and-cost.md %}).
 

@@ -1,4 +1,4 @@
-"""Band model: long polyester strap loops on cheap rods that carry a fibre FPV's line into a guarded blade.
+"""Band model: long polyester strap loops on cheap rods that carry a fiber FPV's line into a guarded blade.
 
 The line is hand-laid. The band is 1/2 in polyester packing strap, a closed loop out and back,
 joined with a strapping seal. A flat strap cannot roll, so everything on it can point one way, and
@@ -6,16 +6,16 @@ it stretches far less than nylon. Every 1,320 ft of line has one drive post in i
 car power-window motor turning a printed pulley for the loop on each side. Each loop runs 660 ft
 to an idler post, a T-post with a printed pulley and a hanging weight that holds the tension. The
 top run rides about 32 in up, outer face up; the return run hangs a few inches under it, outer face
-down. Between the posts the strap rides on printed rollers on 3/8 in fibreglass fence rods, one
+down. Between the posts the strap rides on printed rollers on 3/8 in fiberglass fence rods, one
 every 50 ft; the return run's roller is split so the fins pass down its middle.
 
 A stiff printed fin stands on the outer face every 4 ft. Each has a forward-facing V slot, about
-1/2 in wide at the mouth and narrowing to a throat thinner than the fibre. When the strap moves, a
-fibre lying across it is held back by the drag of its own legs, so it runs down the V and jams in
-the throat. The wedge multiplies that drag into a pinch, so the harder the fibre pulls back the
+1/2 in wide at the mouth and narrowing to a throat thinner than the fiber. When the strap moves, a
+fiber lying across it is held back by the drag of its own legs, so it runs down the V and jams in
+the throat. The wedge multiplies that drag into a pinch, so the harder the fiber pulls back the
 tighter it holds. At each rod a blade segment sits in a guarded channel beside the fin's path, at
 the throat's height, above the strap. Each fin has a groove the blade passes through, so the blade
-crosses the throat and shears what is held there. The strap powers the cut, the fibre's tension
+crosses the throat and shears what is held there. The strap powers the cut, the fiber's tension
 plays no part, and the strap never comes near the edge.
 
 It runs only when the tripwire's radio trigger says a drone is near, plus one clearing stroke an
@@ -24,23 +24,23 @@ heartbeat runs clearing strokes more often, so jamming the link slows the line b
 A drop in motor current means a broken loop, and the box reports it over the same radio.
 
 Not costed here: the line needs a mown strip about 3 ft either side, or to run above what grows
-there. A wedge that grabs a fibre also grabs a grass blade.
+there. A wedge that grabs a fiber also grabs a grass blade.
 
-Prints: sag and stretch, the fin's grip, line speed, the longest wait from a fibre landing to its
+Prints: sag and stretch, the fin's grip, line speed, the longest wait from a fiber landing to its
 cut and how far out the line must sit, drag, torque and power at a drive post, the daily energy
 budget, and parts per mile.
 
     py band_model.py [--rod 50] [--loop 660] [--rpm 90] [--pulley 8] [--catch 4] [--cut-lb 1] [--mu 0.05]
 
 Stdlib only. Every number marked ASSUME is a planning number, not a measurement. Whether the fin
-catches a fibre from leg drag alone, the force to shear it, and the roller drag set whether this
+catches a fiber from leg drag alone, the force to shear it, and the roller drag set whether this
 works at all, and all three are guesses until tested.
 """
 import argparse, math
 
 MILE = 5280.0
 LBF = 4.448
-DRONE_MPH = 43.0           # a fibre FPV's top speed (threat-profile)
+DRONE_MPH = 43.0           # a fiber FPV's top speed (threat-profile)
 
 # ---- the band ---------------------------------------------------------------------------------
 LINE = "1/2 in polyester strap, 0.028 in, 800 lb"
@@ -55,14 +55,14 @@ TENSION_LB = 20.0          # a hanging weight at each idler ASSUME
 MISALIGN_DEG = 1.0         # rods off a straight line, so the strap presses on each roller ASSUME
 MU = 0.05                  # printed roller on a steel pin, as a drag fraction ASSUME
 CATCH_LB = 0.01            # a fin pushing through a roller or past the blade ASSUME
-CUT_LB = 1.0               # extra pull while a fin carries a fibre across the blade ASSUME (R4)
+CUT_LB = 1.0               # extra pull while a fin carries a fiber across the blade ASSUME (R4)
 
 # ---- the fin's grip ---------------------------------------------------------------------------
 FIBRE_LB_FT = 0.00004      # 0.06 g a metre
-FIBRE_MU = 0.5             # fibre dragged over grass ASSUME
-LEG_FT = 300               # fibre on the ground either side that the fin drags ASSUME
+FIBRE_MU = 0.5             # fiber dragged over grass ASSUME
+LEG_FT = 300               # fiber on the ground either side that the fin drags ASSUME
 WEDGE_DEG = 5              # half-angle of the V at the throat
-WEDGE_MU = 0.3             # printed plastic on fibre coating ASSUME
+WEDGE_MU = 0.3             # printed plastic on fiber coating ASSUME
 
 # ---- the drive --------------------------------------------------------------------------------
 MOTOR = "12 V car power-window motor (worm, sealed)"
@@ -79,7 +79,7 @@ WINTER_SUN_H = 1.5         # full-sun hours a day in a Ukrainian December ASSUME
 SOLAR_EFF = 0.7            # panel to battery, PWM controller, dirt ASSUME
 
 # ---- parts, $ each, small batch (retail listings 2026-10 unless est.) --------------------------
-P_ROD = 2.0                # 3/8 x 48 in fibreglass fence rod, $1.99-2.49
+P_ROD = 2.0                # 3/8 x 48 in fiberglass fence rod, $1.99-2.49
 P_GUIDE = 0.6              # printed head, two rollers (one split) on steel pins (est.)
 P_BLADE = 0.05             # one segment snapped off an 18 mm utility blade (est.)
 P_CATCH = 0.04             # printed PETG fin, snapped through a hole punched in the strap (est.)
@@ -107,7 +107,7 @@ def main():
     ap.add_argument("--rpm", type=float, default=90.0, help="drive pulley rpm under load ASSUME")
     ap.add_argument("--pulley", type=float, default=8.0, help="in, drive pulley diameter")
     ap.add_argument("--catch", type=float, default=4.0, help="ft between fins on the strap")
-    ap.add_argument("--cut-lb", type=float, default=CUT_LB, help="lbf to carry a fibre across the blade ASSUME")
+    ap.add_argument("--cut-lb", type=float, default=CUT_LB, help="lbf to carry a fiber across the blade ASSUME")
     ap.add_argument("--mu", type=float, default=MU, help="drag fraction at each roller ASSUME")
     a = ap.parse_args()
 
@@ -125,20 +125,20 @@ def main():
     leg_oz = FIBRE_LB_FT * LEG_FT * FIBRE_MU * 16
     pinch_oz = leg_oz / (2 * math.sin(math.radians(WEDGE_DEG)))
     lock = math.tan(math.radians(WEDGE_DEG)) < WEDGE_MU
-    print(f"\nThe fin's grip: {LEG_FT} ft of fibre dragged over grass pulls back about {leg_oz:.1f} oz a leg; "
+    print(f"\nThe fin's grip: {LEG_FT} ft of fiber dragged over grass pulls back about {leg_oz:.1f} oz a leg; "
           f"a {WEDGE_DEG} deg wedge")
     print(f"  turns that into about {pinch_oz:.1f} oz of pinch each side, and it "
           f"{'locks' if lock else 'does NOT lock'} (tan {WEDGE_DEG} deg = "
           f"{math.tan(math.radians(WEDGE_DEG)):.2f} vs friction {WEDGE_MU}).")
-    print(f"  The cut force runs through the fin, not the fibre, so the grip only has to stop it slipping out.")
+    print(f"  The cut force runs through the fin, not the fiber, so the grip only has to stop it slipping out.")
 
     fps = a.rpm * math.pi * a.pulley / 12 / 60
     wait_s = (a.catch + a.rod) / fps
     drone_fps = DRONE_MPH * 5280 / 3600
     print(f"\nLine speed {fps:.1f} ft/s ({a.rpm:.0f} rpm on an {a.pulley:.0f} in pulley).")
-    print(f"  Longest wait from a fibre landing to its cut: a fin {a.catch:.0f} ft away, then one rod "
+    print(f"  Longest wait from a fiber landing to its cut: a fin {a.catch:.0f} ft away, then one rod "
           f"spacing: {wait_s:.0f} s.")
-    print(f"  A drone at {DRONE_MPH:.0f} mph flies {wait_s * drone_fps:,.0f} ft meanwhile; add the fibre's fall "
+    print(f"  A drone at {DRONE_MPH:.0f} mph flies {wait_s * drone_fps:,.0f} ft meanwhile; add the fiber's fall "
           f"time and trigger lag to get how far out the line must sit.")
 
     # drag of one loop: both runs press on every roller, and every fin pushes through rollers and past blades
@@ -177,7 +177,7 @@ def main():
     parts = [
         (f"{LINE}, {line_ft:,.0f} ft, {loops} seals", line_ft * LINE_PER_FT + loops * P_SEAL),
         (f"Fins, {catches:,}", catches * P_CATCH),
-        (f"Fibreglass rods with roller heads and a blade, {rods}", rods * (P_ROD + P_GUIDE + P_BLADE)),
+        (f"Fiberglass rods with roller heads and a blade, {rods}", rods * (P_ROD + P_GUIDE + P_BLADE)),
         (f"Idler posts, {idlers}: T-post, pulley head, weight", idlers * (P_TPOST + P_IDLER)),
         (f"Drive posts, {drives} at ${drive_each:.0f}", drives * drive_each),
         ("End anchors and guys, 2", 2 * P_END),

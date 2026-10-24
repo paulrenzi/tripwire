@@ -142,7 +142,7 @@ Primary references for the qualitative CG/CP criterion and the simplified calcul
 
 ## Body, balance and harness
 
-The body retains the specified 0.24 x 19.69 in fibreglass spine, 2.76 in nose/soil stop, flat-top 18650 open snap cradle, axial sleeve, integral post and wire gutters. Three short 0.234 in nominal press lands sit in a 0.250 in relieved teardrop bore; the coupon determines the actual fit. Four 0.047 in thick, 0.71 in long cantilevers retain the cell through a 0.66 in throat with lead-in ramps. Axial end walls take impact load rather than the flexible latch tips. The rod tip is a 0.47 in cone with a 0.024 in blunt point for the nominal CAD envelope.
+The body retains the specified 0.24 x 19.69 in fiberglass spine, 2.76 in nose/soil stop, flat-top 18650 open snap cradle, axial sleeve, integral post and wire gutters. Three short 0.234 in nominal press lands sit in a 0.250 in relieved teardrop bore; the coupon determines the actual fit. Four 0.047 in thick, 0.71 in long cantilevers retain the cell through a 0.66 in throat with lead-in ramps. Axial end walls take impact load rather than the flexible latch tips. The rod tip is a 0.47 in cone with a 0.024 in blunt point for the nominal CAD envelope.
 
 The mass solver moves the post and its sleeve until its X/Y axis agrees with the recomputed dart centre of mass. The nominal CG is **(10.891, 0.243, 0.337) in**; the hanger is **X 10.891 in, Y 0.243 in** from the tip/rod datum. Residual X error is 0.000076 in. This numerical residual is not a real assembly tolerance; weighed stock and printed mass control actual balance.
 
@@ -186,7 +186,7 @@ Four-dart kit bought hardware:
 
 | Item | Quantity |
 | --- | --- |
-| 0.24 x 19.69 in fibreglass rods | 4 |
+| 0.24 x 19.69 in fiberglass rods | 4 |
 | XIAO ESP32S3 + Wio-SX1262 kits, with both FPC antennas | 4 |
 | INMP441 breakouts | 4 |
 | Flat-top 18650 cells with factory-welded insulated leads | 4 |
@@ -200,7 +200,7 @@ Four-dart kit bought hardware:
 | PTFE bearing film | 1 annular strip |
 | Power pair and 5 short mic wires | 4 wired sets |
 
-Stake option adds one 1.57 in fibreglass offcut and five installation ties; it reuses one complete pod and one cell. Dummy option adds two M2x8 screws, two M2 nuts and the four weighed ballast portions. `out/kits.json` lists printed quantities separately for each option.
+Stake option adds one 1.57 in fiberglass offcut and five installation ties; it reuses one complete pod and one cell. Dummy option adds two M2x8 screws, two M2 nuts and the four weighed ballast portions. `out/kits.json` lists printed quantities separately for each option.
 
 Use the Anycubic Vyper 9.65 x 9.65 x 10.24 in, dry PETG, 0.4 mm nozzle (0.016 in), 0.20 mm layers (0.008 in), four perimeters, six top/bottom layers and 100% infill. Start within the filament manufacturer temperature range (typically 455 °F nozzle/176 °F bed), then tune adhesion and fit. Use slow external walls and first layer; do not let supports lock snap reliefs or fill teardrop ducts. All supplied orientations fit the bed.
 
@@ -223,7 +223,7 @@ Use the Anycubic Vyper 9.65 x 9.65 x 10.24 in, dry PETG, 0.4 mm nozzle (0.016 in
 
 ## Hand-placed stake adapter
 
-Use a 48 in fibreglass garden/driveway stake. `Measurements.stake_d` is the single unmeasured OD parameter, default 0.39 in. Two 90 degree V saddles with independent zip ties accept 0.31–0.51 in without reprinting; the circle axis rises as radius*sqrt(2), and all three nominal/end-point sizes are intersected against the clamp. No nominal 0.394 in closed bore is being passed off as an adjustable clamp. A short 0.23–0.24 in fibreglass offcut (1.57 in long) joins the adapter sleeve to the same pod socket; the external bracket stays clear of the pod neck.
+Use a 48 in fiberglass garden/driveway stake. `Measurements.stake_d` is the single unmeasured OD parameter, default 0.39 in. Two 90 degree V saddles with independent zip ties accept 0.31–0.51 in without reprinting; the circle axis rises as radius*sqrt(2), and all three nominal/end-point sizes are intersected against the clamp. No nominal 0.394 in closed bore is being passed off as an adjustable clamp. A short 0.23–0.24 in fiberglass offcut (1.57 in long) joins the adapter sleeve to the same pod socket; the external bracket stays clear of the pod neck.
 
 Place the pod midway up the stake, not on its 48 in top. Insert the stake by hand, then slide/tie the adapter until the actual mic port is 19.69 in above the actual soil. The depicted burial is 3.94 in only; insertion depth does not determine port height. A separate retaining tie goes around the pod neck and stake through its own adapter tunnel; the offcut is a locator, not a friction-only restraint. Two additional ties hold the separate printed 18650 snap cradle lower down (five stake-installation ties total). This retains the owned cell and direct BAT wiring rather than assuming a USB power bank stays awake at the listener load. The stake battery holder is an optional replacement for the flying body, not extra flight mass. Its cell/cable configuration is shown in stake_assembled.step and stake.glb.
 

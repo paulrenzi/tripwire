@@ -1,6 +1,6 @@
 # XIAO listener mechanical prototype
 
-Open [REVIEW.html](REVIEW.html) for the current render gallery and [DESIGN.md](DESIGN.md) for sources, dimensions, masses, print settings and assembly. The listener uses the owned Seeed XIAO ESP32S3 + Wio-SX1262 kit, INMP441 breakout, one 18650 cell and 0.24 x 19.69 in fibreglass rod. The mic port is 19.69 in above soil.
+Open [REVIEW.html](REVIEW.html) for the current render gallery and [DESIGN.md](DESIGN.md) for sources, dimensions, masses, print settings and assembly. The listener uses the owned Seeed XIAO ESP32S3 + Wio-SX1262 kit, INMP441 breakout, one 18650 cell and 0.24 x 19.69 in fiberglass rod. The mic port is 19.69 in above soil.
 
 Included: the one-servo four-dart X500 harness, adjustable 0.31–0.51 in stake adapter and cell holder, and an inert dummy with four ballast portions matching the model's mass and XYZ balance. Nothing has been printed, dropped or flown. Antenna envelopes, B2B spacing, actual weights and manufacturing fits remain MEASURE.
 

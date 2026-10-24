@@ -21,7 +21,7 @@ planned lay: 1.0 h with 6 packs and a 2-channel charger; 3.3 h with 2 packs and 
 - 18 mph: 12
 
 ## Simulated lays (1000 each)
-| Case | Whole | Survives any one loss | Darts used | 90th pct darts | Sorties | Hours | Worst warning, 10th pct | Drones lost | Survives a fibre cut |
+| Case | Whole | Survives any one loss | Darts used | 90th pct darts | Sorties | Hours | Worst warning, 10th pct | Drones lost | Survives a fiber cut |
 |---|---|---|---|---|---|---|---|---|---|
 | Last plan: radio trunks, +/-45, GPS jammed, confirm | 99% | 93% | 34.9 | 40 | 9.3 | 2.2 h | 58 s | 0.20 | - |
 | This plan, GPS working, no confirm | 8% | 2% | 16.0 | 16 | 5.1 | 1.0 h | none (a track no dart hears) | 0.12 | 31% |
@@ -30,7 +30,7 @@ planned lay: 1.0 h with 6 packs and a 2-channel charger; 3.3 h with 2 packs and 
 |   landings 95% upright | 100% | 93% | 19.8 | 23 | 6.3 | 1.2 h | 58 s | 0.12 | 99% |
 |   radio hop 800 ft, not 980 | 99% | 91% | 26.7 | 31 | 8.0 | 1.7 h | 58 s | 0.16 | 97% |
 |   compass 4 degrees, not 2 | 89% | 82% | 22.7 | 27 | 7.2 | 1.5 h | none (a track no dart hears) | 0.16 | 97% |
-|   1 fibre in 5 breaks while laid | 98% | 87% | 23.3 | 28 | 7.8 | 1.7 h | 58 s | 0.14 | 93% |
+|   1 fiber in 5 breaks while laid | 98% | 87% | 23.3 | 28 | 7.8 | 1.7 h | 58 s | 0.14 | 93% |
 |   15 mph wind | 99% | 91% | 22.1 | 26 | 8.1 | 1.7 h | 58 s | 0.17 | 97% |
 |   14 F, packs not warmed | 98% | 89% | 22.5 | 27 | 17.0 | 6.0 h | 58 s | 0.35 | 97% |
 

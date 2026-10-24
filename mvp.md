@@ -6,7 +6,7 @@ nav_primary: 5
 # The MVP path: $80 to a working line
 {: .no_toc }
 
-<p class="vz-lede">The <a href="{{ site.baseurl }}{% link models/tripwire.md %}">tripwire</a> built in five cheap layers. Each answers one question, and its gate decides whether to buy the next. <strong>The MVP is layer 5:</strong> six hand-placed listeners hear a real drone and alert a screen at the base box over fibre, while nothing at the unit transmits.</p>
+<p class="vz-lede">The <a href="{{ site.baseurl }}{% link models/tripwire.md %}">tripwire</a> built in five cheap layers. Each answers one question, and its gate decides whether to buy the next. <strong>The MVP is layer 5:</strong> six hand-placed listeners hear a real drone and alert a screen at the base box over fiber, while nothing at the unit transmits.</p>
 
 <div class="stats">
   <div class="stat"><p class="stat-num">$80</p><p class="stat-label">for the first step, the Saturday test</p></div>
@@ -58,7 +58,7 @@ These are standard acoustics estimates, not measurements of our kit.
   <a class="vz-rung" href="#layer-0"><span class="vz-rung-n">0</span><span class="vz-rung-q"><strong>Where does a minute help most?</strong> <span class="vz-rung-meta">T18 · $0 · gate: None: sizes the payoff</span></span><span class="vz-rung-track"><span class="vz-bar vz-bar-us" style="width:0.6%"></span><span class="vz-bar vz-bar-us-light" style="width:0%"></span></span><span class="vz-rung-tot">$0</span></a>
   <a class="vz-rung" href="#layer-1-the-radio-test-t9"><span class="vz-rung-n">1</span><span class="vz-rung-q"><strong>Do dart-to-dart hops hold at 660–980 ft?</strong> <span class="vz-rung-meta">T9 · ~$65–80 · gate: T9's marks</span></span><span class="vz-rung-track"><span class="vz-bar vz-bar-us" style="width:7.1%"></span><span class="vz-bar vz-bar-us-light" style="width:0.0%"></span></span><span class="vz-rung-tot">~$80</span></a>
   <a class="vz-rung" href="#layer-2-hear-a-drone-from-near-the-ground-t11"><span class="vz-rung-n">2</span><span class="vz-rung-q"><strong>How far does a mic near the ground hear a drone?</strong> <span class="vz-rung-meta">T11 · ~$50 · gate: ≥ 330 ft</span></span><span class="vz-rung-track"><span class="vz-bar vz-bar-us" style="width:11.6%"></span><span class="vz-bar vz-bar-us-light" style="width:0.0%"></span></span><span class="vz-rung-tot">~$130</span></a>
-  <a class="vz-rung" href="#layer-3-fibre-home-t21"><span class="vz-rung-n">3</span><span class="vz-rung-q"><strong>Does a tip's light get home down the fibre?</strong> <span class="vz-rung-meta">T21 · ~$110–470 · gate: Every frame, 10 dB spare</span></span><span class="vz-rung-track"><span class="vz-bar vz-bar-us" style="width:21.3%"></span><span class="vz-bar vz-bar-us-light" style="width:31.999999999999996%"></span></span><span class="vz-rung-tot">~$240–600</span></a>
+  <a class="vz-rung" href="#layer-3-fiber-home-t21"><span class="vz-rung-n">3</span><span class="vz-rung-q"><strong>Does a tip's light get home down the fiber?</strong> <span class="vz-rung-meta">T21 · ~$110–470 · gate: Every frame, 10 dB spare</span></span><span class="vz-rung-track"><span class="vz-bar vz-bar-us" style="width:21.3%"></span><span class="vz-bar vz-bar-us-light" style="width:31.999999999999996%"></span></span><span class="vz-rung-tot">~$240–600</span></a>
   <a class="vz-rung" href="#layer-4-battery-and-cold-t12"><span class="vz-rung-n">4</span><span class="vz-rung-q"><strong>Does a listener last weeks, in the cold?</strong> <span class="vz-rung-meta">T12 · ~$55–175 · gate: ≥ 3 weeks</span></span><span class="vz-rung-track"><span class="vz-bar vz-bar-us" style="width:26.2%"></span><span class="vz-bar vz-bar-us-light" style="width:42.7%"></span></span><span class="vz-rung-tot">~$295–775</span></a>
   <a class="vz-rung" href="#layer-5-the-mvp-a-six-listener-line"><span class="vz-rung-n">5</span><span class="vz-rung-q"><strong>Does the whole chain work?</strong> <span class="vz-rung-meta">MVP · ~$250–350 · gate: 18 of 20 crossings in 10 s</span></span><span class="vz-rung-track"><span class="vz-bar vz-bar-us" style="width:48.4%"></span><span class="vz-bar vz-bar-us-light" style="width:51.6%"></span></span><span class="vz-rung-tot">~$545–1,125</span></a>
 </div>
@@ -72,7 +72,7 @@ These are standard acoustics estimates, not measurements of our kit.
 | [0](#layer-0) T18 | Where does a minute help most, and how would troops place a line? | $0 | $0 | None: sizes the payoff, shapes placement |
 | [1](#layer-1-the-radio-test-t9) T9 | Do dart-to-dart hops hold at 660–980 ft, in the open and across trees? | ~$65–80 | ~$80 | T9's marks, or margins that predict them |
 | [2](#layer-2-hear-a-drone-from-near-the-ground-t11) T11 | How far does a mic at 1.6–3.3 ft hear a drone? | ~$50 | ~$130 | ≥330 ft (sets spacing, so cost per km) |
-| [3](#layer-3-fibre-home-t21) T21 | Does a tip's light get home down the fibre, and what does it cost the battery? | ~$110–470 | ~$240–600 | Every frame with 10 dB to spare; battery cost measured |
+| [3](#layer-3-fiber-home-t21) T21 | Does a tip's light get home down the fiber, and what does it cost the battery? | ~$110–470 | ~$240–600 | Every frame with 10 dB to spare; battery cost measured |
 | [4](#layer-4-battery-and-cold-t12) T12 | Does a listener last weeks, in the cold, and what does its solar panel collect? | ~$55–175 | ~$295–775 | ≥3 weeks, cold loss and winter harvest measured |
 | [5](#layer-5-the-mvp-a-six-listener-line) MVP | Does the whole chain work? | ~$250–350 | ~$545–1,125 | 18/20 crossings in 10 s, <1 false alarm/day, silent |
 
@@ -82,12 +82,12 @@ Assumed owned: laptop, phone, USB power banks, soldering iron.
 
 ## Layer 0: ask alongside (T18, $0, not a gate) {#layer-0}
 
-Earlier warning against a threat nothing else detects (fibre-optic FPVs), at lower cost, is worth having; that is not tested here. 5–10 interviews ([questions]({{ site.baseurl }}{% link research/problem-check.md %}#the-next-step-ask-before-building-t18)) only tune the build: which moments matter most (sizes the [lives estimate]({{ site.baseurl }}{% link research/lives-model.md %})), and how troops would place listeners and a receiver.
+Earlier warning against a threat nothing else detects (fiber-optic FPVs), at lower cost, is worth having; that is not tested here. 5–10 interviews ([questions]({{ site.baseurl }}{% link research/problem-check.md %}#the-next-step-ask-before-building-t18)) only tune the build: which moments matter most (sizes the [lives estimate]({{ site.baseurl }}{% link research/lives-model.md %})), and how troops would place listeners and a receiver.
 
 <details class="layer" id="layer-1-the-radio-test-t9" markdown="block" open>
 <summary><span class="layer-title">Layer 1: radio test (T9), ~$80</span><span class="layer-sub">Two boards at 1.6–3.3 ft, dart to dart, across open ground, woods and hedgerows</span></summary>
 
-**Why first:** the hop along the row sets dart spacing, and so the cost of a line ([how]({{ site.baseurl }}{% link models/line-layout.md %})). It needs no drone, and every later layer reuses the boards. Alerts come home by fibre (layer 3), so the long radio leg to the unit is tested only for the fallback, run F.
+**Why first:** the hop along the row sets dart spacing, and so the cost of a line ([how]({{ site.baseurl }}{% link models/line-layout.md %})). It needs no drone, and every later layer reuses the boards. Alerts come home by fiber (layer 3), so the long radio leg to the unit is tested only for the fallback, run F.
 
 | Item | Buy | Alternatives |
 |---|---|---|
@@ -150,25 +150,25 @@ Run with leaves on now and leaves off in December.
 
 </details>
 
-<details class="layer" id="layer-3-fibre-home-t21" markdown="block">
-<summary><span class="layer-title">Layer 3: fibre home (T21), ~$110 on the bench, ~$470 with a real spool</span><span class="layer-sub">A board's alerts sent as light down FPV fibre to a base box, what it costs the battery, and whether a laid spool survives</span></summary>
+<details class="layer" id="layer-3-fiber-home-t21" markdown="block">
+<summary><span class="layer-title">Layer 3: fiber home (T21), ~$110 on the bench, ~$470 with a real spool</span><span class="layer-sub">A board's alerts sent as light down FPV fiber to a base box, what it costs the battery, and whether a laid spool survives</span></summary>
 
-**Why:** alerts come home by fibre, so the line's way home is a tip dart's light, not a radio the unit has to receive beside its own jammers. This proves a tip can send a few bytes down a full spool on a dart's battery ([design]({{ site.baseurl }}{% link models/line-layout.md %}#the-fibres-and-the-base-box)). Nothing at the base box transmits, so the silence check that layer 3 used to need comes free.
+**Why:** alerts come home by fiber, so the line's way home is a tip dart's light, not a radio the unit has to receive beside its own jammers. This proves a tip can send a few bytes down a full spool on a dart's battery ([design]({{ site.baseurl }}{% link models/line-layout.md %}#the-fibers-and-the-base-box)). Nothing at the base box transmits, so the silence check that layer 3 used to need comes free.
 
 {: .warning }
-> **Less firm than the other layers.** The sellers' pages wouldn't load on 2026-10-23, so these prices are from search listings, unconfirmed. The likely cheap light source is a fibre-to-the-home modem's laser at $5–9, from one unconfirmed listing. Until one arrives, the bench uses FPV fibre transceivers that already carry serial data, and swaps in that laser when it does.
+> **Less firm than the other layers.** The sellers' pages wouldn't load on 2026-10-23, so these prices are from search listings, unconfirmed. The likely cheap light source is a fiber-to-the-home modem's laser at $5–9, from one unconfirmed listing. Until one arrives, the bench uses FPV fiber transceivers that already carry serial data, and swaps in that laser when it does.
 
 | Item | Buy | Alternatives |
 |---|---|---|
-| **Reference link, ×2:** FPV fibre transceivers that carry serial data | NanoHD F3, "video + UART serial/CRSF", [Unmanned Tech, £29.69 each](https://www.unmannedtechshop.co.uk/collections/fibre-optic) | Sky and ground modules, [GetFPV, $110 each](https://www.getfpv.com/commercial-industry-drones/fiber-optics.html); Sky TX kit with 3 km of fibre, [Sigmanortec, ~€421](https://sigmanortec.ro/en/fiber-optic-fpv-kit-3km-with-sky-tx-module) |
-| **Bench fibre** | A short single-mode patch cord in the transceivers' connector, plus a fixed optical attenuator (search terms) | – |
+| **Reference link, ×2:** FPV fiber transceivers that carry serial data | NanoHD F3, "video + UART serial/CRSF", [Unmanned Tech, £29.69 each](https://www.unmannedtechshop.co.uk/collections/fibre-optic) | Sky and ground modules, [GetFPV, $110 each](https://www.getfpv.com/commercial-industry-drones/fiber-optics.html); Sky TX kit with 3 km of fiber, [Sigmanortec, ~€421](https://sigmanortec.ro/en/fiber-optic-fpv-kit-3km-with-sky-tx-module) |
+| **Bench fiber** | A short single-mode patch cord in the transceivers' connector, plus a fixed optical attenuator (search terms) | – |
 | **A real spool** (step 4 only) | 1 km canister, [GetFPV, about $360](https://www.getfpv.com/commercial-industry-drones/fiber-optics.html) | [2 km canister, GetFPV](https://www.getfpv.com/commercial-industry-drones/fiber-optic-canister-v2-2km.html); bulk G657A2 at about $30 a km, with a large minimum order ([Alibaba](https://electronics.alibaba.com/product/fiber-drone-cable)) |
-| **The cheap tip's light source** | The 1310 nm laser from a fibre-to-the-home modem, already joined to a lead of single-mode fibre, $5–9, buy-one minimum ([GoldSupplier](https://www.goldsupplier.com/provide/p100619675.html), one listing, unconfirmed). It is the part a $122 tip dart assumes | Branded pigtailed 1310 nm laser diodes, from about $328 ([MKS](https://np.d1.mks.com/f/fiber-pigtailed-laser-diodes)); the FPV fibre module makers' bare transmitter |
+| **The cheap tip's light source** | The 1310 nm laser from a fiber-to-the-home modem, already joined to a lead of single-mode fiber, $5–9, buy-one minimum ([GoldSupplier](https://www.goldsupplier.com/provide/p100619675.html), one listing, unconfirmed). It is the part a $122 tip dart assumes | Branded pigtailed 1310 nm laser diodes, from about $328 ([MKS](https://np.d1.mks.com/f/fiber-pigtailed-laser-diodes)); the FPV fiber module makers' bare transmitter |
 | **Current meter** | Layer 4's PPK2 | – |
 
 **Run**
 1. Pair the two transceivers on the patch cord. Feed a board's serial output, the 44-byte frame from [Build: software]({{ site.baseurl }}{% link build-software.md %}) at 9,600 baud, into one end and read it on a laptop at the other. Count frames for an hour.
-2. Add attenuation until frames drop. That is the margin. The fibre itself loses under 1 dB over 1.2 mi on paper.
+2. Add attenuation until frames drop. That is the margin. The fiber itself loses under 1 dB over 1.2 mi on paper.
 3. Measure the sending end's current: always on, and keyed only for alerts and the 10 s heartbeat, if it can be.
 4. Lay the real spool from the drone over plough, grass and a hedgerow, with the home end plugged in first. Count breaks (1 in 20 assumed).
 
@@ -177,9 +177,9 @@ Run with leaves on now and leaves off in December.
 </details>
 
 <details class="layer" id="layer-3-the-edge-receiver-t17" markdown="block">
-<summary><span class="layer-title">Fallback: silent edge receiver (T17), ~$90–130</span><span class="layer-sub">Only where fibre can't go: a receive-only board at the tree-line edge, wired to the dugout, proven silent with an SDR</span></summary>
+<summary><span class="layer-title">Fallback: silent edge receiver (T17), ~$90–130</span><span class="layer-sub">Only where fiber can't go: a receive-only board at the tree-line edge, wired to the dugout, proven silent with an SDR</span></summary>
 
-**Why:** where a tip dart can't be laid, or its fibre keeps being cut, the unit has to hear the line by radio without transmitting. This proves it can ([fallback design]({{ site.baseurl }}{% link models/tripwire.md %}#getting-alerts-out-of-the-trees)). Skip it if layer 3 passes.
+**Why:** where a tip dart can't be laid, or its fiber keeps being cut, the unit has to hear the line by radio without transmitting. This proves it can ([fallback design]({{ site.baseurl }}{% link models/tripwire.md %}#getting-alerts-out-of-the-trees)). Skip it if layer 3 passes.
 
 | Item | Buy | Alternatives |
 |---|---|---|
@@ -227,9 +227,9 @@ Run with leaves on now and leaves off in December.
 </details>
 
 <details class="layer" id="layer-5-the-mvp-a-six-listener-line" markdown="block">
-<summary><span class="layer-title">Layer 5: the MVP, six listeners, ~$250–350</span><span class="layer-sub">Hand-placed line 0.6–1.2 mi out, home on layer 3's fibre, real drone crossings</span></summary>
+<summary><span class="layer-title">Layer 5: the MVP, six listeners, ~$250–350</span><span class="layer-sub">Hand-placed line 0.6–1.2 mi out, home on layer 3's fiber, real drone crossings</span></summary>
 
-**Proves:** drone crosses → listener hears → alert hops along the row → the tip sends it down the fibre → the screen at the base box shows it, in time. One of the six carries layer 3's link as the tip; where fibre failed, the edge receiver stands in.
+**Proves:** drone crosses → listener hears → alert hops along the row → the tip sends it down the fiber → the screen at the base box shows it, in time. One of the six carries layer 3's link as the tip; where fiber failed, the edge receiver stands in.
 
 | Per listener | Source | Cost |
 |---|---|---|
@@ -279,8 +279,8 @@ A pass shows the idea works at small scale on US ground. It does not show it aga
 | 2 | Seeed XIAO ESP32S3 Sense (recorder) | [Amazon](https://www.amazon.com/dp/B0C69FFVHH) | $23.99 |
 | 2 | 48 in fiberglass stakes, 20-pack | [Amazon](https://www.amazon.com/dp/B0DF58T198) | $23.99 |
 | 2 | Anemometer (optional) | [Amazon](https://www.amazon.com/dp/B0D7Z43M9S) | $12.99 |
-| 3 | NanoHD F3 fibre transceiver, ×2 (listed, unconfirmed) | [Unmanned Tech](https://www.unmannedtechshop.co.uk/collections/fibre-optic) | £59.38 |
-| 3 | 1 km FPV fibre canister (step 4 only; listed, unconfirmed) | [GetFPV](https://www.getfpv.com/commercial-industry-drones/fiber-optics.html) | ~$360 |
+| 3 | NanoHD F3 fiber transceiver, ×2 (listed, unconfirmed) | [Unmanned Tech](https://www.unmannedtechshop.co.uk/collections/fibre-optic) | £59.38 |
+| 3 | 1 km FPV fiber canister (step 4 only; listed, unconfirmed) | [GetFPV](https://www.getfpv.com/commercial-industry-drones/fiber-optics.html) | ~$360 |
 | 3 fallback | Heltec V3, single | [Amazon](https://www.amazon.com/dp/B0D1H1FN9Y) | $34.99 |
 | 3 fallback | MAX3485 RS-485 modules (3.3 V), 5-pack | [Amazon](https://www.amazon.com/dp/B0FTFXT876) | $8.99 |
 | 3 fallback | USB→RS-485, FT232RL | [Amazon](https://www.amazon.com/dp/B081MB6PN2) | $16.31 |
