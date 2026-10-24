@@ -2,7 +2,7 @@
 title: The fiber cutter
 nav_counter: 2
 redirect_from:
-  - /countermeasures/fiber-cutter.html
+  - /countermeasures/fibre-cutter.html
 ---
 
 # The fiber cutter
