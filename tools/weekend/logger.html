@@ -113,7 +113,6 @@ body.micmode .layout, body.micmode #ports, body.watchmode .layout, body.watchmod
 #micView .alarm .v { font-size: 56px; }
 #watchView .alarm .v { font-size: 40px; }
 #micView, #watchView { display: grid; gap: 12px; max-width: 520px; margin: 0 auto; }
-#wStatus.err { color: var(--alarm); font-weight: 600; }
 .inline { display: flex; gap: 8px; align-items: end; }
 .inline label { flex: 1; }
 .guide h3 { font-size: 15px; margin: 14px 0 6px; }
@@ -123,130 +122,108 @@ body.micmode .layout, body.micmode #ports, body.watchmode .layout, body.watchmod
 .guide table.ref { width: auto; margin: 6px 0 0; font-size: 13px; }
 .guide table.ref td { padding: 2px 10px 2px 0; border: 0; white-space: normal; }
 .guide table.ref td:first-child { font: 600 13px var(--mono); color: var(--ink); }
-body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto 0; }
+body.micmode #guide, body.watchmode #guide { display: none; }
 #guide { margin-top: 12px; }
+.status .headline { font: 700 22px/1.2 system-ui, sans-serif; padding: 10px 12px; border-radius: 8px; background: var(--chip); }
+.status .headline.ok { background: var(--ok); color: #fff; }
+.status .headline.warn { background: var(--warn); color: #fff; }
+.status .headline.bad { background: var(--alarm); color: #fff; }
+.checks { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 8px; }
+.checks li { display: grid; grid-template-columns: 14px 92px 1fr; gap: 8px; align-items: baseline; font-size: 15px; }
+.checks li::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--line); transform: translateY(1px); }
+.checks li.ok::before { background: var(--ok); } .checks li.warn::before { background: var(--warn); } .checks li.bad::before { background: var(--alarm); }
+.checks b { font-weight: 600; }
+.checks span { color: var(--muted); }
+.checks li.bad span { color: var(--alarm); }
+.status .found-list, .status > button { margin-top: 10px; }
 </style>
 </head>
 <body>
 <main>
-<div class="ribbon">DEMO: made-up readings to show how the logger works. Not measurements.</div>
+<div class="ribbon">DEMO: made-up readings, not measurements.</div>
 <header>
-  <div>
-    <h1>trip/wire logger</h1>
-    <div class="note hide-embed" style="margin:0"><a href="https://paulrenzi.github.io/tripwire/weekend-test.html" target="_top">How to use it</a><span id="roleLinkWrap" hidden> · <a href="#" id="roleLink">Change phone</a></span></div>
-  </div>
-  <div class="row" id="ports"><span class="chip">Not connected</span></div>
+  <h1>trip/wire logger</h1>
+  <div class="note hide-embed" style="margin:0"><a href="https://paulrenzi.github.io/tripwire/weekend-test.html" target="_top">Help</a><span id="roleLinkWrap" hidden> · <a href="#" id="roleLink">Change phone</a></span></div>
+  <div id="ports" hidden></div>
 </header>
 
 <div id="rolePick" hidden>
   <section class="panel">
     <h2>Which phone is this?</h2>
-    <p class="note" style="margin:0 0 10px">Open this page on both phones and pick one on each. They find the gateway and each other by themselves: nothing to scan or type.</p>
+    <p class="note" style="margin:0 0 10px">Open this page on both phones and pick one on each.</p>
     <div class="roles">
-      <button class="role" data-role="logger"><b>Logger phone</b><span>Goes with the gateway and runs the test. Any phone can: you give the gateway its hotspot from here.</span></button>
-      <button class="role" data-role="mic"><b>Mic phone</b><span>Stays beside the mic. Measures and records the sound there, and plays the speaker.</span></button>
-      <button class="role" data-role="watch"><b>Just watching</b><span>Follow a test from anywhere. Changes nothing.</span></button>
+      <button class="role" data-role="logger"><b>Logger phone</b><span>Goes with the gateway and runs the test.</span></button>
+      <button class="role" data-role="mic"><b>Mic phone</b><span>Stays by the mic and plays the speaker.</span></button>
+      <button class="role" data-role="watch"><b>Just watching</b><span>Follow the test from anywhere.</span></button>
     </div>
   </section>
 </div>
 
-<div class="banner" id="storeWarn">Browser storage is unavailable or full. Keep this page open until it says <i>saved online</i>: data on this page will not survive a reload.</div>
+<div class="banner" id="storeWarn">This phone can't save the session. Keep this page open until the status says it's saved online.</div>
 
 <div class="layout">
   <div class="col">
-    <details class="panel hide-embed" id="connectPanel" open>
-      <summary><h2>Connect</h2></summary>
+    <section class="panel status" id="health">
+      <div class="headline" id="hHead">Starting…</div>
+      <ul class="checks" id="hList"></ul>
+    </section>
+    <div class="alarm" id="alarmBox"><div class="v" id="vAlarm">Quiet</div><div class="k" id="vAlarmSub">no drone heard</div></div>
+
+    <section class="panel hide-embed" id="connectPanel">
+      <h2>Connect the gateway</h2>
       <ol class="steps">
-        <li>Power the gateway and turn this phone's hotspot on. On iPhone, switch on <i>Maximize Compatibility</i> and keep the hotspot screen open.</li>
-        <li>The gateway shows up below in about 30 s. Tap it.</li>
-        <li>First time with this phone? Type its hotspot here. Then turn the hotspot off, join the WiFi network <i>tw-… setup</i> in this phone's WiFi settings, come back to this page and tap <b>Send to gateway</b>. Then do step 1.
-          <div class="fields" style="grid-template-columns:1fr 1fr;margin:8px 0">
-            <label>Hotspot name <input id="fHsName" type="text" maxlength="32" spellcheck="false" autocomplete="off" autocapitalize="off"></label>
-            <label>Hotspot password <input id="fHsPass" type="text" maxlength="63" spellcheck="false" autocomplete="off" autocapitalize="off"></label>
-          </div>
-          <button class="primary" id="bHsSend" style="width:100%">Send to gateway</button>
-          <p class="note" id="hsNote">On iPhone the hotspot name is the phone's name (Settings, General, About); the password is in Settings, Personal Hotspot. Both stay on this phone.</p>
-        </li>
+        <li>Turn this phone's hotspot on. On iPhone, switch on <i>Maximize Compatibility</i>.</li>
+        <li>Switch the gateway on. It shows up here in about 30 s. Tap it.</li>
       </ol>
       <div id="gwFound" class="found-list" hidden></div>
       <details class="more">
-        <summary>Other ways to connect</summary>
+        <summary>First time with this phone?</summary>
         <div class="fields" style="grid-template-columns:1fr 1fr;margin:8px 0">
-          <label>Gateway ID <input id="fGwId" type="text" spellcheck="false" autocomplete="off"></label>
-          <label>Broker <input id="fBroker" type="text" spellcheck="false" autocomplete="off"></label>
+          <label>Hotspot name <input id="fHsName" type="text" maxlength="32" spellcheck="false" autocomplete="off" autocapitalize="off"></label>
+          <label>Hotspot password <input id="fHsPass" type="text" maxlength="63" spellcheck="false" autocomplete="off" autocapitalize="off"></label>
         </div>
-        <button class="primary" id="bWifi" style="width:100%">Connect over WiFi</button>
-        <p class="note">On a laptop with Chrome or Edge, plug a board in by USB instead (the detector, for setting the mic phone's meter at home).</p>
-        <div class="row" style="margin:8px 0">
-          <label style="flex:1">Baud <select id="fBaud"><option>115200</option><option>921600</option><option>460800</option></select></label>
-        </div>
-        <button class="primary" id="bConnect" style="width:100%">Connect USB</button>
-        <div class="row" style="margin-top:10px">
-          <button id="bDemo">Try demo</button>
-          <label style="flex-direction:row;align-items:center;gap:6px"><input type="checkbox" id="fBeep"> Beep on alarm</label>
-        </div>
-        <p class="note">Readings pass through a free public broker: fine for a test, not for anything sensitive. Keep this page open with the screen on.</p>
+        <p class="note" style="margin:0 0 8px">Turn the hotspot off, join the WiFi <i>tw-… setup</i>, come back here and tap:</p>
+        <button class="primary" id="bHsSend" style="width:100%">Send to gateway</button>
+        <p class="note" id="hsNote"></p>
       </details>
-    </details>
-    <section>
-      <div class="alarm" id="alarmBox"><div class="v" id="vAlarm">quiet</div><div class="k" id="vAlarmSub">Batear alarm</div></div>
-      <div class="stats">
-        <div class="stat"><div class="v" id="vRssi">–</div><div class="k">radio signal, dBm</div></div>
-        <div class="stat"><div class="v" id="vSnr">–</div><div class="k">radio clarity, dB</div></div>
-        <div class="stat"><div class="v" id="vConf">–</div><div class="k">detector sure, 0–1</div></div>
-        <div class="stat"><div class="v" id="vAgo">–</div><div class="k">last packet</div></div>
-      </div>
+      <details class="more">
+        <summary>Other ways to connect</summary>
+        <div class="inline" style="margin-top:8px">
+          <label>Gateway ID <input id="fGwId" type="text" spellcheck="false" autocomplete="off"></label>
+          <button id="bWifi">Connect</button>
+        </div>
+        <button id="bConnect" style="width:100%;margin-top:8px">Board on USB (laptop, Chrome or Edge)</button>
+      </details>
     </section>
 
-    <section class="panel" id="micPanel">
-      <h2>Sound at the mic</h2>
-      <div class="stats" style="margin-top:0">
-        <div class="stat"><div class="v" id="vMic">–</div><div class="k" id="vMicK">loudness at mic, dB(A)</div></div>
-        <div class="stat"><div class="v" id="vSensor">–</div><div class="k">detector hears, dBFS</div></div>
-        <div class="stat"><div class="v" id="vRec">–</div><div class="k">recording</div></div>
-        <div class="stat"><div class="v" id="vMicAgo">–</div><div class="k" id="vMicAgoK">mic</div></div>
+    <section class="panel hide-embed" id="detMeter" hidden>
+      <h2>Set the mic phone's meter</h2>
+      <div class="inline">
+        <div class="stat" style="flex:1"><div class="v" id="vDetA">–</div><div class="k">detector, dB(A)</div></div>
+        <button class="primary" id="bSetFromDet" disabled>Set</button>
       </div>
-      <div class="hide-embed" id="detMeter" style="margin-top:8px" hidden>
-        <div class="inline">
-          <div class="stat" style="flex:1"><div class="v" id="vDetA">–</div><div class="k">detector mic, dB(A)</div></div>
-          <button id="bSetFromDet" disabled>Set the mic phone's meter from the detector</button>
-        </div>
-        <p class="note" id="detMeterLine"></p>
-      </div>
-      <details class="hide-embed" id="micJoinBox" style="margin-top:8px" open>
-        <summary>Set up the mic phone</summary>
-        <div class="micjoin" id="micJoin">
-          <p>On the mic phone, open this page, tap <b>Mic phone</b>, then tap <b>Logger <span class="gwName"></span></b>.</p>
-          <button class="shareLink">Send the link to the other phone</button>
-        </div>
-      </details>
-      <details class="more hide-embed">
-      <summary>More</summary>
-      <div class="hide-embed" id="localMic" style="margin-top:8px">
-        <button id="bLocalMic" style="width:100%">Only one phone: use this phone's mic</button>
-        <p class="note">Then this phone has to stay at the mic and play the speaker, and the gateway has to stay within 30 ft of it, so you can't take the gateway away while the speaker plays.</p>
-        <div class="inline" id="lmMeter" style="margin-top:10px" hidden>
-          <label>Or type a reading, dB(A) <input id="lmRef" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
-          <button id="lmSet">Set</button>
-        </div>
-        <p class="note" id="lmCalLine" hidden></p>
-      </div>
-      <div class="row hide-embed" style="margin-top:8px">
-        <button class="grow" id="bRec" disabled>Start recording at the mic</button>
-        <button class="grow" id="lmSave" disabled hidden>Save recording</button>
-      </div>
-      </details>
-      <p class="note" id="micLine"></p>
+      <p class="note" id="detMeterLine"></p>
     </section>
 
     <section class="panel hide-embed" id="speakerPanel">
       <h2>Sound test</h2>
       <ol class="steps">
-        <li>Tap <b>Play calibration</b>. Turn the volume on the mic phone or the speaker until <i>Sound at the mic</i> reads 60–65 dB(A), then tap <b>Measure at the mic</b>. Don't touch the volume again.</li>
-        <li>Tap <b>Start sequence</b> and walk 65 ft or more away with this phone and the gateway. It runs by itself for about 21 minutes.</li>
+        <li>Tap <b>Play calibration</b> and set the volume until the mic reads 60–65 dB(A). Tap <b>Measure</b>.</li>
+        <li>Tap <b>Start</b> and walk 65 ft or more away with the gateway. It runs by itself.</li>
       </ol>
-      <div class="fields">
-        <label class="span2">Sound
+      <div class="row">
+        <button class="grow" id="spCal">Play calibration</button>
+        <button class="grow" id="spMeasure">Measure</button>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <button class="primary grow" id="spStart">Start</button>
+        <button class="stop grow" id="spStop" disabled>Stop</button>
+      </div>
+      <div class="runline" id="spStatus"></div>
+      <details class="more">
+      <summary>Settings</summary>
+      <div class="fields" style="margin-top:8px">
+        <label class="span3">Sound
           <select id="spSound">
             <option value="mini">DJI Mini 4 Pro</option>
             <option value="fpv">5-inch FPV, flying</option>
@@ -254,19 +231,6 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
           </select>
         </label>
         <label class="span3" id="spFileRow" hidden>Recording <input id="spFile" type="file" accept="audio/*"></label>
-      </div>
-      <div class="row">
-        <button class="grow" id="spCal">Play calibration</button>
-        <button class="grow" id="spMeasure">Measure at the mic</button>
-      </div>
-      <div class="row" style="margin-top:8px">
-        <button class="primary grow" id="spStart">Start sequence</button>
-        <button class="stop grow" id="spStop" disabled>Stop</button>
-      </div>
-      <div class="runline" id="spStatus"></div>
-      <details class="more">
-      <summary>Settings</summary>
-      <div class="fields" style="margin-top:8px">
         <label>Drone loudness, dB(A) <input id="spLwa" type="number" inputmode="decimal" step="1"></label>
         <label>Meter, playing <input id="spCalSpl" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
         <label>Meter, speaker off <input id="spBg" type="number" inputmode="decimal" step="0.5" placeholder="38"></label>
@@ -281,22 +245,31 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
         <label class="span2">Then record background, min <input id="spBgMin" type="number" inputmode="numeric" min="0" step="1" value="4"></label>
       </div>
       <p class="note" id="spSource"></p>
+      <div id="localMic" style="margin-top:8px">
+        <button id="bLocalMic" style="width:100%">Only one phone: use this phone's mic</button>
+        <div class="inline" id="lmMeter" style="margin-top:10px" hidden>
+          <label>Or type a reading, dB(A) <input id="lmRef" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
+          <button id="lmSet">Set</button>
+        </div>
+        <p class="note" id="lmCalLine" hidden></p>
+      </div>
       </details>
+      <button id="lmSave" style="width:100%;margin-top:8px" hidden>Save recording</button>
     </section>
 
-    <section class="panel">
+    <section class="panel" id="radioPanel">
       <h2>Radio walk</h2>
-      <p class="note hide-embed" style="margin:0 0 8px">At each stop, enter how far you are from the detector, tap <b>Start run</b>, and stop it once a packet arrives.</p>
       <div class="fields hide-embed" style="grid-template-columns:1fr">
         <label>Distance from the detector, ft <input id="fDist" type="number" inputmode="decimal" min="0" step="10" value="330"></label>
       </div>
       <div class="row hide-embed">
-        <button class="primary grow" id="bStart">Start run</button>
-        <button class="stop grow" id="bStop" disabled>Stop run</button>
+        <button class="primary grow" id="bStart">Start</button>
+        <button class="stop grow" id="bStop" disabled>Stop</button>
       </div>
+      <div class="runline" id="runLine"></div>
       <details class="more hide-embed">
       <summary>Run details</summary>
-      <div class="fields hide-embed" style="margin-top:8px">
+      <div class="fields" style="margin-top:8px">
         <label class="span3">Type
           <select id="fType">
             <option value="nodrone">No drone (background)</option>
@@ -313,35 +286,26 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
         <label class="span2">Drone or speaker <input id="fDrone" type="text" placeholder="Mini 4K, or speaker file"></label>
         <label class="span3">Notes <input id="fNotes" type="text" placeholder="tree line, mower nearby"></label>
       </div>
-      <div class="row hide-embed">
-        <button class="grow" id="bSync" title="Press as you clap next to the recorders">Sync clap <kbd class="desk">S</kbd></button>
-        <button class="grow" id="bMark" title="Closest approach, or anything worth a timestamp">Mark <kbd class="desk">M</kbd></button>
-      </div>
+      <button id="bSync" style="width:100%">Sync clap</button>
       </details>
-      <div class="runline" id="runLine">No run in progress.</div>
-      <p class="note hide-embed" id="cloudLine" style="margin:6px 0 0"></p>
     </section>
-
-
-    <details class="panel hide-embed" id="watchBox">
-      <summary><h2>Let someone else watch</h2></summary>
-      <div class="micjoin">
-        <p>Anyone can follow the test from another phone or a computer, from anywhere: open this page there, tap <b>Just watching</b>, then tap <b>Logger <span class="gwName"></span></b>. It shows the alarm, the sound at the mic, the sequence and the range table as they happen. It only watches: start and stop everything on this phone.</p>
-        <button class="shareLink">Send the link</button>
-      </div>
-    </details>
   </div>
 
   <div class="col">
-    <section class="panel">
-      <h2>Range so far</h2>
+    <section class="panel" id="resultsPanel">
+      <h2>Results</h2>
+      <p class="note" id="verdict" style="margin:0 0 8px"></p>
       <div class="scroll"><table id="tRange"><thead></thead><tbody></tbody></table></div>
-      <p class="note" id="verdict"></p>
     </section>
 
-
-    <details class="panel hide-embed">
-      <summary><h2>Runs</h2></summary>
+    <details class="panel hide-embed" id="readingsPanel">
+      <summary><h2>Numbers and logs</h2></summary>
+      <div class="stats" style="margin:0 0 10px">
+        <div class="stat"><div class="v" id="vRssi">–</div><div class="k">radio signal, dBm</div></div>
+        <div class="stat"><div class="v" id="vSnr">–</div><div class="k">radio clarity, dB</div></div>
+        <div class="stat"><div class="v" id="vSensor">–</div><div class="k">detector hears, dBFS</div></div>
+        <div class="stat"><div class="v" id="vConf">–</div><div class="k">detector sure, 0–1</div></div>
+      </div>
       <div class="row" style="margin-bottom:8px">
         <button id="bRuns">runs.csv</button>
         <button id="bEvents">events.csv</button>
@@ -349,70 +313,46 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
         <button class="danger" id="bClear">New session</button>
       </div>
       <div class="scroll"><table id="tRuns"><thead></thead><tbody></tbody></table></div>
-    </details>
-
-    <details class="panel" id="readingsPanel">
-      <summary><h2>Readings</h2></summary>
-      <div class="scroll"><table id="tEvents"><thead></thead><tbody></tbody></table></div>
-    </details>
-
-    <details class="panel hide-embed">
-      <summary><h2>Raw log</h2></summary>
-      <pre id="raw"></pre>
+      <div class="scroll" style="margin-top:10px"><table id="tEvents"><thead></thead><tbody></tbody></table></div>
+      <pre id="raw" style="margin-top:10px"></pre>
     </details>
   </div>
 </div>
 
 <div id="micView" hidden>
-  <div class="alarm"><div class="v" id="mvLevel">–</div><div class="k" id="mvLevelK">dB(A) here</div></div>
-  <section class="panel">
-    <h2>Mic phone</h2>
-    <p id="mvStatus" style="margin-top:0">Put this phone beside the mic, at the same height. Tap <b>Start the mic</b> and allow the microphone. The logger phone then reads this phone, and starts and stops its recording and the speaker.</p>
-    <button class="primary" id="mvStart" style="width:100%">Start the mic</button>
+  <section class="panel status">
+    <div class="headline" id="mvHead">Starting…</div>
+    <ul class="checks" id="mvList"></ul>
     <div id="mvFound" class="found-list" hidden></div>
+    <button class="primary" id="mvStart" style="width:100%">Start the mic</button>
     <button id="mvRefind" style="width:100%" hidden>Find the logger again</button>
-    <button class="grow" id="mvSave" style="width:100%;margin-top:12px" disabled>Save recording</button>
-    <p class="note" id="mvRecLine"></p>
-    <details class="more">
-      <summary>More</summary>
-      <div class="inline" style="margin-top:8px">
-        <label>Or type a reading, dB(A) <input id="mvRef" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
-        <button id="mvSet" disabled>Set</button>
-      </div>
-      <p class="note" id="mvCalLine"></p>
-      <button id="mvRec" style="width:100%" disabled>Start recording</button>
-    </details>
+    <button class="primary" id="mvSave" style="width:100%" hidden>Save recording</button>
   </section>
-  <section class="panel">
-    <h2>Speaker</h2>
-    <div class="runline" id="mvSpLine"></div>
-    <p class="note">Pair the speaker with this phone. Silent mode off, Do Not Disturb on, and keep the screen on.</p>
-    <details class="more">
-      <summary>More</summary>
-      <label style="margin-top:8px">Your own recording, only if the logger is set to it <input id="mvFile" type="file" accept="audio/*"></label>
-    </details>
-  </section>
+  <div class="alarm"><div class="v" id="mvLevel">–</div><div class="k" id="mvLevelK">dB(A) here</div></div>
+  <p class="note" style="margin:0">Pair the speaker with this phone. Silent mode off, screen on.</p>
+  <details class="more">
+    <summary>More</summary>
+    <div class="inline" style="margin-top:8px">
+      <label>Type a meter reading, dB(A) <input id="mvRef" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
+      <button id="mvSet" disabled>Set</button>
+    </div>
+    <p class="note" id="mvCalLine"></p>
+    <label style="margin-top:8px">Your own recording, only if the logger is set to it <input id="mvFile" type="file" accept="audio/*"></label>
+  </details>
 </div>
 
 <div id="watchView" hidden>
-  <div class="alarm" id="wAlarmBox"><div class="v" id="wAlarm">–</div><div class="k" id="wAlarmSub">Batear alarm</div></div>
-  <section class="panel">
-    <p class="note" id="wStatus" style="margin-top:0">Connecting…</p>
+  <section class="panel status">
+    <div class="headline" id="wHead">Connecting…</div>
+    <ul class="checks" id="wList"></ul>
     <div id="wFound" class="found-list" hidden></div>
-    <div class="runline" id="wSeq"></div>
-    <div class="stats">
-      <div class="stat"><div class="v" id="wMic">–</div><div class="k" id="wMicK">loudness at mic, dB(A)</div></div>
-      <div class="stat"><div class="v" id="wConf">–</div><div class="k">detector sure, 0–1</div></div>
-      <div class="stat"><div class="v" id="wRssi">–</div><div class="k">radio signal, dBm</div></div>
-      <div class="stat"><div class="v" id="wAgo">–</div><div class="k">last packet</div></div>
-    </div>
-    <div class="runline" id="wRun"></div>
   </section>
+  <div class="alarm" id="wAlarmBox"><div class="v" id="wAlarm">–</div><div class="k" id="wAlarmSub"></div></div>
+  <div class="runline" id="wSeq"></div>
   <section class="panel">
-    <h2>Range so far</h2>
+    <h2>Results</h2>
+    <p class="note" id="wVerdict" style="margin:0 0 8px"></p>
     <div class="scroll"><table id="wRange"><thead></thead><tbody></tbody></table></div>
-    <p class="note" id="wVerdict"></p>
-    <p class="note">This phone only watches. Keep its screen on, and the logger's too: a locked logger stops sending. <a href="#guide" class="toguide">What do these numbers mean?</a></p>
   </section>
 </div>
 
@@ -421,9 +361,9 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
   <h3>Sound</h3>
   <dl>
     <dt>dB, decibels</dt>
-    <dd>The scale for how loud something is. It counts in steps, not amounts: 10 dB more sounds about twice as loud, and 6 dB less is what you get each time you double your distance from the sound.</dd>
+    <dd>How loud something is. 10 dB more sounds about twice as loud, and you lose 6 dB each time you double your distance from the sound.</dd>
     <dt>dB(A)</dt>
-    <dd>Loudness the way a sound meter reads it, weighted like your ears, which hear deep rumble and very high hiss less. This is the <i>loudness at mic</i> number. For a feel of it:
+    <dd>Loudness the way a sound meter reads it.
       <table class="ref"><tbody>
         <tr><td>30</td><td>a quiet bedroom at night</td></tr>
         <tr><td>40</td><td>a quiet room, a library</td></tr>
@@ -434,45 +374,19 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
       </tbody></table>
     </dd>
     <dt>dBFS, the raw level</dt>
-    <dd>How loud the sound is inside a microphone's own recording, where 0 is the loudest it can record. So it is always negative: about −90 is near silence and −20 is loud. Two devices give different dBFS for the same sound, so it only tells you if a sound got louder or quieter for that one device. The detector reports dBFS: <i>detector hears</i>.</dd>
+    <dd>The level inside a microphone's own recording, from about −90 (silence) to 0 (the loudest it can record). It only compares sounds on the same device.</dd>
     <dt>Setting the meter</dt>
-    <dd>Turns the phone's raw level into dB(A). Phone mics differ by several dB, so once per phone, at home, the phone is set against the detector's own mic, whose sensitivity is rated to 1 dB. With the detector on USB to a laptop running the logger, the phone beside the detector's mic and the calibration playing, tap <b>Set the mic phone's meter from the detector</b>. Until then the logger shows the raw level in orange.</dd>
-    <dt>Background</dt>
-    <dd>The level with nothing playing: wind, birds, traffic. A drone has to rise above it to be heard, so a quiet day makes for a longer range.</dd>
+    <dd>Turns a phone's raw level into dB(A). Once per phone, at home: the detector on USB to a laptop running the logger, the phone beside the detector's mic, the calibration playing, then tap <b>Set</b> on the laptop.</dd>
   </dl>
-  <h3>The speaker test</h3>
+  <h3>Results</h3>
   <dl>
-    <dt>Drone loudness</dt>
-    <dd>The total sound a drone gives off, from its official noise rating. The logger uses it to work out how loud that drone would be at the mic from each distance.</dd>
-    <dt>Emulated distance</dt>
-    <dd>Instead of flying a drone 650 ft away, the speaker plays its recording quietly enough to sound like it at the mic. Each doubling of distance is 6 dB quieter.</dd>
-    <dt>Calibration</dt>
-    <dd>A steady sound at the speaker's full test volume. Its reading at the mic is the starting point the logger turns down from for each distance.</dd>
-    <dt>Aimed, measured, detector</dt>
-    <dd>In the tables, <i>Aimed</i> is the level the logger tried to play at the mic, <i>Measured</i> is what the phone at the mic heard, and <i>Detector</i> is what the detector heard, in its own raw level. If aimed and measured are far apart on a play louder than the background, that play didn't stand in for the distance it claims. On a play quieter than the background, measured reads the background, and that's expected.</dd>
-  </dl>
-  <h3>Radio and detection</h3>
-  <dl>
-    <dt>Alarm, Batear</dt>
-    <dd>The detector's software, Batear, decides "drone" and raises an alarm, which the listener sends by radio.</dd>
-    <dt>Detector sure, 0–1</dt>
-    <dd>How sure the detector is that the sound is a drone. Only shown when the detector is plugged in by USB.</dd>
-    <dt>Gateway</dt>
-    <dd>The board that receives the listeners' radio messages and passes them to this page.</dd>
-    <dt>Packet</dt>
-    <dd>One radio message from a listener: an alarm, or a check-in once a minute that says it's alive and how loud it is there.</dd>
+    <dt>Aimed and measured</dt>
+    <dd>The level the logger tried to play at the mic, and what the mic phone heard. Below the background, measured reads the background.</dd>
     <dt>Radio signal, dBm</dt>
-    <dd>How strong the listener's radio message was when it arrived (RSSI). Closer to zero is stronger: −40 is very strong, −100 is fine, and about −120 is the limit.</dd>
+    <dd>Closer to zero is stronger: −40 is very strong, −100 is fine, about −120 is the limit.</dd>
     <dt>Radio clarity, dB</dt>
-    <dd>How far the message stood above radio noise (SNR). LoRa radio still works below zero, down to about −15.</dd>
+    <dd>How far the message stood above radio noise. It still works down to about −15.</dd>
   </dl>
-  <h3>Try it at a desk, with no boards</h3>
-  <ol class="steps">
-    <li>Open this logger on a computer with speakers. Find <i>Sound test</i> above and pick a sound.</li>
-    <li>Open this page on a phone, tap <b>Mic phone</b>, then tap this logger, and allow the microphone.</li>
-    <li>Tap <b>Play calibration</b> here. The phone plays it, from its own speaker or one paired to it, and <i>Loudness at mic</i> should jump within a couple of seconds.</li>
-    <li>Tap <b>Measure at the mic</b>, then try <b>Start recording at the mic</b> and stop it. The detector numbers stay empty without a board.</li>
-  </ol>
 </details>
 </main>
 
@@ -549,13 +463,7 @@ async function upload() {
   if (cloud.dirty) cloud.timer = setTimeout(upload, 30000);
   renderCloud();
 }
-function renderCloud() {
-  const el = $("#cloudLine");
-  if (!cloud.live) { el.textContent = ""; return; }
-  if (cloud.error) el.textContent = `Not saved online yet (${cloud.error}). Retrying every 30 s; it's safe on this phone meanwhile.`;
-  else if (cloud.savedAt) el.textContent = `Saved online at ${clock(cloud.savedAt)}${cloud.dirty ? ", newer readings to follow" : ""}. Nothing to export.`;
-  else el.textContent = "Runs save online as you go. Nothing to export.";
-}
+function renderCloud() { if (!MIC_MODE && !WATCH_MODE) renderHealth(); }
 
 function settings() {
   let s = {};
@@ -640,7 +548,7 @@ function addEvent(ev, t = Date.now()) {
   state.events.push(ev);
   if (ev.source === "gateway" && ev.rssi != null) { live.lastPkt = t; live.rssi = ev.rssi; live.snr = ev.snr; }
   if (ev.source === "gateway" && ev.rms_db > 0) { live.sensorDb = ev.rms_db - 96; live.sensorAt = t; }
-  if (ev.source === "gateway" && ev.kind === "alarm") { live.gwAlarm.set(ev.dev, true); beep(); }
+  if (ev.source === "gateway" && ev.kind === "alarm") live.gwAlarm.set(ev.dev, true);
   if (ev.source === "gateway" && ev.kind === "clear") live.gwAlarm.delete(ev.dev);
   if (ev.source === "detector" && (ev.kind === "alarm" || ev.kind === "cal")) { live.detAlarm = true; live.conf = ev.conf; }
   if (ev.source === "detector" && ev.kind === "clear") live.detAlarm = false;
@@ -706,12 +614,6 @@ function summarize(run) {
   };
 }
 
-function mark(kind) {
-  addEvent({ source: "mark", kind });
-  flash(kind === "sync" ? "#bSync" : "#bMark");
-}
-function flash(sel) { const b = $(sel); b.classList.add("primary"); setTimeout(() => b.classList.remove("primary"), 250); }
-
 // ---- USB serial ----
 async function connectUsb() {
   if (!("serial" in navigator)) {
@@ -722,14 +624,13 @@ async function connectUsb() {
   try { port = await navigator.serial.requestPort(); } catch (e) { return; }
   const entry = { port, label: `usb${ports.filter((p) => p.port).length + 1}`, role: null, open: false };
   try {
-    await port.open({ baudRate: +$("#fBaud").value, bufferSize: 65536 });
+    await port.open({ baudRate: 115200, bufferSize: 65536 });
     try { await port.setSignals({ dataTerminalReady: false, requestToSend: false }); } catch (e) {}
   } catch (e) { alert(`Could not open the port: ${e.message}. Close any other serial monitor using it.`); return; }
   entry.open = true;
   ports.push(entry);
   goLive();
   renderPorts();
-  $("#connectPanel").open = false;
   keepAwake();
   micListen();
   readLoop(entry);
@@ -774,7 +675,6 @@ async function connectWifi() {
   // A mic phone already joined under the old ID follows this logger to the new one.
   const moved = s.gwId !== oldGw && micOnline() && mqttClient && mqttClient.connected;
   if (moved) mqttClient.publish(`${micTopic(oldGw)}/cmd`, JSON.stringify({ t: Date.now(), cmd: "move", gw: s.gwId }));
-  s.broker = $("#fBroker").value.trim() || DEFAULT_BROKER;
   saveSettings(s);
   renderGwId();
   if (mqttClient) { mqttClient.end(!moved); mqttClient = null; }
@@ -787,7 +687,6 @@ async function connectWifi() {
   mqttClient = window.mqtt.connect(s.broker, { clientId: "twlog-" + Math.random().toString(16).slice(2, 10), reconnectPeriod: 3000, connectTimeout: 10000, clean: true });
   mqttClient.on("connect", () => {
     entry.open = true; entry.state = "broker ok, waiting for gateway"; renderPorts();
-    $("#connectPanel").open = false;
     mqttClient.subscribe([`${base}/det/+/status`, `${base}/availability`, `${micTopic(s.gwId)}/state`], { qos: 0 });
     logRaw(`connected to ${s.broker}, listening on ${base}`, "wifi");
   });
@@ -823,23 +722,12 @@ async function keepAwake() {
 }
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && (current || ports.length || WATCH_MODE)) keepAwake(); });
 
-function beep() {
-  if (!$("#fBeep").checked) return;
-  try {
-    audioCtx = audioCtx || new AudioContext();
-    const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-    o.frequency.value = 880; g.gain.value = 0.15; o.connect(g); g.connect(audioCtx.destination);
-    o.start(); o.stop(audioCtx.currentTime + 0.25);
-  } catch (e) {}
-}
-
 // ---- demo: fake gateway and detector output, labelled as demo everywhere ----
 function startDemo(tickMs = 1500) {
   if (demoTimer) return;
   document.body.classList.add("demo");
   ports.push({ label: "demo", role: "demo", open: true });
   renderPorts();
-  $("#bDemo").textContent = "Stop demo";
   let seq = 1, alarm = false, boot = 0;
   demoTimer = setInterval(() => {
     boot += tickMs;
@@ -868,7 +756,6 @@ function stopDemo() {
   clearInterval(demoTimer); demoTimer = null; clearTimeout(scriptTimer);
   document.body.classList.remove("demo");
   const i = ports.findIndex((p) => p.label === "demo"); if (i >= 0) ports.splice(i, 1);
-  $("#bDemo").textContent = "Try demo";
   renderPorts();
 }
 // Embedded on the site: walk hover runs out through the weekend distances, again and again.
@@ -965,9 +852,9 @@ function finder(kind, sel, onPick) {
     }
     rows.sort((a, b) => b[2] - a[2]); // a gateway passing on a detector right now goes first
     const head = !f.client || !f.client.connected ? "Connecting…"
-      : rows.length ? (kind === "gateway" ? "Tap your gateway. Its ID is the one in the flasher." : "Tap your logger. Its name is under Set up the mic phone, on the logger.")
-      : kind === "gateway" ? "Looking for your gateway. It shows up here about 30 s after it joins this phone's hotspot: see the steps above."
-      : "Looking for the logger. Open this page on the logger phone and tap Logger phone first.";
+      : rows.length ? (kind === "gateway" ? "Tap your gateway." : "Tap your logger.")
+      : kind === "gateway" ? "Looking for your gateway…"
+      : "Looking for the logger. Open this page on the logger phone first.";
     const html = `<p class="note" style="margin:0">${esc(head)}</p>` + rows.map(([id, note]) =>
       `<button class="found" data-id="${esc(id)}"><b>${kind === "gateway" ? "Gateway" : "Logger"} ${esc(id)}</b><span>${esc(note)}</span></button>`).join("");
     if (html === f.html) return; // redraw only on change, so a button never vanishes under a finger
@@ -1000,12 +887,6 @@ function finder(kind, sel, onPick) {
   return f;
 }
 
-async function shareLink(b) {
-  const url = new URL(location.pathname, location.href).href;
-  try { if (navigator.share) { await navigator.share({ title: "trip/wire logger", url }); return; } } catch (e) { if (e.name === "AbortError") return; }
-  try { await navigator.clipboard.writeText(url); b.textContent = "Link copied"; } catch (e) { b.textContent = url; }
-}
-
 // ---- watching from a second phone (?role=watch): the logger publishes what it shows, once a second ----
 // Plain text and table cells only, never HTML: anyone can publish to a public broker topic.
 const watchTopic = (gw) => `tripwire/${gw}/watch`;
@@ -1013,11 +894,11 @@ const watch = { last: null, at: null, gw: null };
 
 function publishWatch() {
   if (MIC_MODE || WATCH_MODE || EMBED || !mqttClient || !mqttClient.connected) return;
-  const txt = (id) => $(id).textContent;
+  const txt = (id) => $(id).textContent, hc = healthChecks();
   mqttClient.publish(watchTopic(settings().gwId), JSON.stringify({
-    t: Date.now(), demo: !!demoTimer, conn: ports.length ? txt("#ports") : "no gateway yet", on: $("#alarmBox").classList.contains("on"), alarm: txt("#vAlarm"), alarmSub: txt("#vAlarmSub"),
-    mic: txt("#vMic"), micK: txt("#vMicK"), conf: txt("#vConf"), rssi: txt("#vRssi"), ago: txt("#vAgo"),
-    seq: sp.seq || sp.cal || sp.measuring ? txt("#spStatus") : "", run: txt("#runLine"),
+    t: Date.now(), demo: !!demoTimer, conn: hc[0][2], head: headline(hc), checks: hc,
+    on: $("#alarmBox").classList.contains("on"), alarm: txt("#vAlarm"), alarmSub: txt("#vAlarmSub"),
+    seq: sp.seq || sp.cal || sp.measuring ? txt("#spStatus") : txt("#runLine"),
     range: [...$("#tRange").rows].map((r) => [...r.cells].map((c) => c.textContent)), verdict: txt("#verdict")
   }));
 }
@@ -1030,13 +911,13 @@ function startWatchMode() {
   $("#watchView").hidden = false;
   const gw = params.get("gw");
   if (gw && /^[\w-]{3,40}$/.test(gw)) watchConnect(gw);
-  else { $("#wStatus").textContent = "Which logger? It shows up here while its page is open."; finder("logger", "#wFound", watchConnect); }
+  else { $("#wHead").textContent = "Which logger?"; finder("logger", "#wFound", watchConnect); }
 }
 
 async function watchConnect(gw) {
   watch.gw = gw;
   keepAwake();
-  try { if (!window.mqtt) await loadScript(MQTT_JS); } catch (e) { $("#wStatus").textContent = "Couldn't load the MQTT library. This phone needs mobile data or WiFi."; return; }
+  try { if (!window.mqtt) await loadScript(MQTT_JS); } catch (e) { paintHealth("#wHead", "#wList", ["bad", "No internet"], []); return; }
   const c = window.mqtt.connect(settings().broker, { clientId: "twwatch-" + Math.random().toString(16).slice(2, 10), reconnectPeriod: 3000, connectTimeout: 10000, clean: true });
   c.on("connect", () => c.subscribe(watchTopic(gw), { qos: 0 }));
   c.on("message", (topic, payload) => {
@@ -1049,20 +930,17 @@ async function watchConnect(gw) {
 }
 
 function renderWatch() {
-  const j = watch.last, age = watch.at ? Math.round((Date.now() - watch.at) / 1000) : null, st = $("#wStatus");
-  const fresh = age != null && age < 5;
-  st.classList.toggle("err", age != null && !fresh);
-  st.textContent = !watch.client || !watch.client.connected ? "Connecting…"
-    : age == null ? "Connected. Waiting for the logger: keep it open on the logger phone, with its screen on."
-    : fresh ? `Live from logger ${watch.gw}${j.demo ? ", demo data" : ""}.`
-    : `No update for ${age} s. The logger phone may be locked or out of signal; these numbers are from ${clock(watch.at)}.`;
+  const j = watch.last, age = watch.at ? Math.round((Date.now() - watch.at) / 1000) : null;
+  const fresh = age != null && age < 5, checks = j && Array.isArray(j.checks) ? j.checks : [];
+  const head = !watch.client || !watch.client.connected ? ["", "Connecting…"]
+    : age == null ? ["warn", "Waiting for the logger"]
+    : !fresh ? ["bad", `Logger not heard for ${age} s`]
+    : Array.isArray(j.head) ? j.head : ["", ""];
+  paintHealth("#wHead", "#wList", head, checks);
   if (!j) return;
   $("#wAlarmBox").classList.toggle("on", !!j.on && fresh);
   $("#wAlarm").textContent = j.alarm; $("#wAlarmSub").textContent = j.alarmSub;
-  $("#wMic").textContent = j.mic; $("#wMicK").textContent = j.micK;
-  $("#wConf").textContent = j.conf; $("#wRssi").textContent = j.rssi; $("#wAgo").textContent = j.ago;
-  $("#wSeq").textContent = j.seq || "No speaker sequence running.";
-  $("#wRun").textContent = j.run;
+  $("#wSeq").textContent = j.seq || "";
   const rows = Array.isArray(j.range) ? j.range : [], t = $("#wRange");
   t.tHead.innerHTML = rows.length ? `<tr>${rows[0].map((c) => `<th>${esc(c)}</th>`).join("")}</tr>` : "";
   t.tBodies[0].innerHTML = rows.slice(1).map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join("")}</tr>`).join("");
@@ -1070,27 +948,61 @@ function renderWatch() {
 }
 
 function renderMic() {
-  const on = micOnline(), j = mic.last;
-  const v = $("#vMic");
-  v.classList.toggle("uncal", on && j.dba == null);
-  v.textContent = on ? (j.dba != null ? j.dba.toFixed(1) : j.dbfs.toFixed(0)) : "–";
-  $("#vMicK").textContent = on && j.dba == null ? "raw level: set the phone's meter" : "loudness at mic, dB(A)";
-  $("#vSensor").textContent = live.sensorDb ?? "–";
-  $("#vRec").textContent = on && j.rec ? `${Math.floor(j.rec_s / 60)}:${pad(Math.floor(j.rec_s % 60))}` : on ? "off" : "–";
-  $("#vMicAgo").textContent = on ? "live" : mic.at ? `${Math.round((Date.now() - mic.at) / 1000)} s ago` : "–";
-  $("#vMicAgoK").textContent = mv.local ? "this phone's mic" : on ? "mic phone" : "mic";
-  const b = $("#bRec");
-  b.disabled = !on || !!sp.seq;
-  b.textContent = on && j.rec ? "Stop recording at the mic" : "Start recording at the mic";
-  b.classList.toggle("stop", on && !!j.rec);
-  $("#localMic").hidden = !mv.local && on;
-  $("#micJoinBox").hidden = mv.local || !!demoTimer;
-  const parts = [];
-  if (live.sensorAt) parts.push(`Detector level ${live.sensorDb} dBFS at ${clock(live.sensorAt)}, from its last check-in or alarm. It checks in once a minute.`);
-  else parts.push("The detector's level arrives with its once-a-minute check-in and with every alarm.");
-  if (on && j.rec) parts.push(`Recording at the mic since ${clock(j.rec_start)}.`);
-  else if (j && j.file && !j.rec) parts.push(mv.local ? `Last recording, ${esc(j.file)}: tap <b>Save recording</b> to keep it.` : `Last recording, ${esc(j.file)}, is on the mic phone: tap <b>Save recording</b> there.`);
-  $("#micLine").innerHTML = parts.join(" ");
+  $("#localMic").hidden = !mv.local && micOnline();
+  renderHealth();
+}
+
+// ---- the status card: is each part working, in one line each ----
+const STATES = ["", "ok", "warn", "bad"];
+function ago(t) { const s = Math.round((Date.now() - t) / 1000); return s < 5 ? "just now" : s < 120 ? `${s} s ago` : `${Math.round(s / 60)} min ago`; }
+function healthChecks() {
+  const out = [], wifi = ports.find((p) => p.label === "wifi"), usb = ports.filter((p) => p.port);
+  const gw = demoTimer ? ["ok", "Demo data"]
+    : usb.length ? (usb.some((p) => p.open) ? ["ok", "On USB"] : ["bad", "USB unplugged"])
+    : !wifi ? ["", "Not found yet. Follow the steps below."]
+    : ({ "gateway online": ["ok", "Online"], "connecting": ["warn", "Connecting…"],
+      "broker ok, waiting for gateway": ["warn", `Waiting for ${settings().gwId}. Is it on, near this phone's hotspot?`],
+      "gateway offline": ["bad", "Offline. Is it on, near this phone's hotspot?"],
+      "offline, retrying": ["bad", "This phone has no internet. Retrying."] })[wifi.state] || ["warn", wifi.state || ""];
+  out.push([gw[0], "Gateway", gw[1]]);
+  if (live.lastPkt) {
+    const min = Math.round((Date.now() - live.lastPkt) / 60000);
+    const sig = live.rssi == null ? "" : live.rssi > -100 ? ", strong signal" : live.rssi > -115 ? ", weak signal" : ", very weak signal";
+    out.push(Date.now() - live.lastPkt < 150000 ? ["ok", "Detector", `Heard ${ago(live.lastPkt)}${sig}`] : ["bad", "Detector", `Not heard for ${min} min. Switched on? Too far?`]);
+  } else if (usb.some((p) => p.open && p.role === "detector")) out.push(["ok", "Detector", "On USB"]);
+  else out.push(gw[0] === "ok" ? ["warn", "Detector", "Waiting for its first check-in, within a minute."] : ["", "Detector", "Needs the gateway first."]);
+  const remoteSeq = sp.seq && sp.seq.remote;
+  if (micOnline()) {
+    const j = mic.last, who = mv.local ? "This phone's mic" : "Connected";
+    out.push(remoteSeq && !j.sp && Date.now() - sp.seq.sent > 6000 ? ["bad", "Mic phone", "Isn't running the sound test. Check it."]
+      : j.dba == null ? ["warn", "Mic phone", `${who}, but its meter isn't set yet.`]
+      : ["ok", "Mic phone", `${who}, hears ${j.dba.toFixed(0)} dB(A)${j.rec ? ", recording" : j.file ? `. Save ${j.file} on it` : ""}`]);
+  } else if (mic.at) out.push([remoteSeq ? "warn" : "bad", "Mic phone", `Lost ${ago(mic.at)}. Is its screen on?${remoteSeq ? " The test carries on there." : ""}`]);
+  else out.push(["", "Mic phone", `Not joined. On it, open this page, tap Mic phone, then Logger ${settings().gwId}.`]);
+  if (cloud.live && state.session) out.push(cloud.error ? ["warn", "Saving", "Not online yet. Safe on this phone."]
+    : cloud.savedAt ? ["ok", "Saving", `Saved online ${ago(cloud.savedAt)}`] : ["warn", "Saving", "Saving online…"]);
+  return out;
+}
+function headline(checks) {
+  const bad = checks.find((c) => c[0] === "bad");
+  if (bad) return ["bad", `Check the ${bad[1].toLowerCase()}`];
+  if (checks[0][0] === "ok" && checks[1][0] === "ok") return ["ok", sp.seq ? "Working · sound test running" : current ? "Working · run going" : "Working"];
+  return ["warn", "Not ready yet"];
+}
+function paintHealth(head, list, h, checks) {
+  const el = $(head), s = (v) => STATES.includes(v) ? v : "";
+  el.className = `headline ${s(h[0])}`; el.textContent = h[1];
+  const html = checks.map((c) => `<li class="${s(c[0])}"><b>${esc(c[1])}</b><span>${esc(c[2])}</span></li>`).join(""), ul = $(list);
+  if (ul._html !== html) { ul._html = html; ul.innerHTML = html; }
+}
+function renderHealth() {
+  if (MIC_MODE || WATCH_MODE) return;
+  const c = healthChecks();
+  paintHealth("#hHead", "#hList", headline(c), c);
+  const ready = c[0][0] === "ok";
+  $("#connectPanel").hidden = ready;
+  $("#speakerPanel").hidden = $("#radioPanel").hidden = !ready && !sp.seq && !current && !EMBED;
+  $("#resultsPanel").hidden = !state.runs.length && !EMBED;
 }
 
 // ---- the detector as the reference meter: over USB it logs its A-weighted level once a second ----
@@ -1225,7 +1137,7 @@ function spPlan() {
   const mode = $("#spMode").value, repeat = Math.max(1, Math.round(num($("#spRepeat").value) || 1));
   const play = Math.max(5, num($("#spPlay").value) || 60), gap = Math.max(0, num($("#spGap").value) ?? 20);
   const list = $("#spList").value.split(/[,\s]+/).map(num).filter((v) => v != null);
-  if (calSpl == null) throw new Error("Play calibration, then enter the meter reading at the mic.");
+  if (calSpl == null) throw new Error("Play the calibration and tap Measure first.");
   let cal = calSpl, warn = "";
   if (bg != null) {
     const diff = calSpl - bg;
@@ -1259,8 +1171,8 @@ async function spToggleCal() {
 // The mic phone reads the background with the speaker off, then the calibration playing.
 async function spMeasure() {
   if (sp.seq || sp.measuring) return;
-  if (!micOnline()) { spError("The mic isn't on. Tap Start this phone's mic under Sound at the mic, or type the readings from a sound meter."); return; }
-  if (!micCal()) { spError("The phone's meter isn't set yet. Set it under Sound at the mic (or on the mic phone, if you use one)."); return; }
+  if (!micOnline()) { spError("The mic phone isn't connected. See the status at the top."); return; }
+  if (!micCal()) { spError("The mic phone's meter isn't set yet. Set it once at home, from the detector."); return; }
   try { await spLoad(); } catch (e) { spError(e.message); return; }
   const wait = (ms) => new Promise((r) => setTimeout(r, ms)), remote = spRemote();
   keepAwake();
@@ -1371,10 +1283,10 @@ function renderSp() {
   }
   if (sp.measuring) { el.innerHTML = sp.measuring === "bg" ? "<b>Measuring the background</b>, speaker off · stay quiet · 10 s" : "<b>Measuring the calibration</b> at the mic · 10 s"; return; }
   if (sp.cal && spRemote() && !mic.last.cal) { el.textContent = "Asking the mic phone to play the calibration…"; return; }
-  if (sp.cal) { el.textContent = micCal() ? `Calibration playing: ${mic.last.dba.toFixed(1)} dB(A) at the mic. Aim for 60–65, then stop it or tap Measure at the mic.` : "Calibration playing. Read the meter at the mic, then stop it."; return; }
+  if (sp.cal) { el.textContent = micCal() ? `Calibration playing: ${mic.last.dba.toFixed(1)} dB(A) at the mic. Aim for 60–65, then tap Measure.` : "Calibration playing. Read the meter at the mic, then stop it."; return; }
   try {
     const p = spPlan(), mins = Math.ceil((p.wait + p.items.length * (p.play + p.gap)) / 60 + p.bgMin);
-    el.textContent = `${p.wait ? `${p.wait} s to walk away, then ` : ""}${p.items.length} plays${p.bgMin ? ` and ${p.bgMin} min of background` : ""}: about ${mins} min in all. Calibration ${p.cal.toFixed(1)} dB(A) at the mic.${p.quiet ? ` ${p.quiet} level(s) are quieter than the background: expected at range.` : ""}${p.warn}`;
+    el.innerHTML = `<b>Ready to start</b> · about ${mins} min.${esc(p.warn)}`;
   } catch (e) { el.textContent = e.message; }
 }
 
@@ -1416,7 +1328,6 @@ const fileBase = () => state.session || "weekend";
 // ---- rendering ----
 function renderControls() {
   $("#bStart").disabled = !!current || !!sp.seq; $("#bStop").disabled = !current && !sp.seq;
-  $("#bStop").textContent = sp.seq ? "Stop sequence" : "Stop run";
   for (const id of ["#fType", "#fDist", "#fAlt", "#fMic", "#fWind", "#fDrone", "#fNotes"]) $(id).disabled = !!current || !!sp.seq;
   renderLive(); renderSp();
 }
@@ -1432,19 +1343,17 @@ function renderPorts() {
 function renderLive() {
   const anyAlarm = live.gwAlarm.size > 0 || live.detAlarm;
   $("#alarmBox").classList.toggle("on", anyAlarm);
-  $("#vAlarm").textContent = live.gwAlarm.size ? `ALARM ${[...live.gwAlarm.keys()].join(",")}` : live.detAlarm ? "ALARM" : "quiet";
-  $("#vAlarmSub").textContent = live.gwAlarm.size ? "Batear alarm, detector id" : live.detAlarm ? "Batear alarm (detector)" : "Batear alarm";
+  $("#vAlarm").textContent = anyAlarm ? "Drone heard" : "Quiet";
+  $("#vAlarmSub").textContent = live.gwAlarm.size ? `alarm from detector ${[...live.gwAlarm.keys()].join(", ")}` : live.detAlarm ? "alarm from the detector on USB" : "no drone heard";
   $("#vRssi").textContent = live.rssi ?? "–";
   $("#vSnr").textContent = live.snr ?? "–";
+  $("#vSensor").textContent = live.sensorDb ?? "–";
   $("#vConf").textContent = live.conf != null ? live.conf.toFixed(2) : "–";
-  $("#vAgo").textContent = live.lastPkt ? `${Math.round((Date.now() - live.lastPkt) / 1000)} s` : "–";
   renderMic();
-  if (current) {
+  if (current && !sp.seq) {
     const s = summarize(current);
-    $("#runLine").innerHTML = `<b>${current.run_id}</b> · ${esc(current.type)} · ${current.distance_ft ?? "?"} ft · ${Math.round(s.duration_s)} s · ${s.packets} packets · ${s.heard ? `heard, first alarm at ${s.first_alarm_s} s` : "not heard yet"}`;
-  } else {
-    $("#runLine").textContent = state.runs.length ? `No run in progress. ${state.runs.length} run(s) in session ${state.session}.` : "No run in progress.";
-  }
+    $("#runLine").innerHTML = `<b>Running</b> · ${current.distance_ft ?? "?"} ft · ${Math.round(s.duration_s)} s · ${s.packets ? `<b>${s.packets} packet${s.packets > 1 ? "s" : ""} received</b>${current.type === "radio" ? ": you can stop" : ""}` : "no packet yet"}`;
+  } else $("#runLine").textContent = "";
 }
 function setTable(id, cols, rows) {
   const t = $(id);
@@ -1502,8 +1411,7 @@ function renderRaw() {
 }
 function renderGwId() {
   const s = settings();
-  $("#fGwId").value = s.lastGw || ""; $("#fGwId").placeholder = "tw-…"; $("#fBroker").value = s.broker;
-  document.querySelectorAll(".gwName").forEach((e) => e.textContent = s.gwId);
+  $("#fGwId").value = s.lastGw || ""; $("#fGwId").placeholder = "tw-…";
 }
 function renderAll() { renderControls(); renderRuns(); renderRange(); renderEvents(); renderRaw(); renderPorts(); }
 
@@ -1529,7 +1437,8 @@ async function mvStart() {
   if (MIC_MODE) spCtx(); // unlock playback with this tap, so the logger can start the speaker later
   try {
     mv.stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false, channelCount: 1 } });
-  } catch (e) { $(mv.local ? "#lmCalLine" : "#mvStatus").textContent = `The microphone isn't available (${e.message}). Allow it for this page and try again.`; $("#lmCalLine").hidden = !mv.local; return; }
+  } catch (e) { mv.err = `Not allowed (${e.message}). Allow the microphone for this page and reload.`; $("#lmCalLine").textContent = mv.err; $("#lmCalLine").hidden = !mv.local; renderMv(); return; }
+  mv.err = "";
   mv.ctx = new (window.AudioContext || window.webkitAudioContext)();
   if (mv.ctx.state === "suspended") await mv.ctx.resume();
   const w = aWeighting(mv.ctx);
@@ -1577,7 +1486,7 @@ function mvTick() {
 }
 
 async function mvConnect() {
-  try { if (!window.mqtt) await loadScript(MQTT_JS); } catch (e) { $("#mvStatus").textContent = "Couldn't load the MQTT library. This phone needs mobile data or WiFi."; return; }
+  try { if (!window.mqtt) await loadScript(MQTT_JS); } catch (e) { mvs.err = "No internet on this phone."; renderMv(); return; }
   const s = settings();
   mv.client = window.mqtt.connect(s.broker, { clientId: "twmic-" + Math.random().toString(16).slice(2, 10), reconnectPeriod: 3000, connectTimeout: 10000, clean: true });
   mv.client.on("connect", () => { mv.client.subscribe([`${micTopic(s.gwId)}/cmd`, watchTopic(s.gwId)], { qos: 0 }); renderMv(); });
@@ -1639,7 +1548,7 @@ function mvRecStart(session) {
   const type = ["audio/mp4", "audio/webm;codecs=opus", "audio/webm"].find((t) => window.MediaRecorder && MediaRecorder.isTypeSupported(t)) || "";
   const opts = Object.assign({ audioBitsPerSecond: 96000 }, type ? { mimeType: type } : {});
   let r;
-  try { r = new MediaRecorder(mv.stream, opts); } catch (e) { $("#mvRecLine").textContent = `This browser can't record (${e.message}).`; return; }
+  try { r = new MediaRecorder(mv.stream, opts); } catch (e) { mvs.err = `This browser can't record (${e.message}).`; renderMv(); return; }
   mv.chunks = []; mv.session = session || state.session || "mic";
   const mime0 = r.mimeType || type || "audio/webm";
   mv.name = `${mv.session}-mic.${/mp4/.test(mime0) ? "m4a" : "webm"}`;
@@ -1682,34 +1591,36 @@ function renderMv() {
     $("#bLocalMic").hidden = true;
     $("#lmMeter").hidden = false; $("#lmCalLine").hidden = false;
     $("#lmCalLine").textContent = mv.offset != null
-      ? `Meter set${mv.offsetFrom ? ` from ${mv.offsetFrom}` : ""}: reading + ${mv.offset.toFixed(1)} dB. Set it again only on a different phone or browser.`
-      : "Once per phone, at home: plug the detector into this laptop by USB and Connect USB, hold the phone beside the detector's mic, play the calibration and tap Set the mic phone's meter from the detector.";
-    $("#lmSave").hidden = !mv.file && !mv.rec;
-    $("#lmSave").disabled = !mv.file;
+      ? `Meter set: reading + ${mv.offset.toFixed(1)} dB.` : "Set the meter once per phone, at home, from the detector. See Help.";
+    $("#lmSave").hidden = !mv.file;
     return;
   }
-  const online = mv.client && mv.client.connected, gw = esc(settings().gwId);
+  const online = mv.client && mv.client.connected, gw = settings().gwId;
   const lag = mv.loggerAt ? Math.round((Date.now() - mv.loggerAt) / 1000) : null, lost = online && (lag == null ? Date.now() - mv.joinedAt > 10000 : lag > 15);
-  if (mv.stream) $("#mvStatus").innerHTML = !online ? "Mic on. Connecting to the logger…"
-    : !lost ? `Connected to logger <code>${gw}</code>. Leave this phone by the mic.`
-    : `Logger <code>${gw}</code> hasn't been heard ${lag == null ? "yet" : `for ${lag} s`}. Its screen may be locked, or it's out of signal. If it was closed and opened again, find it again.`;
   $("#mvRefind").hidden = !lost || !!mv.finder || !!mvs.seq;
-  $("#mvCalLine").textContent = mv.offset != null
-    ? `Meter set${mv.offsetFrom ? ` from ${mv.offsetFrom}` : ""}: reading + ${mv.offset.toFixed(1)} dB. Set it again only on a different phone or browser.`
-    : "Once per phone, at home: hold this phone beside the detector's mic, with the detector on USB to a laptop running the logger. Play the calibration and tap Set the mic phone's meter from the detector on the laptop. Phone mics differ by several dB, and each 6 dB doubles or halves the emulated distance.";
-  $("#mvRec").disabled = !mv.stream;
-  $("#mvRec").textContent = mv.rec ? "Stop recording" : "Start recording";
-  $("#mvRec").classList.toggle("stop", !!mv.rec);
-  $("#mvSave").disabled = !mv.file;
+  $("#mvCalLine").textContent = mv.offset != null ? `Meter set: reading + ${mv.offset.toFixed(1)} dB.` : "Set the meter once per phone, at home, from the detector. See Help.";
+  $("#mvSave").hidden = !mv.file;
   const q = mvs.seq, left = q ? Math.max(0, Math.round((q.until - Date.now()) / 1000)) : 0, it = q && q.items[q.i];
-  $("#mvSpLine").innerHTML = mvs.err ? esc(mvs.err)
-    : q ? (q.phase === "wait" ? `<b>Sequence starting</b> · first play in ${left} s`
-      : q.phase === "play" ? `<b>Playing ${q.i + 1} of ${q.items.length}</b>${it.dist != null ? ` · ${it.dist} ft` : ""} · ${left} s left`
-      : q.phase === "gap" ? (q.i + 1 < q.items.length ? `Quiet before play ${q.i + 2} of ${q.items.length} · ${left} s` : `Last play done · ${left} s`)
-      : `<b>Recording background</b>, speaker off · ${Math.ceil(left / 60)} min left`)
-    : mvs.cal ? "<b>Calibration playing.</b> Set the volume on this phone or the speaker until the logger reads 60–65 dB(A)."
-    : mv.stream ? "Ready. The logger phone starts the speaker." : "Tap your logger above first; that also lets this phone play the speaker.";
-  $("#mvRecLine").textContent = mv.rec ? `Recording since ${clock(mv.recStart)}, ${Math.round((Date.now() - mv.recStart) / 1000)} s.` : mv.file ? `${mv.file.name}, ${(mv.file.size / 1e6).toFixed(1)} MB. Save it before closing this page.` : "The logger starts and stops the recording with the speaker sequence.";
+  const checks = [
+    mv.err ? ["bad", "Mic", mv.err]
+      : !mv.stream ? ["", "Mic", mv.finder ? "Starts when you tap your logger." : "Off"]
+      : mv.offset != null ? ["ok", "Mic", "On"] : ["warn", "Mic", "On, but its meter isn't set yet."],
+    !mv.stream && !online ? ["", "Logger", mv.finder ? "Tap it below." : "Not joined"]
+      : !online ? ["warn", "Logger", "Connecting…"]
+      : lost ? ["bad", "Logger", `${gw} not heard ${lag == null ? "yet" : `for ${lag} s`}. Is its screen on?`]
+      : ["ok", "Logger", `Connected to ${gw}`],
+    mvs.err ? ["bad", "Speaker", mvs.err]
+      : q ? ["ok", "Speaker", q.phase === "wait" ? `Sound test starts in ${left} s`
+        : q.phase === "play" ? `Playing ${q.i + 1} of ${q.items.length}${it.dist != null ? `, ${it.dist} ft` : ""}, ${left} s left`
+        : q.phase === "gap" ? `Quiet, ${left} s` : `Background, speaker off, ${Math.ceil(left / 60)} min left`]
+      : mvs.cal ? ["ok", "Speaker", "Calibration playing. Set the volume until the logger reads 60–65 dB(A)."]
+      : mv.stream ? ["ok", "Speaker", "Ready. The logger starts it."] : ["", "Speaker", "Waiting"]
+  ];
+  if (mv.rec) checks.push(["ok", "Recording", `${Math.floor((Date.now() - mv.recStart) / 60000)}:${pad(Math.floor((Date.now() - mv.recStart) / 1000) % 60)}`]);
+  else if (mv.file) checks.push(["warn", "Recording", "Done. Tap Save recording before closing this page."]);
+  const bad = checks.find((c) => c[0] === "bad");
+  paintHealth("#mvHead", "#mvList", bad ? ["bad", `Check the ${bad[1].toLowerCase()}`]
+    : checks[0][0] === "ok" && checks[1][0] === "ok" ? ["ok", q ? "Working · sound test running" : "Working"] : ["warn", "Not ready yet"], checks);
 }
 
 // Join a logger by its ID: the tap that picks it also starts the mic, which needs a tap.
@@ -1736,14 +1647,12 @@ function startMicMode() {
   try { const o = num(localStorage.getItem(MIC_OFFSET_KEY)); if (o != null) mv.offset = o; } catch (e) {}
   $("#mvStart").onclick = mvStart;
   $("#mvSet").onclick = mvSetMeter;
-  $("#mvRec").onclick = () => (mv.rec ? mvRecStop() : mvRecStart(null));
   $("#mvSave").onclick = mvSave;
   $("#mvFile").onchange = () => { if (sp.key === "own") sp.buf = null; };
   window.addEventListener("beforeunload", (e) => { if (mv.rec || mv.file) { e.preventDefault(); e.returnValue = ""; } });
   $("#mvRefind").onclick = mvFind;
   if (!params.get("gw")) {
     $("#mvStart").hidden = true;
-    $("#mvStatus").textContent = "Put this phone beside the mic, at the same height. Then tap your logger below and allow the microphone. That one tap joins the logger and starts the mic.";
     mvFind();
   }
   renderMv();
@@ -1752,8 +1661,8 @@ function startMicMode() {
 // ---- wiring ----
 $("#bConnect").onclick = connectUsb;
 $("#bWifi").onclick = connectWifi;
-$("#bDemo").onclick = () => (demoTimer ? stopDemo() : startDemo());
 $("#bStart").onclick = startRun;
+$("#bSync").onclick = () => addEvent({ source: "mark", kind: "sync" });
 $("#bStop").onclick = () => (sp.seq ? spFinish() : stopRun());
 $("#spSound").onchange = spSoundChanged;
 $("#spFile").onchange = () => { sp.buf = null; $("#spCalSpl").value = ""; renderSp(); };
@@ -1761,7 +1670,6 @@ $("#spMode").onchange = spModeChanged;
 for (const id of ["#spLwa", "#spCalSpl", "#spBg", "#spList", "#spRepeat", "#spPlay", "#spGap", "#spWait", "#spBgMin"]) $(id).oninput = renderSp;
 $("#spCal").onclick = spToggleCal;
 $("#spMeasure").onclick = spMeasure;
-$("#bRec").onclick = () => micRec(!mic.last.rec);
 $("#bLocalMic").onclick = lmStart;
 $("#lmSet").onclick = mvSetMeter;
 $("#bSetFromDet").onclick = setFromDetector;
@@ -1769,8 +1677,6 @@ $("#lmSave").onclick = mvSave;
 try { const o = num(localStorage.getItem(MIC_OFFSET_KEY)); if (o != null) mv.offset = o; } catch (e) {}
 $("#spStart").onclick = spStart;
 $("#spStop").onclick = spFinish;
-$("#bSync").onclick = () => mark("sync");
-$("#bMark").onclick = () => mark("mark");
 $("#bRuns").onclick = () => download(`${fileBase()}_runs.csv`, toCsv(RUN_COLS, state.runs.map((r) => Object.assign({}, r, summarize(r)))));
 $("#bEvents").onclick = () => download(`${fileBase()}_events.csv`, toCsv(EV_COLS, state.events));
 $("#bRaw").onclick = () => download(`${fileBase()}_serial.txt`, state.raw.join("\n") + "\n", "text/plain");
@@ -1781,13 +1687,7 @@ $("#bClear").onclick = () => {
   state = freshState(); current = null; save();
   renderAll();
 };
-document.addEventListener("keydown", (e) => {
-  if (e.target.matches("input, select, textarea") || e.ctrlKey || e.metaKey || e.altKey) return;
-  if (e.key === "s" || e.key === "S") mark("sync");
-  if (e.key === "m" || e.key === "M") mark("mark");
-});
 setInterval(() => { renderLive(); renderDetMeter(); if (sp.seq || sp.cal || sp.measuring) renderSp(); publishWatch(); }, 1000);
-document.querySelectorAll(".shareLink").forEach((b) => b.onclick = () => shareLink(b));
 $("#roleLink").onclick = (e) => { e.preventDefault(); location.href = location.pathname; };
 
 // With no role in the link, ask which phone this is.

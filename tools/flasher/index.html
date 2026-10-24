@@ -54,7 +54,7 @@ footer { font-size: 13px; color: var(--muted); }
 <body>
 <main>
 <h1>Flash the boards</h1>
-<p class="lead">For the Seeed XIAO ESP32S3 + Wio-SX1262 kit. This replaces the Meshtastic firmware the kit ships with; you can put Meshtastic back any time from <a href="https://flasher.meshtastic.org/" target="_blank" rel="noopener">its flasher</a>.</p>
+<p class="lead">For the Seeed XIAO ESP32S3 + Wio-SX1262 kit. You can put Meshtastic back later from <a href="https://flasher.meshtastic.org/" target="_blank" rel="noopener">its flasher</a>.</p>
 
 <p id="noSerial" class="warn">This browser can't reach a USB board. Use Chrome or Edge on a laptop or desktop.</p>
 
@@ -72,13 +72,13 @@ footer { font-size: 13px; color: var(--muted); }
 
 <div class="panel">
   <h2>2. Gateway</h2>
-  <p class="hint">Same as the detector: antenna on, plug it in, tap <strong>Install gateway</strong>. Nothing to type. Any phone's hotspot can be given to it later, from the logger.</p>
+  <p class="hint">Same steps, then tap <strong>Install gateway</strong>.</p>
   <p id="gwWarn" class="warn">Fill in the gateway ID first.</p>
   <esp-web-install-button id="btnGw">
     <button slot="activate" id="gwBtn" disabled>Install gateway</button>
   </esp-web-install-button>
   <div class="next">
-    <p><strong>Then, in the park, on whichever phone you pick as the logger,</strong> open the logger and tap <strong>Logger phone</strong>. It shows how to give gateway <code id="gwShow"></code> that phone's hotspot, then the gateway shows up there by itself: tap it. To use this computer as the logger instead, for the meter step at home, <a id="loggerLink" href="../weekend/logger.html">open the logger here</a>.</p>
+    <p><strong>Then</strong> open the logger on the phone that goes with the gateway and tap <strong>Logger phone</strong>. It walks you through the rest. <a id="loggerLink" href="../weekend/logger.html">Open the logger on this computer</a></p>
   </div>
 </div>
 
@@ -133,7 +133,6 @@ $("#gwId").value = logger.gwId;
 
 function showGw(gwId) {
   $("#loggerLink").href = new URL(`../weekend/logger.html?gw=${encodeURIComponent(gwId)}`, location.href).href;
-  $("#gwShow").textContent = gwId;
 }
 
 const cache = {};
