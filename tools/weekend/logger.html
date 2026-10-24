@@ -159,7 +159,14 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
       <ol class="steps">
         <li>Power the gateway and turn this phone's hotspot on. On iPhone, switch on <i>Maximize Compatibility</i> and keep the hotspot screen open.</li>
         <li>The gateway shows up below in about 30 s. Tap it.</li>
-        <li>First time with this phone? Turn the hotspot off, join the WiFi network <i>tw-… setup</i> in this phone's WiFi settings and type the hotspot's name and password into the page that opens (or go to <i>192.168.4.1</i>). Then do step 1.</li>
+        <li>First time with this phone? Type its hotspot here. Then turn the hotspot off, join the WiFi network <i>tw-… setup</i> in this phone's WiFi settings, come back to this page and tap <b>Send to gateway</b>. Then do step 1.
+          <div class="fields" style="grid-template-columns:1fr 1fr;margin:8px 0">
+            <label>Hotspot name <input id="fHsName" type="text" maxlength="32" spellcheck="false" autocomplete="off" autocapitalize="off"></label>
+            <label>Hotspot password <input id="fHsPass" type="text" maxlength="63" spellcheck="false" autocomplete="off" autocapitalize="off"></label>
+          </div>
+          <button class="primary" id="bHsSend" style="width:100%">Send to gateway</button>
+          <p class="note" id="hsNote">On iPhone the hotspot name is the phone's name (Settings, General, About); the password is in Settings, Personal Hotspot. Both stay on this phone.</p>
+        </li>
       </ol>
       <div id="gwFound" class="found-list" hidden></div>
       <details class="more">
@@ -364,24 +371,26 @@ body.micmode #guide, body.watchmode #guide { max-width: 520px; margin: 12px auto
     <button class="primary" id="mvStart" style="width:100%">Start the mic</button>
     <div id="mvFound" class="found-list" hidden></div>
     <button id="mvRefind" style="width:100%" hidden>Find the logger again</button>
-    <div class="inline" style="margin-top:12px">
-      <label>Or type a reading, dB(A) <input id="mvRef" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
-      <button id="mvSet" disabled>Set</button>
-    </div>
-    <p class="note" id="mvCalLine"></p>
-    <div class="row" style="margin-top:12px">
-      <button class="grow" id="mvRec" disabled>Start recording</button>
-      <button class="grow" id="mvSave" disabled>Save recording</button>
-    </div>
+    <button class="grow" id="mvSave" style="width:100%;margin-top:12px" disabled>Save recording</button>
     <p class="note" id="mvRecLine"></p>
+    <details class="more">
+      <summary>More</summary>
+      <div class="inline" style="margin-top:8px">
+        <label>Or type a reading, dB(A) <input id="mvRef" type="number" inputmode="decimal" step="0.5" placeholder="62"></label>
+        <button id="mvSet" disabled>Set</button>
+      </div>
+      <p class="note" id="mvCalLine"></p>
+      <button id="mvRec" style="width:100%" disabled>Start recording</button>
+    </details>
   </section>
   <section class="panel">
     <h2>Speaker</h2>
     <div class="runline" id="mvSpLine"></div>
-    <p class="note">Pair the Bluetooth speaker with this phone, not the logger phone. Silent mode off. The logger phone tells this phone what to play and when.</p>
-    <label style="margin-top:8px">Your own recording, only if the logger is set to it <input id="mvFile" type="file" accept="audio/*"></label>
-    <p class="note">Keep this page open with the screen on: a locked phone stops the mic and the speaker. Do Not Disturb on, so nothing rings into the recording.</p>
-    <p class="note"><a href="#guide" class="toguide">What do these numbers mean?</a></p>
+    <p class="note">Pair the speaker with this phone. Silent mode off, Do Not Disturb on, and keep the screen on.</p>
+    <details class="more">
+      <summary>More</summary>
+      <label style="margin-top:8px">Your own recording, only if the logger is set to it <input id="mvFile" type="file" accept="audio/*"></label>
+    </details>
   </section>
 </div>
 
@@ -1556,7 +1565,7 @@ function mvTick() {
   mv.secs.push(dbfs); if (mv.secs.length > 10) mv.secs.shift();
   const dba = mv.offset != null ? Math.round((dbfs + mv.offset) * 10) / 10 : null;
   $("#mvLevel").textContent = dba != null ? dba.toFixed(1) : dbfs.toFixed(0);
-  $("#mvLevelK").textContent = dba != null ? "dB(A) here" : "raw level here, not dB(A) until you set the meter below";
+  $("#mvLevelK").textContent = dba != null ? "dB(A) here" : "raw level here, not dB(A) until its meter is set at home";
   const st = JSON.stringify({
     t: Date.now(), dbfs: Math.round(dbfs * 10) / 10, dba, rec: !!mv.rec,
     rec_start: mv.rec ? mv.recStart : null, rec_s: mv.rec ? (Date.now() - mv.recStart) / 1000 : 0, file: mv.rec ? mv.name : mv.file ? mv.file.name : null,
@@ -1699,7 +1708,7 @@ function renderMv() {
       : q.phase === "gap" ? (q.i + 1 < q.items.length ? `Quiet before play ${q.i + 2} of ${q.items.length} · ${left} s` : `Last play done · ${left} s`)
       : `<b>Recording background</b>, speaker off · ${Math.ceil(left / 60)} min left`)
     : mvs.cal ? "<b>Calibration playing.</b> Set the volume on this phone or the speaker until the logger reads 60–65 dB(A)."
-    : mv.stream ? "Ready. The logger phone starts the speaker." : "Tap <b>Start the mic</b> first; that also lets this phone play the speaker.";
+    : mv.stream ? "Ready. The logger phone starts the speaker." : "Tap your logger above first; that also lets this phone play the speaker.";
   $("#mvRecLine").textContent = mv.rec ? `Recording since ${clock(mv.recStart)}, ${Math.round((Date.now() - mv.recStart) / 1000)} s.` : mv.file ? `${mv.file.name}, ${(mv.file.size / 1e6).toFixed(1)} MB. Save it before closing this page.` : "The logger starts and stops the recording with the speaker sequence.";
 }
 
@@ -1795,6 +1804,19 @@ function pickRole() {
     else startLoggerRole();
   });
 }
+function sendHotspot() {
+  const name = $("#fHsName").value.trim(), pass = $("#fHsPass").value;
+  const note = $("#hsNote");
+  if (!name) { note.textContent = "Type the hotspot name first."; return; }
+  if (pass && pass.length < 8) { note.textContent = "A hotspot password is at least 8 characters."; return; }
+  const s = settings(); s.hsName = name; s.hsPass = pass; saveSettings(s);
+  const q = new URLSearchParams({ s: name, p: pass }).toString();
+  window.open("http://192.168.4.1/#" + q, "_blank");
+  note.textContent = "Sent. If the new tab says Saved, turn this phone's hotspot back on and come back here. If it doesn't load, check this phone is on tw-… setup.";
+}
+$("#bHsSend").addEventListener("click", sendHotspot);
+{ const s = settings(); if (s.hsName) $("#fHsName").value = s.hsName; if (s.hsPass) $("#fHsPass").value = s.hsPass; }
+
 function startLoggerRole() {
   document.title = "trip/wire logger"; $("h1").textContent = "trip/wire logger";
   micListen(); // the mic phone works with no board connected
